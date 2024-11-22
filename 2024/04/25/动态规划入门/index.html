@@ -1,0 +1,419 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>动态规划入门 | 宝爸编程</title><meta name="author" content="雪宝和七七的爸爸"><meta name="copyright" content="雪宝和七七的爸爸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、理论教学 1.1 视频教学链接 数字三角形 1.2 动态规划的基本概念和步骤 本帖不光是讲线性DP，同时也为所有各种DP的学习奠定理论基础和学习方法。 1.2.1 什么是动态规划 动态规划（英语：Dynamic programming，简称 DP）的算法本质实际上就是递推，以递推的方式对某1个或者多个状态数组进行依序填值，并根据其填写结果中的某1个或者某个区域内的值来返回问题答案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划入门">
+<meta property="og:url" content="http://example.com/2024/04/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="宝爸编程">
+<meta property="og:description" content="一、理论教学 1.1 视频教学链接 数字三角形 1.2 动态规划的基本概念和步骤 本帖不光是讲线性DP，同时也为所有各种DP的学习奠定理论基础和学习方法。 1.2.1 什么是动态规划 动态规划（英语：Dynamic programming，简称 DP）的算法本质实际上就是递推，以递推的方式对某1个或者多个状态数组进行依序填值，并根据其填写结果中的某1个或者某个区域内的值来返回问题答案">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-04-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-10T07:01:01.611Z">
+<meta property="article:author" content="雪宝和七七的爸爸">
+<meta property="article:tag" content="信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/04/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '动态规划入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-05-10 15:01:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/static/css/custom.css"><link rel="stylesheet" href="/fonts/font.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="宝爸编程"><span class="site-name">宝爸编程</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">动态规划入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-24T16:00:00.000Z" title="发表于 2024-04-25 00:00:00">2024-04-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-10T07:01:01.611Z" title="更新于 2024-05-10 15:01:01">2024-05-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E7%BA%BF%E6%80%A7DP/">线性DP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="动态规划入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一理论教学">一、理论教学</h1>
+<h2 id="视频教学链接">1.1 视频教学链接</h2>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Rk4y1173p/">数字三角形</a></p>
+<h2 id="动态规划的基本概念和步骤">1.2 动态规划的基本概念和步骤</h2>
+<p>本帖不光是讲线性DP，同时也为所有各种DP的学习奠定理论基础和学习方法。</p>
+<h3 id="什么是动态规划">1.2.1 什么是动态规划</h3>
+<p>动态规划（英语：Dynamic programming，简称
+DP）的算法本质实际上就是递推，以递推的方式对某1个或者多个状态数组进行依序填值，并根据其填写结果中的某1个或者某个区域内的值来返回问题答案。所以在动态规划中，一定是存在递推方程的。</p>
+<h3 id="什么情况下能使用动态规划">1.2.2 什么情况下能使用动态规划</h3>
+<p>动态规划（Dynamic Programming）需要有2个重要的前提：</p>
+<ol type="1">
+<li><p><strong>局部最优化原理</strong>：</p>
+<p>　　模型的求解过程能够被分成多个阶段；局部最优解不受后续其他阶段各种信息的影响。<strong>局部最优解一定是全局最优解的子集。</strong>所有局部最优解将会促成全局最优解。</p>
+<p>　　下面分别举正反两个例子来加以说明：</p>
+<p>1）<strong>正例</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240509152610044.png" style="zoom: 40%;" /></p>
+<p>　　如上图所示，全局问题为“求从A点到E点的最短路径”。B为其最短路径上的某一个点，局部子问题为“求从A点到B点的最短路径”，其局部最优解路径可以标注为<span
+class="math inline">\(\overrightarrow {A
+B}\)</span>。根据局部最优化原理，<span
+class="math inline">\(\overrightarrow {A
+B}\)</span>一定是全局最优解<span class="math inline">\(\overrightarrow
+{A E}\)</span>的子集。</p>
+<p>　　如何证明这一点呢？用反证法。</p>
+<p>　　假设现在存在从A到B的另一条路径<span
+class="math inline">\(\overset{\frown}
+{AB}\)</span>，该路径的长度比<span class="math inline">\(\overrightarrow
+{A B}\)</span>更短，即有<span class="math inline">\(\overset{\frown}
+{AB} &lt; \overrightarrow {A B}\)</span>，那么不等式两边同时加上<span
+class="math inline">\(\overrightarrow {B E}\)</span>，得到:<span
+class="math inline">\(\overset{\frown} {AB} +\overrightarrow {B E} &lt;
+\overrightarrow {A B}+ \overrightarrow {B E}=\overrightarrow {A
+E}\)</span>。这样就和“<span class="math inline">\(\overset{\frown}
+{AE}\)</span>是从A点到E点的最短路径”产生矛盾，因为找到了一条不同的更短路径。故原假设不成立，而<span
+class="math inline">\(\overrightarrow {A
+B}\)</span>一定是全局最优解<span class="math inline">\(\overrightarrow
+{A E}\)</span>的子集。</p>
+<p>2)<strong>反例</strong>：</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240509160154842.png"
+alt="image-20240509160154842" />
+<figcaption aria-hidden="true">image-20240509160154842</figcaption>
+</figure>
+<p>　　图中有四个点，A、B、C、D，相邻两点有两条连线，代表两条通道，d1,
+d2, d3, d4, d5,
+d6代表的是道路的长度，求A到D的所有通道中，总长度除以4得到的余数最小的路径为最优路径，求一条最优路径。</p>
+<p>　　这里如果还是按照上面的思路去求解，就会误入歧途了。按照之前的思路，<span
+class="math inline">\(\overset{\frown}
+{AD}\)</span>的最优路径应该包含了<span
+class="math inline">\(\overset{\frown} {BD}\)</span>的最优路径，而<span
+class="math inline">\(\overset{\frown}
+{BD}\)</span>的最优路径决策为（3+5）mod 4 =
+0，即应该选d2和d6这两条道路。而实际上，全局最优解是d4+d5+d6或者d1+d5+d3。所以<strong>这里局部最优解并不是全局最优解的子集，即不满足最优化原理。所以就不适合使用动态规划来求解了</strong>。</p></li>
+<li><p><strong>无后效性原理</strong>：</p>
+<p>　　前i个阶段的所有决策及操作，对后续阶段的决策及操作，不构成任何的干扰或影响。换句话说，未来与过去无关，当前状态是此前历史状态的完整总结，此前历史决策只能通过影响当前的状态来影响未来的演变。</p>
+<p>　　下面分别举正反两个例子来加以说明：</p>
+<p>1）正例</p>
+<p>　　我们可以仍然看这张图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240509152610044.png" style="zoom: 40%;" /></p>
+<p>　　如果规定“行走路线只能在AB这个小矩形范围内，不能越界”，那么不管从A到B点的路线如何行走，都不会影响到从B点到E点的路线选择。这就满足了“无后效性”。从A到B的所有选择，都最终反映在从A到B的路径长度这个数值上，其路径决策不会对后续的从B到E的决策产生任何影响。</p>
+<p>2）反例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240509162006688.png" style="zoom: 50%;" /></p>
+<p>　　如果在原来的基础上加上一个限制条件：“同一个格子只能通过一次”，且允许超过AB的矩形范围。那么，这个题就不符合无后效性了，因为前一个子问题的解会对后面子问题的选择策略有影响，比如说，如果从A到B选择了一条如上图中绿色表示的路线，那么从B点出发到达E点的路线就只有一条了。也就是说从A点到B点的路径选择会影响B点到E点的路径选择。</p></li>
+</ol>
+<p>　　综上1、2两点，如果满足这两个条件，才能考虑用dp法来做。
+否则是不能用动态规划来做的。</p>
+<p>　　关于这两个原理，空说太抽象，会在本帖的后续案例中进一步来具体说明。</p>
+<h3 id="具体步骤">1.2.3 具体步骤</h3>
+<p>因为动态规划具有较强的模板性，所以强烈建议同学们在学习dp这个板块时，能够有较为固定的命名规则。每个题，因为出题人对所有变量的命名较为随意，甚至是混乱的，如果按照题目中的命名来写代码，日后复习时会引起很多混乱（例如有些题目把总行数命名为n，总列数命名为m，而另外有些题是把总行数命名为m，总列数命名为n），这些混乱会导致很多小朋友调试很久都找不到错误。</p>
+<p>所以，建议在命名时不要理会题目内的命名，按照自己的命名规则来写代码即可，这样以后在看代码时能够快速看懂。<strong><font color="red">在本站中，总个数为n或者N或者maxn，总行数R或者Row（英文中的“行”），总列数C或者Col（column，英文中的“列”），for循环中的当前行r，当前列c，状态数组名称dp[]或者dp[][]，原始数据数组data[]或者data[][]，当前值cur，上一个值pre，下一个值nxt，总和sum，个数cnt或count</font></strong>。</p>
+<p>一共分为5个步骤，下面分小节具体阐述。<strong>初学动态规划的同学，严重推荐在每个题的代码前面用块注释的方式写清楚5个步骤的具体内容，提前做好分析。很多同学不愿意打一点点注释，这个习惯可不太好哟！～</strong></p>
+<h4 id="阶段划分确定状态数组的精准-含义">1.2.3.1
+阶段划分，确定状态数组的<font color="red" ><strong>精准</strong></font>
+含义</h4>
+<p>首先应该根据问题的描述，首先应确定每个状态由几个维度来共同决定？每个维度分别是什么含义？给定i或者给定i和j之后，dp[i]或者dp[i][j]究竟代表什么含义？（此处含义务必精准描述）</p>
+<p>常用的一些含义如下，供抛砖引玉地参考：</p>
+<p>1）dp[i]：序列前i个数的XXXXXX的值；</p>
+<p>2）dp[i]：序列前i个数中，以第i个数结尾的字序列的XXXXXX的值；</p>
+<p>3）dp[i]：在成本不超过i个单位的前提下的最优成本值；</p>
+<p>4）dp[i][j]：从出发点走到第i行第j列时所经历的XXXXX的值；</p>
+<p>5）dp[i][j]：从第i个到第j个数之间的XXXXX的值；</p>
+<p>6）dp[i][j]：前i个数对k取余后余数是否为j；</p>
+<p>同学们在定义好状态数组后，不妨可以自己写一个“dp[3]=5;”或者“dp[3][4]=5;”或者“dp[3][5]=true;”，然后自己尝试着去解释这句代码的精确含义。在解释的过程中，注意自己的语文描述，不要模棱两可、含混不清。</p>
+<p>大多数情况下，“确定状态数组”这一步都没什么难度，但也会偶尔遇到有难度的情况，后面会有相关题来说明。</p>
+<h4 id="所求目标">1.2.3.2 所求目标</h4>
+<p>在dp数组的含义确定后，我们就能确定出所求目标了。所求目标基本上就是下面几种类型：</p>
+<ol type="1">
+<li>dp[N]——一维数组，特定位置</li>
+<li>max(dp[1..N]) （或者min）——一维数组，全范围求最值</li>
+<li>dp[Row][Col]——二维数组，特定位置</li>
+<li>max(dp[Row][1..Col]) （或者min）——二维数组，最末行求最值</li>
+<li>max(dp[Row..Row+a][Col..Col+b])
+（或者min）——二维数组，特定的下标范围内求最值</li>
+<li>min(dp[1..N]) (dp[i]&gt;=K)——一维数组，特定的值范围求最值</li>
+</ol>
+<h4 id="确定状态转移方程">1.2.3.3 确定状态转移方程</h4>
+<p>如果直接讨论“状态转移”，听起来挺抽象的。我们这里就用最简单通俗的方式吧。那就是“如何填数组”？填数组，一定是“根据已知的值来填未知位置上的值”。对于一个普通位置上的值，它一定是来自于数组其他位置上的值，经过某种运算而得来。状态转移方程，就是递推方程或者递归方程。</p>
+<p>在拟定状态转移方程时，我们重点会去研究当前位置的值，来自于哪些其他位置的值？一般来说，常用的主要有如下几个方向：</p>
+<p>1）一维数组，dp[i]根据左侧的值，例如dp[i-1]或dp[i-2]、dp[i-3]等值来填</p>
+<p>2）一维数组，dp[i]根据右侧的值，例如dp[i+1]或dp[i+2]、dp[i+3]等值来填</p>
+<p>3）二维数组，dp[i][j]根据其左/右侧、上/下侧或者组合的值来填</p>
+<p>因为我们一定是根据已知来填写未知，所以在上述三种情况中，不可能出现“当前位置的值依赖于左侧及右侧的值（例如dp[i]=dp[i-1]+dp[i+1]这种状态转移方程，这种是无法下手填的）”，也不可能出现“当前位置的值依赖于左上侧及右下侧的值”，总之，在填写当前位置之前，它所依赖的值一定是已知、已填的。</p>
+<h4 id="循环顺序和边界">1.2.3.4 循环顺序和边界</h4>
+<p>根据上一小节的分析，我们必须要根据已知来填写未知，所以这其实就决定了我们在写一重for或者二重for循环时的循环顺序。能不能先列后行？在处理行的时候，只能从上往下吗？能不能从下往上也可以？在处理列的时候，能不能从右往左呢？这些问题都需要我们想清楚，然后做出选择。</p>
+<p>例如：<a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=2043">杨辉三角</a>的标准状态转移方程是dp[i][j]=dp[i-1][j-1]+
+dp[i-1][j]，我们都知道填写数组时需要从上往下，从左往右填写。那请问：</p>
+<ol type="1">
+<li>能否“从上往下，从右往左”呢？——能，为什么？</li>
+<li>能否“从下往上，从左往右”呢？——不能，为什么？</li>
+</ol>
+<p>需要注意的是，上例的滚动状态转移方程是dp[j]=dp[j-1]+dp[j]，此时填写数组要求只能从右往左填写，不能从左往右填写。请问为什么呢？</p>
+<p>这里涉及到一个时间差的问题。赋值号左侧是新值，右侧是旧值，所以有dp[j]（新）=dp[j-1]（旧）+dp[j]（旧）。然后我们可以看到，当产生dp[j]（新）后，dp[j-1]（旧）此刻是依旧存在的。而dp[j]肯定在dp[j-1]的右侧，所以说，右侧的数据先更新，即需要从右往左更新dp[]。</p>
+<p>我们在处理滚动数组时，尤其需要注意循环顺序的处理。顺序不同，含义不同，结果也会很不相同。比较常见的情况如背包问题中，采用滚动数组时，从右往左更新是01背包，从左往右更新是重复背包。</p>
+<p>关于循环边界的问题，涉及到需要填写dp数组的哪些部分。绝大多数情况下，我们调用一次转移方程就填好一个元素的值，程序循环到dp[R][C]或者dp[N]之类的就结束。但有时候也有可能会需要多调用一些次数，多计算一些扩展区域，并从中筛选。这涉及到“所求目标”的问题。可以以“<strong><a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1271">1271：【例9.15】潜水员</a></strong>”为例学习（要求学生已掌握到多重背包为佳）。</p>
+<h4 id="确定转移方程的特例">1.2.3.5 确定转移方程的特例</h4>
+<p>上一节我们反复强调，转移方程是“根据已知填写未知”，那整个状态转移方程中，哪个位置的值从一开始就是已知的呢？这些位置上的值，一定不是根据转移方程而得来的。我们都知道“女娲造人”的传说，那女娲是怎么来的呢？我们知道非波拉契数列的转移方程是f[i]=f[i-1]+f[i-2]，而“f[1]=1、f[2]=1”就是非波拉契数列的转移方程的“2个特例”。</p>
+<p>特例的个数和位置，取决于状态转移方程中的公式内容。假设dp数组的有效数据的下标范围是[1..n]或者[1..R][1..C]。以几个例子来说明：</p>
+<ol type="1">
+<li>dp[i]=5*dp[i-2]：i-2是数组的下标，它必然只能在规定的范围内，即i-2&gt;=1，所以该公式只能在i&gt;=3的情况下有效。所以i=1和i=2属于特例，需要单独解决。</li>
+<li>dp[i][j]=dp[i-2][j] + dp[i][j-1];
+：公式里出现了i-2和j-1，是数组下标，所以该公式只能在i-2&gt;=1（要满足有效数据的行下标范围，故i&gt;=3）且j-1&gt;=1（即j&gt;=2）的情况下有效。所以i=1、i=2、j=1都属于特例，也就是说，这个二维数组的第1、2行全体数据和第1列的全体数据，需要单独解决。</li>
+</ol>
+<p>对于这些特例，该取什么值呢？如果题上已经明说了其取值，直接填入即可。如果题上没有明说，就需要同学们结合dp数组的基本含义，自己去推算。</p>
+<p>例如：在“摘花生”一题中，假设dp[i][j]表示从（1，1）这个位置走到第i行第j列位置的不同走法数，那么dp[1][j]（即第一行所有元素）该如何填特例值呢？很明显，从（1，1）走到（1，j）位置只能有一种走法，那就是“一直向右”这种走法。</p>
+<h4 id="状态数组普通位置上的初值">1.2.3.6 状态数组普通位置上的初值</h4>
+<p>dp数组的特例该如何处理，我们在上一节刚讲过。对于普通位置上的初值，该如何处理呢？</p>
+<p>在定义dp数组时，建议定义为全局变量（默认初始化为全0），这样方便后续多个函数共同使用。如果需要反复多次进行dp，则需要在每次dp之前先对状态数组清零，建议使用多重for循环来清零，避免使用memset函数。因为如果你的dp数组长度达到1e6，但实际数据如果只使用了1e4，那么多重for循环赋值会判定程序的空间使用量为1e4，而memset会判定使用量是1e6，且实测其运行效率不比memset差。</p>
+<p>需要提醒注意的是，全局数组初始化为全0，这虽然对绝大多数题都有效，<strong>但对少部分题目是不行的</strong>。当dp数组代表个数、条数、总和、价值、最大值等情况时，极大概率其结果是非负的，所以用0作为初值没任何问题。但如果dp[]代表的是“最小值”（例如图的“最短路径”问题，或者求“装满或恰好装满背包时的最小价值”），则应将其初值设为一个极大值，以方便后续在书写转移方程时进行迭代更新。关于“极大值”该如何选择和表示，请参看本站的相关专题。此处不再详述。</p>
+<p>普通位置和特例是互不冲突的两件事情，不要混在了一起，更不要覆盖了特例位置。</p>
+<h1 id="二.-实战训练">二. 实战训练</h1>
+<p>希望能够尽量按照第一节所述的六点要求去分析，尽可能多写清楚注释文字。虽然这两个题之前同学们可能已经做过，但当时是否考虑周全了？</p>
+<h2 id="数字金字塔">2.1 数字金字塔</h2>
+<p>　　原题链接：<a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1258">1258：【例9.2】数字金字塔</a>/<a
+target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1216">P1216 [USACO1.5]
+[IOI1994]数字三角形 Number Triangles</a></p>
+<p>　　分析：</p>
+<p>　　固定动作：数组下标从1开始，尽量不要从0开始，免得后续很多麻烦。行列用r和c表示，不要用x和y来表示！！</p>
+<p>　　先看看本题是否满足动态规划的两个基本前提？</p>
+<p>　　<strong>局部最优化原理</strong>——模型的求解过程能够被分成多个阶段；<strong>第i个阶段的决策方案</strong>，是该问题前i个阶段范围内的最优解，<strong>它不受后续其他阶段各种信息的影响</strong>。本题从上往下求解，每一层是一个阶段。从塔顶走到第５层的每个数，其决策方案不受下面第６、７、８等层数值变化的影响。满足“局部最优化原理”。</p>
+<p>　　<strong>无后效性原理</strong>——<strong>前i个阶段的所有决策及操作，对后续阶段的决策及操作，不构成任何的干扰或影响</strong>。假设第６层第１列的节点与第５层第１列和第２列的两个点相连，则在求解dp[6][1]时，不需要去关心dp[5][1]和dp[5][2]选择了路上的哪些点，只要这两个dp值分别都肯定是最大值就能去往第６层推算了。满足“无后效性原理”。</p>
+<p>　　综上两点，本题可以用“动态规划”来解决。下面开始６点分析。</p>
+<p>　　1).状态数组：dp[r][c]：从data[1][1]走到data[r][c]所经历的不同路径上数据之和的最大值</p>
+<p>　　2).所求目标：max(dp[R][1..C])（R为最下一行）</p>
+<p>　　3).状态转换方程</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">dp[r][c] = <span class="hljs-built_in">max</span>( data[r][c] + dp[r<span class="hljs-number">-1</span>][c<span class="hljs-number">-1</span>],   data[r][c] + dp[r<span class="hljs-number">-1</span>][c] ) <br></code></pre></td></tr></table></figure>
+<p>　　或者为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">dp[r][c] = data[r][c] + <span class="hljs-built_in">max</span>( dp[r<span class="hljs-number">-1</span>][c<span class="hljs-number">-1</span>],  dp[r<span class="hljs-number">-1</span>][c] ) <br></code></pre></td></tr></table></figure>
+<p>　　4).循环边界和循环顺序</p>
+<p>　　　r: [2..R] 2 --&gt; R 增序</p>
+<p>​ 　　c: [2..r] 2 &lt;--&gt; r 增减均可</p>
+<p>　　5).状态初始化值</p>
+<p>　　因为data[][]都在[0,
+100]内，dp[][]是最大值，max(dp[R][])也要计算最大值，dp[][]不可能为负数。所以
+dp[][] 初始化为 0
+即可（为了和下面第6点中的特例兼容）。如果data[][]的值范围允许为负数，则dp[][]应初始化为极小值。</p>
+<p>　　6).特例</p>
+<p>　　根据状态转移方程中出现的r-1和c-1，可以知道r=1和c=1(即第1行和第1列的全体dp数据)需要单独处理。因为第一行只有dp[1][1]这一个数据，所以整理下来只有dp[1..R][1]需要单独处理，值为data[1..R][1]。碰巧的是，因为dp[0][]和dp[][0]的初值是0，所以碰巧和状态转移方程吻合。所以，本题直接从1行或1列开始即可。不需要单独处理特例了。</p>
+<p>　　AC代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	方法1： 二维标准状态数组</span><br><span class="hljs-comment">	这个题，是比较典型的动态规划的案例。1258和P1216是同一个题 </span><br><span class="hljs-comment">*/</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 1001</span><br><span class="hljs-comment">// 注意取名习惯，建议尽量固定化 </span><br><span class="hljs-type">int</span> data[N][N];  <span class="hljs-comment">// 原始数据， 全局，默认均为 0 </span><br><span class="hljs-type">int</span> dp[N][N];    <span class="hljs-comment">// 状态数组， 全局，默认均为 0 </span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-type">int</span> r, c, R, mmax=<span class="hljs-number">0</span>;<br>	cin &gt;&gt;R;<br>	<span class="hljs-keyword">for</span> (r=<span class="hljs-number">1</span>; r&lt;=R; r++)<br>		<span class="hljs-keyword">for</span> (c=<span class="hljs-number">1</span>; c&lt;=r; c++)<br>			<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;data[r][c]);<br>    <br>	<span class="hljs-keyword">for</span> (r=<span class="hljs-number">1</span>; r&lt;=R; r++)<br>		<span class="hljs-keyword">for</span> (c=<span class="hljs-number">1</span>; c&lt;=r; c++)   <span class="hljs-comment">// 增减均可 </span><br>			dp[r][c] = <span class="hljs-built_in">max</span>(data[r][c] + dp[r<span class="hljs-number">-1</span>][c<span class="hljs-number">-1</span>], data[r][c] + dp[r<span class="hljs-number">-1</span>][c]); <br><span class="hljs-comment">//			if (dp[r-1][c-1] &gt; dp[r-1][c])   // 这样写也可以，看似繁琐，但更具有可扩充性，如可记录路径</span><br><span class="hljs-comment">//				dp[r][c] = data[r][c] + dp[r-1][c-1];    // 选择左上方数据</span><br><span class="hljs-comment">//			else</span><br><span class="hljs-comment">//				dp[r][c] = data[r][c] + dp[r-1][c];	     // 选择正上方数据</span><br><br>	<span class="hljs-comment">// 因为data[][] &gt;= 0，所以dp数组是递增的，</span><br>	<span class="hljs-comment">// 要找所有路径中最大的路径和，应找最底层第R行的状态值来找最大值就行了</span><br>	<span class="hljs-comment">// 如果data数组的值允许为负数呢？那就需要在上面的2重循环中去及时比对和刷新mmax了 </span><br>	<span class="hljs-keyword">for</span> (c=<span class="hljs-number">1</span>; c&lt;=R; c++)    <span class="hljs-comment">// 末行每列</span><br>		mmax = <span class="hljs-built_in">max</span>(mmax, dp[R][c]);<br>	cout &lt;&lt;mmax;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125; <br></code></pre></td></tr></table></figure>
+<p>　　注意，上面的代码是标准状态数组的解法。在学完滚动数组之后，同学们可自行思考本题的滚动数组解法。</p>
+<p>　　另外，<a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1284">1284</a>这个题和本题很相似，也可以一并刷过。</p>
+<h2 id="移动路线">2.2 移动路线</h2>
+<p>　　原题链接：<a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1194">1194：移动路线</a></p>
+<p>　　分析：</p>
+<p>　　老规矩，所有数组的下标从1开始编号。行列用r和c表示，不要用x和y来表示！！</p>
+<p>　　先看看本题是否满足动态规划的两个基本前提？</p>
+<p>　　<strong>局部最优化原理</strong>——模型的求解过程能够被分成多个阶段；<strong>第i个阶段的决策方案</strong>，是该问题前i个阶段范围内的最优解，<strong>它不受后续其他阶段各种信息的影响</strong>。本题从左上往右下求解，每一行是一个阶段。从（０，０）走到（３，４）的每个格子，他们的决策方案不受后续的（３，５）、（５，８）、（６，２）等格子上数值变化的影响（因为只能往右走或者往下走）。满足“局部最优化原理”。</p>
+<p>　　<strong>无后效性原理</strong>——<strong>前i个阶段的所有决策及操作，对后续阶段的决策及操作，不构成任何的干扰或影响</strong>。在求解dp[3][5]时，不需要去关心dp[3][4]和dp[2][5]的路径条数是如何统计出来的，也不需要去关心路径具体怎么走，这些路径的选择和计算过程对后续其他点的推算结果无任何影响，只要条数值无误就行，就可以拿着这两个值去推dp[3][5]的值。满足“无后效性原理”。</p>
+<p>　　综上两点，本题可以用“动态规划”来解决。下面开始６点分析。</p>
+<p>　　1. 状态数组：dp[r][c]：
+从(1,1)A点走到坐标为(r,c)的点的路径的条数</p>
+<p>　　2. 所求目标：dp[R][C]:
+从(1,1)A点走到坐标为(R,C)的点的路径的条数</p>
+<p>　　3. 状态转换方程：</p>
+<pre><code> &lt;img src=&quot;https://cspcoding.gitee.io/pic/img/image-20240423131732427.png&quot; style=&quot;zoom:67%;&quot; /&gt;
+
+ 　　从上图中可以看出，从点O走到点X的路线，只能经过A点或者B点。
+
+ 　　所以，根据组合数学的乘法原理和加法原理可得：
+
+ O-&gt;X的路线总数 = O-&gt;A的路线总数 * A-&gt;X的路线总数 **+** O-&gt;B的路线总数 * B-&gt;X的路线总数
+
+ 　　而“A-&gt;X的路线总数”和“B-&gt;X的路线总数”都只有唯一的1种走法（就是“直接一步走过去”这一种走法），
+
+ 　　所以：
+
+ 　　　　　O-&gt;X的路线总数 = O-&gt;A的路线总数 * 1 + O-&gt;B的路线总数 * 1
+
+ 　　　　　　　　　　　　　= O-&gt;A的路线总数 + O-&gt;B的路线总数
+
+ 　　　　　　即：dp\[r][c]= dp\[r-1][c] + dp\[r][c-1]                 
+
+ 　　　　　　　　　　　　　　　　　　　　　　　　(1&lt;=r&lt;=R, 1&lt;=c&lt;=C ,从左往右，从上往下遍历)</code></pre>
+<ol start="4" type="1">
+<li><p>循环边界和循环顺序</p>
+<p>r: [2..R] 2 --&gt; R 增序</p>
+<p>c: [2..C] 2 --&gt; C 增序（不能降序）</p></li>
+<li><p>状态初始化值</p>
+<p>　　状态转移方程是赋值形式，可不给初值而直接覆盖即可。但为了和第6点的特例尽量兼容，此处初始化为0，寓意“从（1，1）到当前点的路径条数为0条”。</p></li>
+<li><p>特例</p>
+<p>　　因为状态转移方程中出现了r-1和c-1，所以dp数组的第1行和第1列需要单独处理。根据dp数组的基本含义可知，从左上角走到第一行的每个点只有一条路，走到第一列的每个点也只有一条路，故而dp[1][]和dp[][1]均为1。</p>
+<p>　　实际上此处只需要将dp[1][1]设置为1，其他全设置为0即可，经过转移方程推算之后，正好是全1。</p>
+<p>　　AC代码如下所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> F[<span class="hljs-number">21</span>][<span class="hljs-number">21</span>]; <span class="hljs-comment">// 坐标点是(1, 1)，0行和0列元素全部弃用</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> m, n, i, j;<br>	<span class="hljs-comment">// 1. 先处理状态数组F的一些边界情况，为后面的二重循环填表做数据上的准备工作</span><br>	<span class="hljs-comment">// 坐标轴上的点只能有1种走法</span><br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt;<span class="hljs-number">21</span>; i++)  <span class="hljs-comment">// 纵向坐标轴</span><br>		F[i][<span class="hljs-number">1</span>]= <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt;<span class="hljs-number">21</span>; i++)  <span class="hljs-comment">// 横向坐标轴</span><br>		F[<span class="hljs-number">1</span>][i]= <span class="hljs-number">1</span>; <br>	<span class="hljs-comment">// 2. 然后才开始递推</span><br>	<span class="hljs-comment">// 从出发点走到当前点的走法数 = 来自于下面点的走法个数 +  来自于左边点的走法个数</span><br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">2</span>; i&lt;<span class="hljs-number">21</span>; i++)<br>		<span class="hljs-keyword">for</span>(j=<span class="hljs-number">2</span>; j&lt;<span class="hljs-number">21</span>; j++)<br>			F[i][j]= F[i<span class="hljs-number">-1</span>][j] + F[i][j<span class="hljs-number">-1</span>];  <br>	<span class="hljs-comment">// 接纳输入</span><br>	cin &gt;&gt; m &gt;&gt;n;<br>	cout &lt;&lt;F[m][n] &lt;&lt;endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>​</p></li>
+</ol>
+<h2 id="过河卒">2.3 过河卒</h2>
+<p>　　原题链接：<a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1314">1314：【例3.6】过河卒(Noip2002)</a>/<a
+target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1002">P1002 [NOIP2002 普及组]
+过河卒</a></p>
+<p>　　分析：</p>
+<p>　　本题是在上一小节的基础上，略微增加了一点东西。</p>
+<p>　　１）本题根据题意，下标都从０开始编号。</p>
+<p>　　２）程序在对dp[][]的第０行或第０列进行特例处理之后，需要再对棋盘中可能出现的８个鞍点及１个马点（合计一共９个点）进行预先单独处理（这９个点的位置不可达，其对应的路线条数为０）。</p>
+<p>　　３）如果这９个点有任何一个点如果落在第０行或者第０列的位置上，则其之下或者之右的所有点的dp值从１改为０。</p>
+<p>　　４）我们需要把普通位置（第１行及以下、第１列及以右的除了这９个点之外的其他位置）和这９个点位置进行区别，９点不可执行转移方程，而普通位置应执行方程。为了方便区分，我们可以预先把普通位置的dp[][]值设置为－１，９点位置的dp[][]值设置为０，以示区分。</p>
+<p>　　需要注意的是，在做递推之前的各项准备工作，不要出现前后覆盖。应先初始化第０行和第０列为全１，其他位置为－１；然后计算９个点的位置，给对应位置标记为０；最后核查第０行和第０列的每个点，一旦出现有值为０，其下或其右的所有值均应改为０。</p>
+<p>　　本题AC代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 21 </span><br><span class="hljs-comment">// 从出发点A到B点坐标的路径条数 </span><br><span class="hljs-comment">// 有可能数字很大，所以需要long long才行哦！～不然会错2个案例</span><br><span class="hljs-type">long</span> <span class="hljs-type">long</span> dp[N][N];<br><span class="hljs-comment">// 坐标调整数组，方向从0到7 </span><br><span class="hljs-type">int</span> dr[<span class="hljs-number">8</span>] = &#123; <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">2</span>,  <span class="hljs-number">2</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-2</span>, <span class="hljs-number">-2</span> &#125;;<br><span class="hljs-type">int</span> dc[<span class="hljs-number">8</span>] = &#123; <span class="hljs-number">2</span>, <span class="hljs-number">-2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">2</span>, <span class="hljs-number">-2</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span> &#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> R,C, hR,hC, nr,nc;<br>    cin &gt;&gt;R &gt;&gt;C &gt;&gt;hR &gt;&gt;hC;<br>    <span class="hljs-comment">// 特例区赋值，从(0,0)到第0行的所有其他点的走法只有1种，第0行元素全部先设置为1 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;=C;k++)<br>    	dp[<span class="hljs-number">0</span>][k] = <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 特例区赋值，从(0,0)到第0列的所有其他点的走法也只有1种，第0列元素全部先设置为1 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;=R;k++)<br>    	dp[k][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br> <br>	<span class="hljs-comment">// 把普通区的dp[][]设置为-1，以方便区别0（不可达的点） </span><br><span class="hljs-comment">//    memset(dp, -1, sizeof(dp));   // 最好不用memset，其效率和二重for其实差不多，但易多占内存 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> r=<span class="hljs-number">1</span>;r&lt;=R;r++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> c=<span class="hljs-number">1</span>;c&lt;=C;c++)<br>            dp[r][c]= <span class="hljs-number">-1</span>;<br>            <br>    dp[hR][hC]=<span class="hljs-number">0</span>;   <span class="hljs-comment">// C点不可达，dp值设置为0 </span><br>  	<span class="hljs-comment">// 把最多8个方向的点设置为不可达 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> r=<span class="hljs-number">0</span>;r&lt;<span class="hljs-number">8</span>;r++)<br>    &#123;<br>        nr = hR + dr[r];<br>        nc = hC + dc[r];<br>        <span class="hljs-keyword">if</span>( nr&gt;=<span class="hljs-number">0</span> &amp;&amp; nr&lt;=R &amp;&amp; nc&gt;=<span class="hljs-number">0</span> &amp;&amp; nc&lt;=C )<br>            dp[nr][nc]=<span class="hljs-number">0</span>;    <span class="hljs-comment">// 多个控制点不可达，dp值设为0 </span><br>    &#125;<br>    <br>    <span class="hljs-comment">// 第0行如果有控制点，在其右边所有的点都不可达，其dp值都是0 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">1</span>;k&lt;=C;k++)<br>        <span class="hljs-keyword">if</span>(dp[<span class="hljs-number">0</span>][k]==<span class="hljs-number">0</span>)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> b=k+<span class="hljs-number">1</span>;b&lt;=C;b++)<br>                dp[<span class="hljs-number">0</span>][b]=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    <span class="hljs-comment">// 第0列如果有控制点，在其下面所有的点都不可达，其dp值都是0 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">1</span>; k&lt;=R; k++)<br>        <span class="hljs-keyword">if</span> ( dp[k][<span class="hljs-number">0</span>] == <span class="hljs-number">0</span> )<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> b=k+<span class="hljs-number">1</span>; b&lt;=R; b++)<br>                dp[b][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    <br>	<span class="hljs-comment">// 普通区开始填表，从(1,1)填到(R,C)。   </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> r=<span class="hljs-number">1</span>;r&lt;=R;r++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> c=<span class="hljs-number">1</span>;c&lt;=C;c++)<br>        	<span class="hljs-comment">// 只填dp值为-1的元素（dp值为0的点表示控制点，不能对其进行计算）  </span><br>			<span class="hljs-keyword">if</span> (dp[r][c]== <span class="hljs-number">-1</span> )<br>				dp[r][c]=dp[r][c<span class="hljs-number">-1</span>]+dp[r<span class="hljs-number">-1</span>][c];<br><br>    cout&lt;&lt;dp[R][C];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">8 6 0 4</span><br><span class="hljs-comment">1617</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪宝和七七的爸爸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/04/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/">http://example.com/2024/04/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">宝爸编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/04/25/LIS%E9%97%AE%E9%A2%98/" title="最长不下降子序列（LIS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">最长不下降子序列（LIS）问题</div></div></a></div><div class="next-post pull-right"><a href="/2024/04/02/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" title="记忆化搜索"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">记忆化搜索</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/04/25/LCS%E9%97%AE%E9%A2%98/" title="最长公共子序列（LCS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长公共子序列（LCS）问题</div></div></a></div><div><a href="/2024/04/25/LIS%E9%97%AE%E9%A2%98/" title="最长不下降子序列（LIS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长不下降子序列（LIS）问题</div></div></a></div><div><a href="/2020/03/13/hello/" title="我的第一篇博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-13</div><div class="title">我的第一篇博客</div></div></a></div><div><a href="/2024/07/31/dp%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E8%AE%AD%E7%BB%83/" title="dp中的状态转移训练"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-31</div><div class="title">dp中的状态转移训练</div></div></a></div><div><a href="/2024/07/02/%E4%B8%89%E7%A7%8D%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E7%9A%84%E5%A4%84%E7%90%86/" title="三种分组背包的处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">三种分组背包的处理</div></div></a></div><div><a href="/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" title="二分查找和二分答案"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-06</div><div class="title">二分查找和二分答案</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">雪宝和七七的爸爸</div><div class="author-info__description">本博客致力于信息学奥赛知识学习。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://cspcoding.github.io/"><i class="fab fa-github"></i><span>回到主页</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">玩游戏害人害己哦！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%90%86%E8%AE%BA%E6%95%99%E5%AD%A6"><span class="toc-text">一、理论教学</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%95%99%E5%AD%A6%E9%93%BE%E6%8E%A5"><span class="toc-text">1.1 视频教学链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%AD%A5%E9%AA%A4"><span class="toc-text">1.2 动态规划的基本概念和步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">1.2.1 什么是动态规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E8%83%BD%E4%BD%BF%E7%94%A8%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">1.2.2 什么情况下能使用动态规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="toc-text">1.2.3 具体步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E5%88%92%E5%88%86%E7%A1%AE%E5%AE%9A%E7%8A%B6%E6%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E7%B2%BE%E5%87%86-%E5%90%AB%E4%B9%89"><span class="toc-text">1.2.3.1
+阶段划分，确定状态数组的精准
+含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%80%E6%B1%82%E7%9B%AE%E6%A0%87"><span class="toc-text">1.2.3.2 所求目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B"><span class="toc-text">1.2.3.3 确定状态转移方程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%A1%BA%E5%BA%8F%E5%92%8C%E8%BE%B9%E7%95%8C"><span class="toc-text">1.2.3.4 循环顺序和边界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B%E7%9A%84%E7%89%B9%E4%BE%8B"><span class="toc-text">1.2.3.5 确定转移方程的特例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%95%B0%E7%BB%84%E6%99%AE%E9%80%9A%E4%BD%8D%E7%BD%AE%E4%B8%8A%E7%9A%84%E5%88%9D%E5%80%BC"><span class="toc-text">1.2.3.6 状态数组普通位置上的初值</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C.-%E5%AE%9E%E6%88%98%E8%AE%AD%E7%BB%83"><span class="toc-text">二. 实战训练</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E9%87%91%E5%AD%97%E5%A1%94"><span class="toc-text">2.1 数字金字塔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E8%B7%AF%E7%BA%BF"><span class="toc-text">2.2 移动路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%B2%B3%E5%8D%92"><span class="toc-text">2.3 过河卒</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/31/dp%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E8%AE%AD%E7%BB%83/" title="dp中的状态转移训练">dp中的状态转移训练</a><time datetime="2024-07-30T16:00:00.000Z" title="发表于 2024-07-31 00:00:00">2024-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/31/%E5%8C%BA%E9%97%B4dp(%E7%8E%AF)%E6%A8%A1%E5%9E%8B/" title="区间dp(环)模型">区间dp(环)模型</a><time datetime="2024-07-30T16:00:00.000Z" title="发表于 2024-07-31 00:00:00">2024-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/31/%E5%8C%BA%E9%97%B4dp(%E9%93%BE)%E6%A8%A1%E5%9E%8B/" title="区间dp(链)模型">区间dp(链)模型</a><time datetime="2024-07-30T16:00:00.000Z" title="发表于 2024-07-31 00:00:00">2024-07-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/21/%E5%8C%BA%E9%97%B4%E5%88%86%E6%AE%B5dp%EF%BC%88%E2%80%9C%E8%90%9D%E5%8D%9C%E5%A1%AB%E5%9D%91%E2%80%9D%EF%BC%89%E6%A8%A1%E5%9E%8B/" title="区间分段dp（“萝卜填坑”）模型">区间分段dp（“萝卜填坑”）模型</a><time datetime="2024-07-20T16:00:00.000Z" title="发表于 2024-07-21 00:00:00">2024-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/02/%E4%B8%89%E7%A7%8D%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E7%9A%84%E5%A4%84%E7%90%86/" title="三种分组背包的处理">三种分组背包的处理</a><time datetime="2024-07-01T16:00:00.000Z" title="发表于 2024-07-02 00:00:00">2024-07-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 雪宝和七七的爸爸</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
