@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>前缀和 二维前缀和 | 宝爸编程</title><meta name="author" content="雪宝和七七的爸爸"><meta name="copyright" content="雪宝和七七的爸爸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、理论教学 视频教学链接：前缀和 二维前缀和 二、实战训练 2.1 Luogu P8218 &#x2F;B3612【深进1.例1】求区间和 2.1.1 原题链接 Luogu P8218 &#x2F;B3612【深进1.例1】求区间和 这两个题是完全相同的内容和要求，合并在一起讲解。这个题是“前缀和”的入门模板题，裸求一维前缀和。  2.1.2 分析  2.1.3 AC代码 下面展现B36">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前缀和 二维前缀和">
+<meta property="og:url" content="http://example.com/2024/01/03/%E5%89%8D%E7%BC%80%E5%92%8C%20%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/index.html">
+<meta property="og:site_name" content="宝爸编程">
+<meta property="og:description" content="一、理论教学 视频教学链接：前缀和 二维前缀和 二、实战训练 2.1 Luogu P8218 &#x2F;B3612【深进1.例1】求区间和 2.1.1 原题链接 Luogu P8218 &#x2F;B3612【深进1.例1】求区间和 这两个题是完全相同的内容和要求，合并在一起讲解。这个题是“前缀和”的入门模板题，裸求一维前缀和。  2.1.2 分析  2.1.3 AC代码 下面展现B36">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-01-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-25T06:24:38.314Z">
+<meta property="article:author" content="雪宝和七七的爸爸">
+<meta property="article:tag" content="信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/01/03/%E5%89%8D%E7%BC%80%E5%92%8C%20%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前缀和 二维前缀和',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-12-25 14:24:38'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/static/css/custom.css"><link rel="stylesheet" href="/fonts/font.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="宝爸编程"><span class="site-name">宝爸编程</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">前缀和 二维前缀和</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-02T16:00:00.000Z" title="发表于 2024-01-03 00:00:00">2024-01-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-25T06:24:38.314Z" title="更新于 2024-12-25 14:24:38">2024-12-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C-%E5%B7%AE%E5%88%86/">前缀和/差分</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前缀和 二维前缀和"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一理论教学">一、理论教学</h1>
+<p>视频教学链接：<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ja4y1F7Fk/?_blank&amp;vd_source=0e7cc4e4bbbb67e5c3c2a3e7d967f075">前缀和
+二维前缀和</a></p>
+<h1 id="二实战训练">二、实战训练</h1>
+<h2 id="luogu-p8218-b3612深进1.例1求区间和">2.1 Luogu P8218
+/B3612【深进1.例1】求区间和</h2>
+<h3 id="原题链接">2.1.1 原题链接</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P8218">Luogu P8218
+/B3612【深进1.例1】求区间和</a></p>
+<p>这两个题是完全相同的内容和要求，合并在一起讲解。这个题是“前缀和”的入门模板题，裸求一维前缀和。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/1973969-20230704111737035-889544091.png" style="zoom: 67%;" /></p>
+<h3 id="分析">2.1.2 分析</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/1973969-20230704111737059-1374681507.png" style="zoom:80%;" /></p>
+<h3 id="ac代码">2.1.3 AC代码</h3>
+<p>下面展现B3612的AC代码。快读版本的代码可看P8218的AC代码，就不在此处展现了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> a[<span class="hljs-number">100005</span>],s[<span class="hljs-number">100005</span>];   <span class="hljs-comment">// 大量录入和输出，可以上快读、快写</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        s[i]=s[i<span class="hljs-number">-1</span>]+a[i];  <span class="hljs-comment">// 此处也可以直接a[i] += a[i-1]，一数组两用，不需要s[]</span><br>    &#125;<br><br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;m);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=m; i++) &#123;<br>        <span class="hljs-type">int</span> l,r;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;l,&amp;r);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,s[r]-s[l<span class="hljs-number">-1</span>]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>与本题比较类型的还有<a
+target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P10233">P10233 [yLCPC2024] A. dx
+分计算</a>，可以试试。</p>
+<h2 id="p1115-最大子段和">2.2 <span id="jump1">P1115
+最大子段和</span></h2>
+<h3 id="原题链接-1">2.2.1 原题链接</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1115">P1115
+最大子段和</a></p>
+<h3 id="分析-1">2.2.2 分析</h3>
+<p>这个题是对前缀和的一个小变化。如果强行去暴力枚举每个区间的左右两个端点来求和，复杂度为<span
+class="math inline">\(O(n^2)=4e10\)</span>，铁定会TLE。我们可以换一个思路：如果左侧多个数的“累加和”对sum增加没有贡献，甚至变成累赘，那不如放弃而从当前数重新开始。这是一种贪心的思维，时间复杂度是<span
+class="math inline">\(O(n)\)</span>的。</p>
+<h3 id="ac代码-1">2.2.3 AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	这个题，一边累加sum，同时一边判断sum的正负，从而丢弃sum。这个sum实际上也算是</span><br><span class="hljs-comment">    一种前缀和，但没有用专门的数组来存储。这种思想可以琢磨琢磨。</span><br><span class="hljs-comment">	复杂度O(n) </span><br><span class="hljs-comment">*/</span> <br><span class="hljs-type">int</span> a[<span class="hljs-number">200001</span>];   <span class="hljs-comment">// 本题其实可以不使用这个数组也能AC </span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-type">int</span> i,n,maxsum=<span class="hljs-number">-2e10</span>,sum=<span class="hljs-number">0</span>;<br>	cin&gt;&gt;n;<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt;=n; i++)<br>		cin&gt;&gt;a[i];<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt;=n; i++) &#123;<br>		<span class="hljs-comment">// 不管当前的a[i]是正或者是负，都应该根据sum来做区别处理 </span><br>		<span class="hljs-comment">// 如果sum加前已为负数，那应放弃之前sum的积累，从当前数开始（不管当前数的正负） </span><br>		<span class="hljs-keyword">if</span>(sum&gt;<span class="hljs-number">0</span>)<br>			sum+=a[i];<br>		<span class="hljs-keyword">else</span><br>			sum=a[i];  <span class="hljs-comment">// 当前数应至少为sum </span><br>		<br>		<span class="hljs-keyword">if</span>(maxsum&lt;=sum)<br>			maxsum=sum;<br>	&#125;<br>	cout&lt;&lt;maxsum;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">//// 如果数据全为负数，也应该得到-20，而不是-100000 </span><br><span class="hljs-comment">5</span><br><span class="hljs-comment">-200 -20 -150 -100 -120</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+<h3 id="后记">2.2.4 后记</h3>
+<p>1）这个题，我们要去找一个最大的子段和，但是我们并没有去暴力枚举区间的左端和右端，否则时间复杂度肯定是<span
+class="math inline">\(O(n^2)\)</span>。采用前缀和的思想，一旦发现sum&lt;=0，立刻丢弃累赘重新开始。用这种思想可以解决“不限宽度的区间最大和值”的问题。</p>
+<p>2）如果我们不仅要求出最大的子段和，还要求这个区间的左右端点的下标值，那该怎么做呢？其实也简单，在新开辟一个“累加和”区间时，用le记录其下标i值，表示为区间的起始左端点。当刷新maxsum的同时也记录保存maxle的值为le值即可。展示代码如下：（完整代码见“P1115强化.cpp”）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">int</span> le, maxle=<span class="hljs-number">0</span>;  <br><span class="hljs-keyword">for</span> (i=<span class="hljs-number">1</span>, le=<span class="hljs-number">0</span>; i&lt;=n; i++) &#123;<br>    <span class="hljs-keyword">if</span>(sum&gt;<span class="hljs-number">0</span>)            <span class="hljs-comment">// 如果当前数的左侧的数据之和是正的 </span><br>        sum+=a[i];       <span class="hljs-comment">// 那就累加当前，此刻暂时不管加起来是正或负（加后为负的情况在下一个数时做处理） </span><br>    <span class="hljs-keyword">else</span><br>        sum=a[i], le=i;  <span class="hljs-comment">// 如果左侧的数之和已为负数，是累赘，丢弃，从当前数重新开始累加 </span><br><br>    <span class="hljs-keyword">if</span>(maxsum&lt;=sum)      <span class="hljs-comment">// 刷新最大值的操作，应独立出来单独处理 </span><br>        maxsum=sum, maxle=le;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;i=%-4d, sum=%-4d, le=%-4d, maxsum=%-4d, maxle=%-4d\n&quot;</span>, i, sum, le, maxsum, maxle);<br>&#125;<br><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;le=%a, maxsum=%a&quot;</span>, maxle, maxsum);<br></code></pre></td></tr></table></figure>
+<p>其运行结果如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs text">16<br>-20 15 10 -5 -20 5 15 10 -30 10 -5 10 30 -20 5 -1000<br>i=1   , sum=-20 , le=1   , maxsum=0   , maxle=0<br>i=2   , sum=15  , le=1   , maxsum=15  , maxle=1<br>i=3   , sum=25  , le=1   , maxsum=25  , maxle=1<br>i=4   , sum=20  , le=1   , maxsum=25  , maxle=1<br>i=5   , sum=0   , le=5   , maxsum=25  , maxle=1<br>i=6   , sum=5   , le=5   , maxsum=25  , maxle=1<br>i=7   , sum=20  , le=5   , maxsum=25  , maxle=1<br>i=8   , sum=30  , le=5   , maxsum=30  , maxle=5<br>i=9   , sum=0   , le=9   , maxsum=30  , maxle=5<br>i=10  , sum=10  , le=9   , maxsum=30  , maxle=5<br>i=11  , sum=5   , le=9   , maxsum=30  , maxle=5<br>i=12  , sum=15  , le=9   , maxsum=30  , maxle=5<br>i=13  , sum=45  , le=9   , maxsum=45  , maxle=9<br>i=14  , sum=25  , le=9   , maxsum=45  , maxle=9<br>i=15  , sum=30  , le=9   , maxsum=45  , maxle=9<br>i=16  , sum=-970, le=16  , maxsum=45  , maxle=9<br>le=9, maxsum=45<br></code></pre></td></tr></table></figure>
+<h2 id="luogu-p2280-hnoi2003-激光炸弹">2.3 Luogu P2280 [HNOI2003]
+激光炸弹</h2>
+<h3 id="原题链接-2">2.3.1 原题链接</h3>
+<p>[Luogu P2280 <a
+target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2280">HNOI2003] 激光炸弹</a></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/1973969-20230704111737118-1986573874.png" /></p>
+<h3 id="分析-2">2.3.2 分析</h3>
+<p>这个题实际上就是要<strong>计算网格内<span
+class="math inline">\(m*m\)</span>的诸多正方形中，哪一个正方形内框住的数据之和值最大？</strong>需要频繁地计算某个大小区域范围内的数据之和，起点不同。采用二维前缀和的思路来做最方便：</p>
+<p>1）首先需要先求出s[1..5001][1..5001]。s[i][j]表示长方形[1..i][1..j]范围内的数据之和值，即二维前缀和。
+这里需要注意，前缀和数组最好是从下标1开始存储数据，<strong>把0行和0列空出来并置为0，以方便后续的运算</strong>。递推方程式中0行及0列的数据都是0，才能正确做二维递推。</p>
+<p>2）求出二维前缀和数组之后，当需要查询二维区间和值时，因为每个二维区间都是<span
+class="math inline">\(m *
+m\)</span>的正方形，其右下角方格的坐标应该在[m..R][m..C]范围内，所以只需要在这个范围<span
+class="math inline">\(O((R-m)*(C-m))\)</span>内以<span
+class="math inline">\(O(4)^{\textcolor[RGB]{225,0,0}{[*]}}\)</span>的代价就能求出其二维区间和值，找出其最大值。得解。</p>
+<p>3）"二维前缀和"的递推方程式，以及"二维区间和"的求解方程式请见下图。</p>
+<p>4）关于高维前缀和的求法，请见本页底部的拓展介绍。</p>
+<p><strong><span
+class="math inline">\(\textcolor[RGB]{225,0,0}{[*]}\)</span>：此处的公式是一个变长的公式，其加减项的个数随着维数d的变化而呈现指数级的变化。因为本题是二维，所以此处复杂度都是<span
+class="math inline">\(O(4)\)</span>，近似等于<span
+class="math inline">\(O(1)\)</span>，忽略不计。但如果是d维(d&gt;=3)的前缀和，按容斥原理的这种写法计算，公式会有<span
+class="math inline">\(2^d\)</span>个加减项，所以此处的复杂度为<span
+class="math inline">\(O(2^d)\)</span>，不容忽视。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/1973969-20230704111737007-1486719667.png" style="zoom: 67%;" /></p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/1961668-20231208155117693-539585701.png" /></p>
+<h3 id="p2280-ac代码">2.3.3 P2280 AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*    用二维前缀和来求解二维区间和的模板题   */</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">5005</span>;<br><span class="hljs-type">int</span> R,C;          <span class="hljs-comment">// R个目标, 边长为C的正方形</span><br><span class="hljs-type">int</span> s[N][N];      <span class="hljs-comment">// 价值前缀和</span><br><span class="hljs-comment">// 因为空间较为紧张，这里只用了一个数组，计算出前缀和之后，原数组直接被覆盖</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    cin&gt;&gt;R&gt;&gt;C;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;R; i++) &#123;<br>        <span class="hljs-type">int</span> x,y,v;<br>        cin&gt;&gt;x&gt;&gt;y&gt;&gt;v;<br>        x++,y++; <span class="hljs-comment">//先加1再存值，即基本数据从1行或1列开始存储，把0行和0列空出来以方便递推</span><br>        s[x][y]+=v;<br>    &#125;<br>    <span class="hljs-comment">// 求二维前缀和，方法一</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=<span class="hljs-number">5001</span>; i++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;=<span class="hljs-number">5001</span>; j++)<br>            s[i][j]+=s[i<span class="hljs-number">-1</span>][j]+s[i][j<span class="hljs-number">-1</span>]-s[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>];<br><span class="hljs-comment">//    // 方法二</span><br><span class="hljs-comment">//    for (int i = 1; i &lt;= N; i ++)</span><br><span class="hljs-comment">//        for (int j = 1; j &lt;= N; j ++) s[i][j] += s[i][j - 1];</span><br><span class="hljs-comment">//    for (int j = 1; j &lt;= N; j ++)</span><br><span class="hljs-comment">//        for (int i = 1; i &lt;= N; i ++) s[i][j] += s[i - 1][j];</span><br><br>    <span class="hljs-comment">// 查询二维区间和</span><br>    <span class="hljs-type">int</span> res=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=C; i&lt;=<span class="hljs-number">5001</span>; i++)   <span class="hljs-comment">// 从C出发，因为C*C的正方形的右下角坐标至少应该是[C][C]</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=C; j&lt;=<span class="hljs-number">5001</span>; j++)<br>            res=<span class="hljs-built_in">max</span>(res,s[i][j]-s[i-C][j]-s[i][j-C]+s[i-C][j-C]);<br>    cout&lt;&lt;res;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="p1719-1224-最大加权矩形最大子矩阵">2.4 P1719 /1224
+最大加权矩形(最大子矩阵)</h2>
+<h3 id="原题链接-3">2.4.1 原题链接</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1719">P1719
+最大加权矩形</a> / <a
+target="_blank" rel="noopener" href="https://ybt.ssoier.cn/problem_show.php?pid=1224">1224最大子矩阵</a></p>
+<h3 id="分析-3">2.4.2 分析</h3>
+<p>这个题与2.3节的P2280最大的不同，就是P2280中规定了子矩阵的形状必定是<span
+class="math inline">\(m*m\)</span>的，而本题中并没有规定子矩阵的形状，需要自行去枚举和比较。而如果对一个子矩阵的两个端点(左上角坐标、右下角坐标)进行暴力枚举的话，因为n=120，所以其复杂度会达到<span
+class="math inline">\(O(n^4)=1e8\)</span>，将会TLE了，不能采用四重循环来解决。但如果我们能把<span
+class="math inline">\(n^4\)</span>降为<span
+class="math inline">\(n^3\)</span>，就没问题了。如何降低一维呢？</p>
+<p>还记得我们曾经做过的"<a href="#jump1">P1115
+求最大子段和</a>"这个题吗？我们在一维数组中去寻找一个区间（区间宽度未知），并没有强行去枚举区间的左右端点，而是采用了一种<span
+class="math inline">\(O(n)\)</span>的算法来降维搞定，核心思想就是“贪心”（若左侧多个数据的前缀和已成累赘，丢弃之，从当前数据重新开始累加）！</p>
+<p>我们能否把这种思想用在本题中呢？当然是可以的！但需要改良，如下图所示。我们可以对左右两端的列号le和ri进行枚举（<span
+class="math inline">\(O(C^2)\Rightarrow
+O(n^2)\)</span>），但不枚举上端和下端的行号，而是从1到R枚举当前行号i。事先准备好矩阵每一行的前缀和数组，可以在<span
+class="math inline">\(O(1)\)</span>的范围内(sum[i][ri]-sum[i][le-1])算出每一行从data[i][le..ri]的数据之和。这样的话，就可以把一个二维的问题变成竖向的一维数据（每个长方形代表了一个数）的“求最大累加和”问题，和P1115很相似了。从上往下累加sum。一旦发现sum&lt;=0，则直接放弃上面的累加，从当前行开始重新累加。这个操作是<span
+class="math inline">\(O(R)\Rightarrow
+O(n)\)</span>的，所以，整个算法的复杂度就是<span
+class="math inline">\(O(n^2*n=O(n^3))\)</span>，从而实现降维，搞定！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240320105148242.png" style="zoom:50%" /></p>
+<h3 id="ac代码-2">2.4.3 AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 121</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> INF 0x3f3f3f3f </span><br><span class="hljs-comment">// sum[i][j]：第i行元素的前缀和，即第i行前j个元素的和，行列都是从1开始编号</span><br><span class="hljs-comment">// sum[i][j] = 90 表示 第i行从左往右前j个元素之和等于90  </span><br><span class="hljs-type">int</span> sum[N][N], data[N][N];<br><span class="hljs-type">int</span> ans = -INF, sum, n;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;=n; j++)<br>        &#123;<br>        	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;data[i][j]);<br>        	<span class="hljs-comment">// data[][]的行前缀和，注意！sum[][]并非二维前缀和！ </span><br>        	sum[i][j] = sum[i][j<span class="hljs-number">-1</span>] + data[i][j];<br>		&#125;<br>    <span class="hljs-comment">// 穷举子矩阵，从le列到ri列，逐行累加求子矩阵元素总和sum，</span><br>	<span class="hljs-comment">// 一旦sum为负，立刻清零并从下一行重新开始    	</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> le=<span class="hljs-number">1</span>; le&lt;=n; le++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> ri=le; ri&lt;=n; ri++) <span class="hljs-comment">// ri可以和le重叠 </span><br>    	&#123;<br>        	<span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;            <span class="hljs-comment">// 每次从上往下求和之前，sum都需要重新归零 </span><br>        	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> row=<span class="hljs-number">1</span>; row&lt;=n; row++)<br>            &#123;<br>				sum += sum[row][ri] - sum[row][le<span class="hljs-number">-1</span>];  <span class="hljs-comment">// O(1)的代价得到data[row][le..ri]的和值 </span><br>          		ans = <span class="hljs-built_in">max</span>(sum, ans); <span class="hljs-comment">// ans记录sum曾经出现过的最大值 </span><br>            	sum = <span class="hljs-built_in">max</span>(sum, <span class="hljs-number">0</span>);   <span class="hljs-comment">// 如果累加和为负数，直接放弃，sum重新归0 </span><br>		    &#125;<br>    	&#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, ans);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>一本通的<a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1224">1224</a>、<a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1282">1282</a>，和本题完全一模一样，可作为巩固练习。</p>
+<h2 id="luogu-p1387-最大正方形">2.5 Luogu P1387 最大正方形</h2>
+<h3 id="原题链接-4">2.5.1 原题链接</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1387">Luogu P1387
+最大正方形</a></p>
+<h3 id="基本题意">2.5.2 基本题意</h3>
+<p>在一个 <span class="math inline">\(n*m\)</span> 的只包含 0 和 1
+的矩阵里找出一个不包含0(只包含1)的最大正方形，输出其边长。</p>
+<h3 id="分析-4">2.5.3 分析</h3>
+<p>这个题，其实和“前缀和”的关系不大，可以运用递推的思维来解决。搞定<span
+class="math inline">\(f[1][1..C]\)</span>和<span
+class="math inline">\(f[1..R][1]\)</span>，然后看<span
+class="math inline">\(f[i][j]\)</span>和之前的<span
+class="math inline">\(f[i-1][j]\)</span>、<span
+class="math inline">\(f[i-1][j-1]\)</span>、<span
+class="math inline">\(f[i][j-1]\)</span>等有什么关联，从而进一步推出dp的递推方程式。</p>
+<p>1） 状态定义</p>
+<p><strong>f[i][j]:表示以节点i,j为右下角，可构成的最大正方形的边长</strong>。</p>
+<p>2） 所求目标 <span class="math display">\[
+max(f[1..R][1..C])
+\]</span> 3） 状态转移方程</p>
+<p>if (a[i][j]==1) f[i][j] = min( min(f[i][j-1], f[i-1][j]),
+f[i-1][j-1]) + 1;</p>
+<p>只有a[i][j]==1时，节点i,j才能作为正方形的右下角；</p>
+<p>对于一个已经确定的f[i][j]=x，它表明包括节点i，j在内，向上x个节点，向左x个节点扫过的正方形中所有a[][]的值都为1；</p>
+<p>对于一个待确定的f[i][j]，我们已知f[i-1][j]，f[i][j-1]，f[i-1][j-1]的值，如下：</p>
+<p>                          f数组:        原a数组：</p>
+<p><span class="math display">\[
+\left[
+\begin{matrix}
+   ? &amp; ? &amp; ? &amp; ?\\
+   ? &amp; ? &amp; 2 &amp; 1\\
+   ? &amp; ? &amp; 3 &amp; \textcolor{red}{?}\\
+   ? &amp; ? &amp; ? &amp; ?
+  \end{matrix}
+  \right]    反推出\Longrightarrow \left[
+\begin{matrix}
+   1 &amp; 1 &amp; 1 &amp; 0\\
+   1 &amp; 1 &amp; 1 &amp; 1\\
+   1 &amp; 1 &amp; 3 &amp; 1\\
+   ? &amp; ? &amp; ? &amp; ?
+  \end{matrix}
+  \right]
+\]</span> 由此得出状态转移方程：</p>
+<p>if (a[i][j]==1) f[i][j]=min(min(f[i][j-1], f[i-1][j]), f[i-1][j-1]) +
+1;</p>
+<p>例如:                           a数组:       f数组： <span
+class="math display">\[
+\left[
+\begin{matrix}
+   0 &amp; 0 &amp; 0 &amp; 1\\
+   1 &amp; 1 &amp; 1 &amp; 1\\
+   0 &amp; 1 &amp; 1 &amp; 1\\
+   1 &amp; 1 &amp; 1 &amp; 1
+  \end{matrix}
+  \right]    正推出\Longrightarrow \left[
+\begin{matrix}
+   0 &amp; 0 &amp; 0 &amp; 1\\
+   1 &amp; 1 &amp; 1 &amp; 1\\
+   0 &amp; 1 &amp; 2 &amp; 2\\
+   1 &amp; 1 &amp; 2 &amp; 3
+  \end{matrix}
+  \right]
+\]</span></p>
+<h3 id="ac代码-3">2.5.4 AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    二维前缀和的拓展题</span><br><span class="hljs-comment">    1） 状态定义</span><br><span class="hljs-comment">        f[i][j]表示以节点i,j为右下角，可构成的最大正方形的边长。</span><br><span class="hljs-comment">    2） 所求目标</span><br><span class="hljs-comment">        max(f[1..R][1..C])</span><br><span class="hljs-comment">    3） 状态转移方程</span><br><span class="hljs-comment">        if (a[i][j]==1)</span><br><span class="hljs-comment">            f[i][j] = min(min(f[i][j-1], f[i-1][j]), f[i-1][j-1]) + 1;</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">    只有a[i][j]==1时，节点i,j才能作为正方形的右下角；</span><br><span class="hljs-comment">    对于一个已经确定的f[i][j]=x，它表明包括节点i，j在内向上x个节点，向左x个节点扫过的正方形中所有a值都为1；</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span> a,R,C,f[<span class="hljs-number">101</span>][<span class="hljs-number">101</span>],ans;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;R,&amp;C);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=R; ++i)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;=C; ++j) &#123;<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>            <span class="hljs-comment">//因为只需用到i，j上方，左方，左上方的信息，读入同步处理</span><br>            <span class="hljs-keyword">if</span> (a == <span class="hljs-number">1</span>)<br>                f[i][j] = <span class="hljs-built_in">min</span>(<span class="hljs-built_in">min</span>(f[i][j<span class="hljs-number">-1</span>], f[i<span class="hljs-number">-1</span>][j]), f[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>])   +  <span class="hljs-number">1</span>;<br>            ans=<span class="hljs-built_in">max</span>(ans,f[i][j]);    <span class="hljs-comment">//同步更新答案</span><br>        &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,ans);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="三高维前缀和">三、高维前缀和</h1>
+<h2 id="高维前缀和">3.1 高维前缀和</h2>
+<p>所谓“高维前缀和”，就是指”二维及以上“的前缀和</p>
+<p>例如我们给定一个矩阵： <span class="math display">\[
+\left[
+\begin{matrix}
+   1 &amp; 2 &amp; 4 &amp; 3\\
+   5 &amp; 1 &amp; 2 &amp; 4\\
+   6 &amp; 3 &amp; 5 &amp; 9\\
+  \end{matrix}
+  \right] \tag{1}
+\]</span></p>
+<p>那么它的前缀和就是： <span class="math display">\[
+\left[
+\begin{matrix}
+   1 &amp; 3 &amp; 7 &amp; 10\\
+   6 &amp; 9 &amp; 15 &amp; 22\\
+   12 &amp; 18 &amp; 29 &amp; 45\\
+  \end{matrix}
+  \right]
+\]</span></p>
+<h2 id="两种求法">3.2 两种求法</h2>
+<p>由于二维前缀和最为常用，我们先来看二维的情况。</p>
+<h3 id="递推实现利用容斥原理效率一般">3.2.1
+递推实现（利用容斥原理，效率一般）</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span> to R<br>    <span class="hljs-keyword">for</span> j=<span class="hljs-number">1</span> to C<br>        sum[i][j] = sum[i<span class="hljs-number">-1</span>][j] + sum[i][j<span class="hljs-number">-1</span>] - sum[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + a[i][j];<br></code></pre></td></tr></table></figure>
+<p>其实就是运用了容斥原理。</p>
+<h3 id="硬干按维做前缀和效率更优更利于拓展为多维操作">3.2.2
+硬干（按维做“前缀和”，效率更优，更利于拓展为多维操作）</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span> to R                           <br>    <span class="hljs-keyword">for</span> j=<span class="hljs-number">1</span> to C<br>        sum[i][j]+=sum[i][j<span class="hljs-number">-1</span>]+a[i][j];<span class="hljs-comment">// 横向累加</span><br><span class="hljs-keyword">for</span> j=<span class="hljs-number">1</span> to C                           <br>    <span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span> to R<br>        sum[i][j]+=sum[i<span class="hljs-number">-1</span>][j];        <span class="hljs-comment">// 纵向累加。注意，这里没有a[][]参与了！因为都已经累加到累加和数组sum[][]里了</span><br></code></pre></td></tr></table></figure>
+<p>第一遍循环后，所得的矩阵是<strong>每行各自独立的前缀和</strong>。</p>
+<p>还是看上面的那个矩阵a[][]： <span class="math display">\[
+\left[
+\begin{matrix}
+   1 &amp; 2 &amp; 4 &amp; 3\\
+   5 &amp; 1 &amp; 2 &amp; 4\\
+   6 &amp; 3 &amp; 5 &amp; 9\\
+  \end{matrix}
+  \right] \tag{1}
+\]</span></p>
+<p>第一个二重循环（先行后列）做完后，得到矩阵 <span
+class="math inline">\(sum^*[][]\)</span>： <span class="math display">\[
+\left[
+\begin{matrix}
+   1 &amp; 3 &amp; 7 &amp; 10\\
+   5 &amp; 6 &amp; 8 &amp; 12\\
+   6 &amp; 9 &amp; 14 &amp; 23\\
+  \end{matrix}
+  \right] \tag{2}
+\]</span> 第二个二重循环是将<span
+class="math inline">\(sum^*[][]\)</span>的每列再按行从上往下各自再做一遍前缀和，此时已经不需要原始数组a[][]的参与了。最终的二维前缀和矩阵sum[][]如下所示：
+<span class="math display">\[
+\left[
+\begin{matrix}
+   1 &amp; 3 &amp; 7 &amp; 10\\
+   6 &amp; 9 &amp; 15 &amp; 22\\
+   12 &amp; 18 &amp; 29 &amp; 45\\
+  \end{matrix}
+  \right]\tag{3}
+\]</span></p>
+<p>现在我们变化一下循环顺序，对矩阵（1）按照“先列后行”的顺序来做，看看会得到什么不同的结果。
+<span class="math display">\[
+\left[
+\begin{matrix}
+   1 &amp; 2 &amp; 4 &amp; 3\\
+   5 &amp; 1 &amp; 2 &amp; 4\\
+   6 &amp; 3 &amp; 5 &amp; 9\\
+  \end{matrix}
+  \right] \stackrel{从上往下累加}{\Longrightarrow}
+\left[
+\begin{matrix}
+   1 &amp; 2 &amp; 4 &amp; 3\\
+   6 &amp; 3 &amp; 6 &amp; 7\\
+   12 &amp; 6 &amp; 11 &amp; 16\\
+  \end{matrix}
+  \right]\stackrel{从左往右累加}{\Longrightarrow}
+\left[
+\begin{matrix}
+   1 &amp; 3 &amp; 7 &amp; 10\\
+   6 &amp; 9 &amp; 15 &amp; 22\\
+   12 &amp; 18 &amp; 29 &amp; 45\\
+  \end{matrix}
+  \right]
+\]</span></p>
+<p>可以看出，先列后行，仍然能得到相同的最终结果。</p>
+<p>这里需要强调两点：</p>
+<p>1）我们在书写两个二重for循环时写下的"for R for C"或者"for C for
+R"，它们是我们在填写数组时的<strong>填写顺序</strong>，比如"for R for
+C"表示“按照(1,1)、（1，2）...（1，R）、（2，1）、（2，2）”这个顺序来填写。经过我们刚才以实际数据来测试的结果，只要和推导的方向一致，那么两种顺序都是可以的。</p>
+<p>2）针对每个具体的位置，例如sum[3][5]，它的数值来自于左侧的sum[3][4]或者上方的sum[2][5]呢？
+这个就要取决于你决定的累加顺序了。这里罗嗦一下，已经看懂的同学可以跳过本段后续的内容。如果你打算先从左往右累加前缀和，那么在第一个二重for里就应该写sum[i][j]=sum[i][j-1]+a[i][j]，然后在后续的二重循环里写sum[i][j]=sum[i-1][j]+sum[i][j]。反之，如果你打算先从上往下累加前缀和，那么在第一个二重for里就应该写sum[i][j]=sum[i-1][j]+a[i][j]，然后在后续的二重循环里写sum[i][j]=sum[i][j-1]+sum[i][j]。</p>
+<h3 id="比较">3.2.3 比较</h3>
+<p>两种求法的时间复杂度都是 <span
+class="math inline">\(O(len_1*len_2)\)</span>。但考虑维数 d
+的话，“递推实现”的复杂度为 <span
+class="math inline">\(O(len_1*len_2*...*len_d*\textcolor{red}{2^d})\)</span>
+（基于容斥原理去计算前缀和的复杂度为 <span
+class="math inline">\(O(2^d)\)</span>），“按维累加来实现”的复杂度为
+<span class="math inline">\(O( len_1*len_2*...*len_d*\textcolor{red}{d}
+)\)</span>。所以如果是求多维数组的前缀和，<strong>推荐还是使用第二种方法</strong>。</p>
+<h1 id="四拓展阅读">四、拓展阅读</h1>
+<p><strong>（NOIP难度，普及、提高免进）</strong></p>
+<h3 id="高维前缀和总结sosdp---heyuhhh---博客园-cnblogs.com">1. <a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/heyuhhh/p/11585358.html">高维前缀和总结(sosdp)
+- heyuhhh - 博客园 (cnblogs.com)</a></h3>
+<h3 id="专题高维前缀和---ruakker---洛谷博客-luogu.org">2.<a
+target="_blank" rel="noopener" href="https://chocola4ever.blog.luogu.org/prefix">专题——高维前缀和 -
+Ruakker - 洛谷博客 (luogu.org)</a></h3>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪宝和七七的爸爸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/01/03/%E5%89%8D%E7%BC%80%E5%92%8C%20%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/">http://example.com/2024/01/03/%E5%89%8D%E7%BC%80%E5%92%8C%20%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">宝爸编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/04/%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%88%E5%B0%BA%E5%8F%96%E6%B3%95%EF%BC%89/" title="双指针与尺取法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">双指针与尺取法</div></div></a></div><div class="next-post pull-right"><a href="/2024/01/03/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%20%E7%AC%ACk%E5%B0%8F%E7%9A%84%E6%95%B0%20nth_element()%E5%87%BD%E6%95%B0/" title="快速排序 第k小的数 nth_element()函数"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">快速排序 第k小的数 nth_element()函数</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/04/25/LCS%E9%97%AE%E9%A2%98/" title="最长公共子序列（LCS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长公共子序列（LCS）问题</div></div></a></div><div><a href="/2024/04/25/LIS%E9%97%AE%E9%A2%98/" title="最长不下降子序列（LIS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长不下降子序列（LIS）问题</div></div></a></div><div><a href="/2024/07/31/dp%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E8%AE%AD%E7%BB%83/" title="dp中的状态转移训练"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-31</div><div class="title">dp中的状态转移训练</div></div></a></div><div><a href="/2020/03/13/hello/" title="我的第一篇博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-13</div><div class="title">我的第一篇博客</div></div></a></div><div><a href="/2024/07/02/%E4%B8%89%E7%A7%8D%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E7%9A%84%E5%A4%84%E7%90%86/" title="三种分组背包的处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">三种分组背包的处理</div></div></a></div><div><a href="/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" title="二分查找和二分答案"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-06</div><div class="title">二分查找和二分答案</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">雪宝和七七的爸爸</div><div class="author-info__description">本博客致力于信息学奥赛知识学习。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://cspcoding.github.io/"><i class="fab fa-github"></i><span>回到主页</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">玩游戏害人害己哦！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%90%86%E8%AE%BA%E6%95%99%E5%AD%A6"><span class="toc-text">一、理论教学</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%AE%9E%E6%88%98%E8%AE%AD%E7%BB%83"><span class="toc-text">二、实战训练</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#luogu-p8218-b3612%E6%B7%B1%E8%BF%9B1.%E4%BE%8B1%E6%B1%82%E5%8C%BA%E9%97%B4%E5%92%8C"><span class="toc-text">2.1 Luogu P8218
+&#x2F;B3612【深进1.例1】求区间和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5"><span class="toc-text">2.1.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-text">2.1.2 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ac%E4%BB%A3%E7%A0%81"><span class="toc-text">2.1.3 AC代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p1115-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C"><span class="toc-text">2.2 P1115
+最大子段和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5-1"><span class="toc-text">2.2.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-1"><span class="toc-text">2.2.2 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ac%E4%BB%A3%E7%A0%81-1"><span class="toc-text">2.2.3 AC代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">2.2.4 后记</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#luogu-p2280-hnoi2003-%E6%BF%80%E5%85%89%E7%82%B8%E5%BC%B9"><span class="toc-text">2.3 Luogu P2280 [HNOI2003]
+激光炸弹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5-2"><span class="toc-text">2.3.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-2"><span class="toc-text">2.3.2 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p2280-ac%E4%BB%A3%E7%A0%81"><span class="toc-text">2.3.3 P2280 AC代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p1719-1224-%E6%9C%80%E5%A4%A7%E5%8A%A0%E6%9D%83%E7%9F%A9%E5%BD%A2%E6%9C%80%E5%A4%A7%E5%AD%90%E7%9F%A9%E9%98%B5"><span class="toc-text">2.4 P1719 &#x2F;1224
+最大加权矩形(最大子矩阵)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5-3"><span class="toc-text">2.4.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-3"><span class="toc-text">2.4.2 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ac%E4%BB%A3%E7%A0%81-2"><span class="toc-text">2.4.3 AC代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#luogu-p1387-%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2"><span class="toc-text">2.5 Luogu P1387 最大正方形</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5-4"><span class="toc-text">2.5.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%A2%98%E6%84%8F"><span class="toc-text">2.5.2 基本题意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-4"><span class="toc-text">2.5.3 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ac%E4%BB%A3%E7%A0%81-3"><span class="toc-text">2.5.4 AC代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E9%AB%98%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-text">三、高维前缀和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-text">3.1 高维前缀和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%B1%82%E6%B3%95"><span class="toc-text">3.2 两种求法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E6%8E%A8%E5%AE%9E%E7%8E%B0%E5%88%A9%E7%94%A8%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%E6%95%88%E7%8E%87%E4%B8%80%E8%88%AC"><span class="toc-text">3.2.1
+递推实现（利用容斥原理，效率一般）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E5%B9%B2%E6%8C%89%E7%BB%B4%E5%81%9A%E5%89%8D%E7%BC%80%E5%92%8C%E6%95%88%E7%8E%87%E6%9B%B4%E4%BC%98%E6%9B%B4%E5%88%A9%E4%BA%8E%E6%8B%93%E5%B1%95%E4%B8%BA%E5%A4%9A%E7%BB%B4%E6%93%8D%E4%BD%9C"><span class="toc-text">3.2.2
+硬干（按维做“前缀和”，效率更优，更利于拓展为多维操作）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83"><span class="toc-text">3.2.3 比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E6%8B%93%E5%B1%95%E9%98%85%E8%AF%BB"><span class="toc-text">四、拓展阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C%E6%80%BB%E7%BB%93sosdp---heyuhhh---%E5%8D%9A%E5%AE%A2%E5%9B%AD-cnblogs.com"><span class="toc-text">1. 高维前缀和总结(sosdp)
+- heyuhhh - 博客园 (cnblogs.com)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E9%A2%98%E9%AB%98%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C---ruakker---%E6%B4%9B%E8%B0%B7%E5%8D%9A%E5%AE%A2-luogu.org"><span class="toc-text">2.专题——高维前缀和 -
+Ruakker - 洛谷博客 (luogu.org)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/01/%EF%BC%88%E4%B8%89%EF%BC%89%E5%AE%BD%E5%BA%A6%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8Em%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（三）宽度小于等于m的区间的“最大的和值”问题">（三）宽度小于等于m的区间的“最大的和值”问题</a><time datetime="2025-01-01T09:38:09.649Z" title="发表于 2025-01-01 17:38:09">2025-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/01/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%E4%B8%BAm%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（二）固定宽度为m的区间的“最大的和值”问题">（二）固定宽度为m的区间的“最大的和值”问题</a><time datetime="2025-01-01T09:38:09.640Z" title="发表于 2025-01-01 17:38:09">2025-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/01/%EF%BC%88%E4%B8%83%EF%BC%89%E4%B8%8D%E9%99%90%E5%AE%BD%E7%9A%84m%E5%AD%90%E6%AE%B5%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（七）不限宽的m子段的“最大的和值”问题">（七）不限宽的m子段的“最大的和值”问题</a><time datetime="2024-12-31T16:00:00.000Z" title="发表于 2025-01-01 00:00:00">2025-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/31/%EF%BC%88%E5%85%AD%EF%BC%89%E4%B8%8D%E9%99%90%E5%AE%BD%E7%9A%842%E5%AD%90%E6%AE%B5%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（六）不限宽的2子段的“最大的和值”问题">（六）不限宽的2子段的“最大的和值”问题</a><time datetime="2024-12-30T16:00:00.000Z" title="发表于 2024-12-31 00:00:00">2024-12-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/30/%EF%BC%88%E4%BA%94%EF%BC%89%E7%8E%AF%E7%8A%B6%E7%9A%84%E4%B8%8D%E9%99%90%E5%AE%BD%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（五）环状的不限宽的区间的“最大的和值”问题">（五）环状的不限宽的区间的“最大的和值”问题</a><time datetime="2024-12-29T16:00:00.000Z" title="发表于 2024-12-30 00:00:00">2024-12-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 雪宝和七七的爸爸</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
