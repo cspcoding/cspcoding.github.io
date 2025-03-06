@@ -1,20 +1,20 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>二分查找和二分答案 | 宝爸编程</title><meta name="author" content="雪宝和七七的爸爸"><meta name="copyright" content="雪宝和七七的爸爸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一.  题型分类信竞中有一个比较重要的知识点，就是二分查找与二分答案。下面说一下其中的题型和考法。  题型A. 在数组nums[]中查找是否有某个值key，如果找到有key就返回其下标值，如果没有找到key则返回-1。题目确保nums[]内的每个元素都是唯一的，离散可数的。这种题是二分查找最原始的题型，各大教材上均有介绍。   题型B. 在数组nums[]中（数据不唯一，可存在多个相同的值），给定">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>二分查找和二分答案 | 宝爸编程</title><meta name="author" content="雪宝和七七的爸爸"><meta name="copyright" content="雪宝和七七的爸爸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一. 题型分类 信竞中有一个比较重要的知识点，就是二分查找与二分答案。下面说一下其中的题型和考法。  题型A. 在数组nums[]中查找是否有某个值key，如果找到有key就返回其下标值，如果没有找到key则返回-1。题目确保nums[]内的每个元素都是唯一的，离散可数的。这种题是二分查找最原始的题型，各大教材上均有介绍。  题型B. 在数组nums[]中（数据不唯一，可存在多个相同">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二分查找和二分答案">
 <meta property="og:url" content="http://example.com/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/index.html">
 <meta property="og:site_name" content="宝爸编程">
-<meta property="og:description" content="一.  题型分类信竞中有一个比较重要的知识点，就是二分查找与二分答案。下面说一下其中的题型和考法。  题型A. 在数组nums[]中查找是否有某个值key，如果找到有key就返回其下标值，如果没有找到key则返回-1。题目确保nums[]内的每个元素都是唯一的，离散可数的。这种题是二分查找最原始的题型，各大教材上均有介绍。   题型B. 在数组nums[]中（数据不唯一，可存在多个相同的值），给定">
+<meta property="og:description" content="一. 题型分类 信竞中有一个比较重要的知识点，就是二分查找与二分答案。下面说一下其中的题型和考法。  题型A. 在数组nums[]中查找是否有某个值key，如果找到有key就返回其下标值，如果没有找到key则返回-1。题目确保nums[]内的每个元素都是唯一的，离散可数的。这种题是二分查找最原始的题型，各大教材上均有介绍。  题型B. 在数组nums[]中（数据不唯一，可存在多个相同">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:published_time" content="2024-03-06T13:12:21.000Z">
-<meta property="article:modified_time" content="2024-12-28T07:01:38.222Z">
+<meta property="article:modified_time" content="2025-02-27T06:21:42.679Z">
 <meta property="article:author" content="雪宝和七七的爸爸">
 <meta property="article:tag" content="信息学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: undefined,
   noticeOutdate: undefined,
   highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
@@ -54,9 +54,9 @@
   title: '二分查找和二分答案',
   isPost: true,
   isHome: false,
-  isHighlightShrink: false,
+  isHighlightShrink: true,
   isToc: true,
-  postUpdate: '2024-12-28 15:01:38'
+  postUpdate: '2025-02-27 14:21:42'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -153,135 +153,246 @@
         }
       }
       detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="宝爸编程"><span class="site-name">宝爸编程</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">二分查找和二分答案</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-06T13:12:21.000Z" title="发表于 2024-03-06 21:12:21">2024-03-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-28T07:01:38.222Z" title="更新于 2024-12-28 15:01:38">2024-12-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">线性结构基础算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">二分查找与二分答案</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="二分查找和二分答案"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一-题型分类"><a href="#一-题型分类" class="headerlink" title="一.  题型分类"></a>一.  题型分类</h1><p>信竞中有一个比较重要的知识点，就是二分查找与二分答案。下面说一下其中的题型和考法。</p>
+    })(window)</script><link rel="stylesheet" href="/static/css/custom.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="宝爸编程"><span class="site-name">宝爸编程</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">二分查找和二分答案</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-06T13:12:21.000Z" title="发表于 2024-03-06 21:12:21">2024-03-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-27T06:21:42.679Z" title="更新于 2025-02-27 14:21:42">2025-02-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">线性结构基础算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">二分查找与二分答案</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="二分查找和二分答案"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一.-题型分类">一. 题型分类</h1>
+<p>信竞中有一个比较重要的知识点，就是二分查找与二分答案。下面说一下其中的题型和考法。</p>
 <ul>
-<li><p>题型A. 在数组nums[]中查找是否有某个值key，如果找到有key就返回其下标值，如果没有找到key则返回-1。题目确保<strong>nums[]内的每个元素都是唯一的，离散可数的</strong>。这种题是二分查找最原始的题型，各大教材上均有介绍。</p>
-</li>
+<li><p>题型A.
+在数组nums[]中查找是否有某个值key，如果找到有key就返回其下标值，如果没有找到key则返回-1。题目确保<strong>nums[]内的每个元素都是唯一的，离散可数的</strong>。这种题是二分查找最原始的题型，各大教材上均有介绍。</p></li>
 <li></li>
-<li><p>题型B. 在数组nums[]中（<strong>数据不唯一，可存在多个相同的值</strong>），给定值key，按照如下要求进行查找：</p>
+<li><p>题型B.
+在数组nums[]中（<strong>数据不唯一，可存在多个相同的值</strong>），给定值key，按照如下要求进行查找：</p>
 <ul>
-<li>B1.  满足nums[i]&gt;=key的最小下标值 i </li>
-<li>B2.  满足nums[i]&lt;=key的最大下标值 i</li>
-<li>B3.  满足nums[i] &gt; key的最小下标值 i</li>
-<li>B4.  满足nums[i] &lt; key的最大下标值 i</li>
+<li>B1. 满足nums[i]&gt;=key的最小下标值 i</li>
+<li>B2. 满足nums[i]&lt;=key的最大下标值 i</li>
+<li>B3. 满足nums[i] &gt; key的最小下标值 i</li>
+<li>B4. 满足nums[i] &lt; key的最大下标值 i</li>
 <li></li>
+</ul></li>
+<li><p>题型C.
+并不存在所谓的nums[]数组，但需要在确定最小精度jd的情况下，在连续型区间[le,ri]中去找到符合题意要求的一个数值。如果用二分的方式来做，这种就叫做“二分答案”。le的下一个数是le+jd，再下一个数是le+2*jd，以此类推。</p></li>
+<li><p>上面的这三种题型，并不存在严格的界限。例如在题型A中，如果要求在没有找到key值的情况下，返回nums[]中&gt;key的最接近的数，则这种与题型B1就非常接近了。但题型B1可适用于数据不唯一的情况，这一点是题型A不允许的。</p>
+<p>题型A和B都具有离散型的数组nums[]，算法无非就是去找个下标。而题型C是要求在一个连续区间里找某个值，并不存在任何现成的数组。但其实，在已知精度jd值的情况下，我们是可以把一个原本可以无限分割的连续区间视为一个具有有限数据个数的离散数据区间的。</p>
+<p>这三种题型，能不能整合成一份代码模板呢？当然是可以的。</p>
+<p>题型A和B，我们可以视为精度值jd=1。</p>
+<p><span id="jump1">假设</span>现在需要在区间[a,
+b]中找出符合条件f(x)&lt;=key的最大值x，精度jd=0.01</p>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span></span>&#123;<br>    <span class="hljs-comment">// 这是一个单调递增函数，x越大，f(x)越大。不同的题，这个映射关系会不同，但必须是单调递增关系。</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">3</span>*x*x*x + <span class="hljs-number">4</span>*x - <span class="hljs-number">2</span>;   <br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">f</span>(x) &lt;= key;   <span class="hljs-comment">// 根据题意会不同</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">double</span> le, ri)</span></span>&#123;<br>	<span class="hljs-type">double</span> le=a-jd, ri=b+jd;  <span class="hljs-comment">// 开区间 </span><br>	<span class="hljs-keyword">while</span> (le + jd &lt; ri) &#123;  <span class="hljs-comment">// 注意，是小于，+1是离散数组查找的标准写法 </span><br>		<span class="hljs-type">double</span> mid = le + (ri-le&gt;&gt;<span class="hljs-number">1</span>);<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid))  <span class="hljs-comment">// 因为本题要查找第一个出现key的下标值，所以是&gt;=key， </span><br>			A = mid;     <span class="hljs-comment">// 此处的 A 是re或是le，因题而已。关键看是砍掉左半或者右半。 </span><br>		<span class="hljs-keyword">else</span><br>			B = mid;     <br>	&#125;<br>    <span class="hljs-keyword">return</span> A;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>首先，在这个模板中，最关键的就是这个check函数的书写。往往我们需要根据提供的x来计算出y值，计算方法就是通过模拟题目中给出的过程描述来计算，这个y值往往会是计数型、求和型、是否型等。在计算时往往会和“前缀和、贪心、DP、搜索”等其他专门的算法进行搭配，从而加深题目难度。</p>
+<p>其次，我们需要根据y与x之间的变化关系，在二维坐标系上画出其对应的曲线或者图像，然后根据题意标注出可行解的范围（即可行区域）。那如何确定出最优解的位置呢？如果可行区域是往右拓展的(&gt;=...)，那么此时一定是取最小值（取&gt;=...的最小值）；反之，如果可行区域是往左拓展的，那一定是取最大值（取&lt;=...的最大值）。</p></li>
 </ul>
-</li>
-<li><p>题型C. 并不存在所谓的nums[]数组，但需要在确定最小精度jd的情况下，在连续型区间[le,ri]中去找到符合题意要求的一个数值。如果用二分的方式来做，这种就叫做“二分答案”。le的下一个数是le+jd，再下一个数是le+2*jd，以此类推。</p>
-</li>
-<li><p>  上面的这三种题型，并不存在严格的界限。例如在题型A中，如果要求在没有找到key值的情况下，返回nums[]中&gt;key的最接近的数，则这种与题型B1就非常接近了。但题型B1可适用于数据不唯一的情况，这一点是题型A不允许的。</p>
-</li>
-</ul>
-<pre><code>题型A和B都具有离散型的数组nums[]，算法无非就是去找个下标。而题型C是要求在一个连续区间里找某个值，并不存在任何现成的数组。但其实，在已知精度jd值的情况下，我们是可以把一个原本可以无限分割的连续区间视为一个具有有限数据个数的离散数据区间的。
-
-
-
-这三种题型，能不能整合成一份代码模板呢？当然是可以的。
-
-
-
-题型A和B，我们可以视为精度值jd=1。
-
-
-
-&lt;span id=&quot;jump1&quot;&gt;假设&lt;/span&gt;现在需要在区间[a, b]中找出符合条件f(x)&lt;=key的最大值x，精度jd=0.01
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span></span>&#123;<br>    <span class="hljs-comment">// 这是一个单调递增函数，x越大，f(x)越大。不同的题，这个映射关系会不同，但必须是单调递增关系。</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">3</span>*x*x*x + <span class="hljs-number">4</span>*x - <span class="hljs-number">2</span>;   <br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">f</span>(x) &lt;= key;   <span class="hljs-comment">// 根据题意会不同</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">double</span> le, ri)</span></span>&#123;<br>	<span class="hljs-type">double</span> le=a-jd, ri=b+jd;  <span class="hljs-comment">// 开区间 </span><br>	<span class="hljs-keyword">while</span> (le + jd &lt; ri) &#123;  <span class="hljs-comment">// 注意，是小于，+1是离散数组查找的标准写法 </span><br>		<span class="hljs-type">double</span> mid = le + (ri-le&gt;&gt;<span class="hljs-number">1</span>);<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid))  <span class="hljs-comment">// 因为本题要查找第一个出现key的下标值，所以是&gt;=key， </span><br>			A = mid;     <span class="hljs-comment">// 此处的 A 是re或是le，因题而已。关键看是砍掉左半或者右半。 </span><br>		<span class="hljs-keyword">else</span><br>			B = mid;     <br>	&#125;<br>    <span class="hljs-keyword">return</span> A;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-首先，在这个模板中，最关键的就是这个check函数的书写。往往我们需要根据提供的x来计算出y值，计算方法就是通过模拟题目中给出的过程描述来计算，这个y值往往会是计数型、求和型、是否型等。在计算时往往会和“前缀和、贪心、DP、搜索”等其他专门的算法进行搭配，从而加深题目难度。
-
-其次，我们需要根据y与x之间的变化关系，在二维坐标系上画出其对应的曲线或者图像，然后根据题意标注出可行解的范围（即可行区域）。那如何确定出最优解的位置呢？如果可行区域是往右拓展的(&gt;=...)，那么此时一定是取最小值（取&gt;=...的最小值）；反之，如果可行区域是往左拓展的，那一定是取最大值（取&lt;=...的最大值）。
-</code></pre><h1 id="二-案例练习"><a href="#二-案例练习" class="headerlink" title="二. 案例练习"></a>二. 案例练习</h1><h2 id="2-1-P2249-【深基13-例1】查找"><a href="#2-1-P2249-【深基13-例1】查找" class="headerlink" title="2.1 P2249 【深基13.例1】查找"></a>2.1 P2249 【深基13.例1】查找</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2249">P2249 【深基13.例1】查找</a></p>
+<h1 id="二.-案例练习">二. 案例练习</h1>
+<h2 id="p2249-深基13.例1查找">2.1 P2249 【深基13.例1】查找</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2249">P2249
+【深基13.例1】查找</a></p>
 <p>这个题不属于题型A，也不属于题型B。允许数据重复，但又要求精确相等，所以在不相等（没找到）时，要求返回-1。也就是说，存在查找失败的情况。但是可以用上述模板来套。因为是给定数组，离散，所以jd=1。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> d[<span class="hljs-number">1000001</span>], key, jd=<span class="hljs-number">1</span>;<br><span class="hljs-type">int</span> n, t;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> d[x] &gt;= key;    <span class="hljs-comment">// 要查找最小(第一个，最左)的下标值，所以只能是&gt;=key。不能写成==key！要二分</span><br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-comment">//相信自己是最棒的！请在这里写新代码...</span><br>	<span class="hljs-type">int</span> i;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;t);<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt;=n; i++) <br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;d[i]);<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt;=t; i++) &#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;key);<br>		<span class="hljs-type">int</span> le=<span class="hljs-number">1</span>-jd, ri=n+jd;  <span class="hljs-comment">// le和ri设定在[1,n]之外，开区间 </span><br>		<span class="hljs-keyword">while</span> (le + jd &lt; ri) &#123;  <span class="hljs-comment">// 注意，是小于，+1是离散数组查找的标准写法 </span><br>			<span class="hljs-type">int</span> mid = le+ (ri-le&gt;&gt;<span class="hljs-number">1</span>);<br>			<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(mid) ) <span class="hljs-comment">// 如果mid是合法的   </span><br>				ri = mid;  <span class="hljs-comment">// 就继续找第一个（最左,最小）解，下标尽量缩小，应ri=mid（砍右半段） </span><br>                            <span class="hljs-comment">// 此处可以看出，本题中，ri存解</span><br>			<span class="hljs-keyword">else</span> le = mid;     <br>		&#125;<br>		<span class="hljs-comment">//  本题要查找第一个&gt;=key的下标值，有两种情况可能出现“找不到”</span><br>		<span class="hljs-comment">// 1.  所有数都&lt;key，此时ri仍=n+1，但经过整个while后，le不断右移到n，而ri一步都没左移过</span><br>		<span class="hljs-keyword">if</span> (ri ==n+jd)<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;-1 &quot;</span>);  <br>		<span class="hljs-comment">// 2.  &gt;=key的左侧第一个数存在，但并不是key，这种情况下，意味着数组中并没有key这个数</span><br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (d[ri] != key)<br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;-1 &quot;</span>);			<br>		<span class="hljs-keyword">else</span><br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, ri); <span class="hljs-comment">// check(mid)若成立，表示mid合法，ri=mid，所以最终解存于ri中！ </span><br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="2-2-1241：二分法求函数的零点"><a href="#2-2-1241：二分法求函数的零点" class="headerlink" title="2.2  1241：二分法求函数的零点"></a>2.2  1241：二分法求函数的零点</h2><p>原题链接：<a target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1241">1241：二分法求函数的零点</a></p>
-<p>有函数：$f(x)=x^5-15x^4+85x^3-225x^2+274x-121$</p>
-<p>已知$f(1.5)&gt;0,f(2.5)&lt;0$，且方程$f(x)=0$在区间[1.5, 2.5]有且只有一个根，请用二分法求出该根，要求四舍五入到小数点后6位。</p>
+<h2 id="二分法求函数的零点">2.2 1241：二分法求函数的零点</h2>
+<p>原题链接：<a
+target="_blank" rel="noopener" href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1241">1241：二分法求函数的零点</a></p>
+<p>有函数：<span
+class="math inline">\(f(x)=x^5-15x^4+85x^3-225x^2+274x-121\)</span></p>
+<p>已知<span
+class="math inline">\(f(1.5)&gt;0,f(2.5)&lt;0\)</span>，且方程<span
+class="math inline">\(f(x)=0\)</span>在区间[1.5,
+2.5]有且只有一个根，请用二分法求出该根，要求四舍五入到小数点后6位。</p>
 <p>分析：</p>
-<p>这是在实数区间进行二分查找的一个典型入门题。可以看出$f(x)$是一个<strong>连续</strong>的函数。也就是说，随着$x$值的微调，$f(x)$的值只是微微变化一点点，不存在函数值骤变的情况（比如分段函数）。再根据题意，方程$f(x)=0$在区间[1.5, 2.5]有且只有一个根，也就是说，随着$x$从1.5慢慢往2.5增大，$f(x)$的值会逐渐变小，直到当x等于某个实数时，$f(x)$的值恰好等于0（在保留6位有效小数的精度要求下）。所以，可以看出，$f(x)$在[1.5, 2.5]这个区间内是单调递减的，是可以用二分查找来搞定的。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240309170306887.png" style="zoom: 67%;" /></p>
+<p>这是在实数区间进行二分查找的一个典型入门题。可以看出<span
+class="math inline">\(f(x)\)</span>是一个<strong>连续</strong>的函数。也就是说，随着<span
+class="math inline">\(x\)</span>值的微调，<span
+class="math inline">\(f(x)\)</span>的值只是微微变化一点点，不存在函数值骤变的情况（比如分段函数）。再根据题意，方程<span
+class="math inline">\(f(x)=0\)</span>在区间[1.5,
+2.5]有且只有一个根，也就是说，随着<span
+class="math inline">\(x\)</span>从1.5慢慢往2.5增大，<span
+class="math inline">\(f(x)\)</span>的值会逐渐变小，直到当x等于某个实数时，<span
+class="math inline">\(f(x)\)</span>的值恰好等于0（在保留6位有效小数的精度要求下）。所以，可以看出，<span
+class="math inline">\(f(x)\)</span>在[1.5,
+2.5]这个区间内是单调递减的，是可以用二分查找来搞定的。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/image-20240309170306887.png" style="zoom: 67%;" /></p>
 <ul>
-<li>如果出现图（1）f(le)*f(mid)&lt; 0 的情况，说明曲线与x轴的交点必然在mid点的左侧，此时应放弃区间右半段，即应做ri=mid;</li>
-<li>如果出现图（2）f(le)*f(mid)&gt; 0 的情况，说明曲线与x轴的交点必然在mid点的右侧，此时应放弃区间左半段，即应做le=mid;</li>
+<li>如果出现图（1）f(le)*f(mid)&lt; 0
+的情况，说明曲线与x轴的交点必然在mid点的左侧，此时应放弃区间右半段，即应做ri=mid;</li>
+<li>如果出现图（2）f(le)*f(mid)&gt; 0
+的情况，说明曲线与x轴的交点必然在mid点的右侧，此时应放弃区间左半段，即应做le=mid;</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	1238-1241-1246 三个题合在一起看！</span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> x*x*x*x*x - <span class="hljs-number">15</span>*x*x*x*x + <span class="hljs-number">85</span>*x*x*x - <span class="hljs-number">225</span>*x*x + <span class="hljs-number">274</span>*x - <span class="hljs-number">121</span>;<br>&#125;<br><span class="hljs-comment">// 此处用ri和mid来做也可以，传参和while内砍掉需要调整</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">double</span> le, <span class="hljs-type">double</span> mid)</span></span>&#123;<br>    <span class="hljs-keyword">return</span>  <span class="hljs-built_in">f</span>(le) * <span class="hljs-built_in">f</span>(mid)  &lt; <span class="hljs-number">0</span> ; <span class="hljs-comment">// 如果二分后左半段有解，</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">double</span> jd=<span class="hljs-number">1e-8</span>;    <span class="hljs-comment">// 要求精度是1e-6，计算时建议降低2个数量级，取对数后不会耗太多，可更精准 </span><br>                       <span class="hljs-comment">// 这里多做几轮，没关系。填1e-9, 1e-10都影响不太大。 </span><br>    <span class="hljs-type">double</span> mid, le = <span class="hljs-number">1.5</span>-jd, ri = <span class="hljs-number">2.5</span>+jd;<br>    <span class="hljs-keyword">while</span>( le + jd &lt; ri)  <br>    &#123;<br>        mid = ( ri + le ) / <span class="hljs-number">2</span>; <span class="hljs-comment">// 实数折半不适合位操作，只好硬除2</span><br>        <span class="hljs-keyword">if</span>( <span class="hljs-built_in">check</span>(le, mid)  ) <br>			ri = mid;   <span class="hljs-comment">// 如果左半段有解，砍掉右半部份 </span><br>        <span class="hljs-keyword">else</span> <br>			le = mid;   <span class="hljs-comment">// 说明解在右半部份区间，应该收敛左端点 </span><br>    &#125;<br>    <span class="hljs-comment">// 对实数做二分时，当le和ri的差异小于jd时，实际上就不分彼此,视为同一个数了 </span><br>    <span class="hljs-comment">// 本题的取值范围是[1.5, 2.5],不会输出&quot;-0.000000&quot;这种答案,按格式要求打印le或ri即可  </span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.6lf&quot;</span>, ri ); <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="2-3-P1024-NOIP2001-提高组-一元三次方程求解"><a href="#2-3-P1024-NOIP2001-提高组-一元三次方程求解" class="headerlink" title="2.3 P1024 [NOIP2001 提高组] 一元三次方程求解"></a>2.3 P1024 [NOIP2001 提高组] 一元三次方程求解</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1024">P1024 [NOIP2001 提高组] 一元三次方程求解</a></p>
+<h2 id="p1024-noip2001-提高组-一元三次方程求解">2.3 P1024 [NOIP2001
+提高组] 一元三次方程求解</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1024">P1024
+[NOIP2001 提高组] 一元三次方程求解</a></p>
 <p>分析：根据题意可以得知以下几点：</p>
 <p>1）函数是一个连续函数；</p>
-<p>2）函数在[-100.0, 100.0]范围内有3个实数根，且根相互之间间隔至少1.0，不存在两根靠太近的情况；</p>
+<p>2）函数在[-100.0,
+100.0]范围内有3个实数根，且根相互之间间隔至少1.0，不存在两根靠太近的情况；</p>
 <p>3）要求精度jd=1e-2，故计算精度可以设为1e-4。</p>
-<p>根据2）的分析，我们可以把[-100.0， 100.0]分为[-100.0， -99.0], [-99.0， -98.0]，……等200个宽度为1的实数区间，然后依次判断这200个区间是否存在解点。（f(le)*f(ri)&lt;0），如果存在解点，则本题演变为2.2节的内容，可再按照精度jd=1e-4来套入1241题的算法即可。</p>
-<p>需要注意一点，假设f(3)=0，那么x=3这个点在区间[2,3]和[3,4]中都会被判为有解，从而计算重复。要解决这个问题，可以先对200个区间的左端点（或右端点）进行单判，对剩余的双开区间，即(-100,-99)，(-99, -98),……，进行筛选。二分查找时每个区间为[i+jd, i+1-jd]。最后再单判x=-100和x=100。</p>
-<p>需要注意的是，我们的这个模板要求le和ri的初值设定为区间左右端之外，所以应该是le=i+jd-jd=i, ri=i+1-jd+jd=i+1;</p>
+<p>根据2）的分析，我们可以把[-100.0， 100.0]分为[-100.0， -99.0],
+[-99.0，
+-98.0]，……等200个宽度为1的实数区间，然后依次判断这200个区间是否存在解点。（f(le)*f(ri)&lt;0），如果存在解点，则本题演变为2.2节的内容，可再按照精度jd=1e-4来套入1241题的算法即可。</p>
+<p>需要注意一点，假设f(3)=0，那么x=3这个点在区间[2,3]和[3,4]中都会被判为有解，从而计算重复。要解决这个问题，可以先对200个区间的左端点（或右端点）进行单判，对剩余的双开区间，即(-100,-99)，(-99,
+-98),……，进行筛选。二分查找时每个区间为[i+jd,
+i+1-jd]。最后再单判x=-100和x=100。</p>
+<p>需要注意的是，我们的这个模板要求le和ri的初值设定为区间左右端之外，所以应该是le=i+jd-jd=i,
+ri=i+1-jd+jd=i+1;</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><span class="hljs-type">double</span> a,b,c,d;<br><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> a*x*x*x+b*x*x+c*x+d;<br>&#125;<br><span class="hljs-comment">// 已经过筛选，le和mid不会是零解，所以不需要&lt;=0 </span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">double</span> le, <span class="hljs-type">double</span> mid)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">f</span>(le) * <span class="hljs-built_in">f</span>(mid)&lt; <span class="hljs-number">0</span> ;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-type">double</span> le, ri, mid, y1, y2, jd=<span class="hljs-number">1e-4</span>;<br>	<span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>, i;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf%lf%lf%lf&quot;</span>, &amp;a, &amp;b, &amp;c, &amp;d);  <span class="hljs-comment">//输入</span><br>	<span class="hljs-keyword">for</span> (i=<span class="hljs-number">-100</span>; i&lt;=<span class="hljs-number">99</span>; i++) &#123;<br>		le = i;  <br>		ri = i + <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span>( <span class="hljs-built_in">fabs</span>(<span class="hljs-built_in">f</span>(le) ) &lt; <span class="hljs-number">1e-20</span> ) &#123; <span class="hljs-comment">// 先单独判断左端点/或者右端点 </span><br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.2lf &quot;</span>, le);    <span class="hljs-comment">// 若是解，直接输出。</span><br>			cnt++;<br>			<span class="hljs-keyword">continue</span>;<br>		&#125;      <br>		<span class="hljs-keyword">if</span>( <span class="hljs-built_in">check</span>(le, ri) ) &#123;      <span class="hljs-comment">// (le, ri)开区间内有根。</span><br>			<span class="hljs-comment">// 既然肯定有解，肯定能找到，当while跳出来时就是找到解之时 </span><br>			<span class="hljs-keyword">while</span>( le + jd &lt; ri) &#123;       <br>				mid = ( le + ri ) / <span class="hljs-number">2</span>;<br>				<span class="hljs-keyword">if</span>( <span class="hljs-built_in">check</span>(le, mid) )  <span class="hljs-comment">// 如果解在(le, mid)之间(=0的情况已经筛过，不需要再写) </span><br>					ri = mid;    		<span class="hljs-comment">// 砍掉右半 </span><br>				<span class="hljs-keyword">else</span>                    <br>					le = mid;   		<br>			&#125;<br>			<span class="hljs-comment">// 当le和ri差值小于jd时，视为相等，方程解就是le或ri。本题不存在查找失败的情况 </span><br>			<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.2lf &quot;</span>, ri);     <br>			cnt++;<br>		&#125;<br>		<span class="hljs-keyword">if</span> (cnt == <span class="hljs-number">3</span>)<br>			<span class="hljs-keyword">break</span>;<br>		<span class="hljs-comment">//找到三个就退出大概会省一点时间</span><br>	&#125;<br>	<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">fabs</span>(<span class="hljs-built_in">f</span>(<span class="hljs-number">100</span>)) &lt; <span class="hljs-number">1e-20</span> )<br>	   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.2lf &quot;</span>, <span class="hljs-number">100.0</span>); <br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="2-4-P1163-银行贷款"><a href="#2-4-P1163-银行贷款" class="headerlink" title="2.4 P1163 银行贷款"></a>2.4 P1163 银行贷款</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1163">P1163 银行贷款</a></p>
+<h2 id="p1163-银行贷款">2.4 P1163 银行贷款</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1163">P1163
+银行贷款</a></p>
 <p>分析：</p>
 <p>(1): 每个月还款的现值为如下:</p>
-<script type="math/tex; mode=display">
-\frac{w}{1+p}  +  \frac{w}{(1+p)^2}  +  +  \frac{w}{(1+p)^3}  + ... +  \frac{w}{(1+p)^m} \tag{1}</script><p>​     如果p太大，(1)式会变小，是逆相关，单调递减。</p>
-<p>(2): <strong>(1)式须要 &gt;= W。多还了钱没问题，少还了钱是不行的！</strong>…… </p>
-<p>分析的结论： <strong>本题是求满足 (1) &gt;= W 的最大p值</strong>。(1)式是连续的且单调递减，所以可以用“二分答案”来暴力解决。</p>
-<p>二分的范围是[0..3] ，可以写成[0,5]都行，反正能lg(W)的速度快速收敛。本题没有说利率是否能为负数。实际上本题的测试样例都没有考虑负利率的问题，也就是说，测试样例全都满足 $w*m&gt;=w_0$ 。</p>
+<p><span class="math display">\[
+\frac{w}{1+p}  +  \frac{w}{(1+p)^2}  +  +  \frac{w}{(1+p)^3}  + ...
++  \frac{w}{(1+p)^m} \tag{1}
+\]</span></p>
+<p>​ 如果p太大，(1)式会变小，是逆相关，单调递减。</p>
+<p>(2): <strong>(1)式须要 &gt;=
+W。多还了钱没问题，少还了钱是不行的！</strong>……</p>
+<p>分析的结论： <strong>本题是求满足 (1) &gt;= W
+的最大p值</strong>。(1)式是连续的且单调递减，所以可以用“二分答案”来暴力解决。</p>
+<p>二分的范围是[0..3]
+，可以写成[0,5]都行，反正能lg(W)的速度快速收敛。本题没有说利率是否能为负数。实际上本题的测试样例都没有考虑负利率的问题，也就是说，测试样例全都满足
+<span class="math inline">\(w*m&gt;=w_0\)</span> 。</p>
 <p>精度控制：题目要求精确到1e-3，计算时，jd取再低的两个数量级，即1e-5</p>
 <p>本题的le初值&lt;0，使得终值可能也会&lt;0。所以需要处理-0.0的问题，应输出0.0才对</p>
 <p>AC代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> W, w, m;<br><span class="hljs-type">int</span> Left=<span class="hljs-number">0</span>, Right=<span class="hljs-number">3</span>; <span class="hljs-comment">//本题利率不可能为负数，且明说了最多可达300%，即3 </span><br><span class="hljs-type">double</span> jd = <span class="hljs-number">1e-5</span>;    <span class="hljs-comment">//题目要求精确到1e-3，计算时，jd取再低的两个数量级，即1e-5</span><br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">double</span> p)</span> </span>&#123;<br>    <span class="hljs-type">double</span> money=<span class="hljs-number">0</span>, term= w;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=m; i++) &#123;<br>        term = term / (<span class="hljs-number">1</span>+p);<br>        money = money + term;<br>    &#125;<br>    <span class="hljs-keyword">return</span> money &gt;= W;     <span class="hljs-comment">// 还了钱没问题，少还了钱是不行的！</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//相信自己是最棒的！请在这里写新代码...</span><br>    <span class="hljs-type">double</span> le, ri, mid;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;W, &amp;w, &amp;m);<br><br>    le = Left-jd, ri = Right+jd;   <span class="hljs-comment">// 本题的利率可以大于1，是个坑点</span><br>    <span class="hljs-keyword">while</span> (le + jd  &lt; ri) &#123;<br>        mid = (le+ri)/<span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(mid) )  <span class="hljs-comment">// 模板，如果mid满足条件，</span><br>            le = mid; 	   <span class="hljs-comment">// 既然是求最大解，当可行时，砍掉左半段 </span><br>        <span class="hljs-keyword">else</span><br>            ri = mid;   <br>    &#125;<br>    <span class="hljs-comment">// le的初值&lt;0，使得终值可能也会&lt;0。所以此处需要处理-0.0的问题，应输出0.0才对 </span><br>    <span class="hljs-comment">// printf(&quot;%.1lf&quot;, -4.27791595e-06) 打印出来是-0.0 </span><br>    <span class="hljs-keyword">if</span> (le &lt; <span class="hljs-number">0</span> )<br>        le = <span class="hljs-number">0</span>; <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.1lf&quot;</span>, le*<span class="hljs-number">100</span>);   <span class="hljs-comment">// le是可行解，其实ri也是，间距已小于精度。打百分数形式，扩大100倍 </span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">输入样例3：</span><br><span class="hljs-comment">1 1 1</span><br><span class="hljs-comment">正确输出：</span><br><span class="hljs-comment">0.0   // 若输出-0.0，是因为le为-4.27791595e-06，没落在精度的点上，这数离0更近，应视为0了 </span><br><span class="hljs-comment"></span><br><span class="hljs-comment">输入样例5：</span><br><span class="hljs-comment">443423 23477 3767</span><br><span class="hljs-comment">正确输出：</span><br><span class="hljs-comment">5.3</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
-<h2 id="2-5-P2440-木材加工——二分答案，求最大解"><a href="#2-5-P2440-木材加工——二分答案，求最大解" class="headerlink" title="2.5 P2440 木材加工——二分答案，求最大解"></a>2.5 P2440 木材加工——二分答案，求最大解</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2440">P2440 木材加工</a></p>
+<h2 id="p2440-木材加工二分答案求最大解">2.5 P2440
+木材加工——二分答案，求最大解</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2440">P2440
+木材加工</a></p>
 <p>这是“二分答案”知识点的第2个入门题，求符合条件的<strong>最大</strong>解。本题不存在f(x)，但存在check(woodlen)函数，用来判断woodlen是否在可行解区间内。随着woodlen从小变大，每一根木材能被分割的段数之和会变小，所以woodlen和总段数之间是一个单调递减的映射关系，不存在“随着woodlen的增大，在某个区间内总段数不降反升”的非单调的映射关系。所以本题可以用“二分答案”的方式做暴力尝试来搞定。（这是很重要的分析鉴定过程，必须要有！）</p>
 <p>check(x)在判断x是否为可行解的过程中，不再做代数运算，而是采用while循环等具体操作。此时一定注意check()函数的代码要吻合题意！</p>
-<p>本题不存在nums[]数组（woods[]只是每根木料的长度，并不是分段的长度值）。我们需要在[1, 1e8]这个区间范围内找到最合适的整数解，jd=1。题目求&gt;=k段的<strong>最大</strong>长度值，而不是最小（若要求最小长度值，直接=1就可以了，分段数最多，基本上肯定能&gt;=k，没必要去费心折半了）。<strong>既然是求最大，当找到可行解(check(mid)成立 )的时候，我们应该尝试在二分的右侧区间去进一步细找，即砍掉左半部份，le=mid</strong>。代码末尾也应该是return le，因为<strong>这种情况下的le始终是在可行解范围内的</strong>。</p>
+<p>本题不存在nums[]数组（woods[]只是每根木料的长度，并不是分段的长度值）。我们需要在[1,
+1e8]这个区间范围内找到最合适的整数解，jd=1。题目求&gt;=k段的<strong>最大</strong>长度值，而不是最小（若要求最小长度值，直接=1就可以了，分段数最多，基本上肯定能&gt;=k，没必要去费心折半了）。<strong>既然是求最大，当找到可行解(check(mid)成立
+)的时候，我们应该尝试在二分的右侧区间去进一步细找，即砍掉左半部份，le=mid</strong>。代码末尾也应该是return
+le，因为<strong>这种情况下的le始终是在可行解范围内的</strong>。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span>+<span class="hljs-number">5</span>;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> LL long long         </span><br><span class="hljs-type">int</span> n, k, woods[maxn], jd=<span class="hljs-number">1</span>; <br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> woodlen)</span></span>&#123;<br>	LL cnt=<span class="hljs-number">0</span>;          <span class="hljs-comment">// cnt可能较大，应long long </span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)<br>		cnt += woods[i]/woodlen;<br>	<span class="hljs-comment">// 只要得到的木头个数&gt;=k段，那么woodlen就视为一个可行解 </span><br>	<span class="hljs-keyword">return</span> cnt&gt;=k;<br>&#125; <br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-type">int</span> le = <span class="hljs-number">1</span>-jd, ri = <span class="hljs-number">1e8</span>+jd;   <span class="hljs-comment">// 开区间，le和ri的初值一定要在可选范围[1..1e8]之外！ </span><br>	<span class="hljs-keyword">while</span> (le + <span class="hljs-number">1</span> &lt; ri)&#123;<br>		<span class="hljs-type">int</span> mid = le + (ri - le) / <span class="hljs-number">2</span>; <span class="hljs-comment">// int mid = le + (ri - le&gt;&gt;1);这样也行，但一定别忘了加括号 </span><br>		<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(mid) ) <span class="hljs-comment">// 如果mid值在可行解范围内 </span><br>			le = mid;	  <span class="hljs-comment">// 本题明确提出要“求出l的最大值”，所以当方案可行时，需要进一步扩大le值，以找到最大的可行的mid值 </span><br>		<span class="hljs-keyword">else</span><br>			ri = mid;<br>	&#125;<br>	<span class="hljs-keyword">return</span> le;			  <span class="hljs-comment">// 在本题中，le一直都在可行区域内，le就是最终的答案 </span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;k);<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;woods[i]);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-built_in">find</span>());<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125; <br></code></pre></td></tr></table></figure>
-<h2 id="2-6-P1873-砍树-——二分答案，求最大解"><a href="#2-6-P1873-砍树-——二分答案，求最大解" class="headerlink" title="2.6 P1873  砍树 ——二分答案，求最大解"></a>2.6 P1873  砍树 ——二分答案，求最大解</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1873">P1873 [COCI 2011/2012 #5] EKO / 砍树</a></p>
+<h2 id="p1873-砍树-二分答案求最大解">2.6 P1873 砍树
+——二分答案，求最大解</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1873">P1873
+[COCI 2011/2012 #5] EKO / 砍树</a></p>
 <p>这里的分析，和2.5节其实是高度相似的，可以作为对2.5节的巩固练习。</p>
-<p>这是“二分答案”知识点的第3个入门题，仍然是求符合条件的<strong>最大</strong>整数解（伐木机锯片的最大的整数高度$H$）。本题不存在f(x)，但存在check(h)函数，用来判断h是否在可行解区间内。随着h变大，切割下来的木材总米数会变小，所以h和总米数之间是一个单调递减的映射关系，不存在“随着h的增大，在某个区间内总米数不降反升”的非单调的映射关系。所以本题可以用“二分答案”的方式做暴力尝试来搞定。（这是很重要的分析鉴定过程，必须要有！）</p>
+<p>这是“二分答案”知识点的第3个入门题，仍然是求符合条件的<strong>最大</strong>整数解（伐木机锯片的最大的整数高度<span
+class="math inline">\(H\)</span>）。本题不存在f(x)，但存在check(h)函数，用来判断h是否在可行解区间内。随着h变大，切割下来的木材总米数会变小，所以h和总米数之间是一个单调递减的映射关系，不存在“随着h的增大，在某个区间内总米数不降反升”的非单调的映射关系。所以本题可以用“二分答案”的方式做暴力尝试来搞定。（这是很重要的分析鉴定过程，必须要有！）</p>
 <p>check(h)在判断h是否为可行解的过程中，不再做代数运算，而是采用for循环等具体操作。此时一定注意check()函数的代码要吻合题意！sum&gt;=M时，h即为合法可行解之一，但不一定是最优解。</p>
-<p>我们需要在[0, max(d[i])]这个区间范围内找到最合适的整数解，且jd=1。题目求&gt;=M米的<strong>最大</strong>高度值，而不是最小（若要求最小高度值，直接h=0，让锯子贴地锯下整棵树就可以了，得到的木材最多，基本上肯定能&gt;=M，没必要去费心折半了）。<strong>既然是求最大，当找到可行解(check(h)成立 )的时候，我们应该尝试在二分的右侧区间去进一步细找，即砍掉左半部份，le=mid</strong>。代码末尾也应该是return le，因为<strong>这种情况下的le始终是在可行解范围内的</strong>。</p>
+<p>我们需要在[0,
+max(d[i])]这个区间范围内找到最合适的整数解，且jd=1。题目求&gt;=M米的<strong>最大</strong>高度值，而不是最小（若要求最小高度值，直接h=0，让锯子贴地锯下整棵树就可以了，得到的木材最多，基本上肯定能&gt;=M，没必要去费心折半了）。<strong>既然是求最大，当找到可行解(check(h)成立
+)的时候，我们应该尝试在二分的右侧区间去进一步细找，即砍掉左半部份，le=mid</strong>。代码末尾也应该是return
+le，因为<strong>这种情况下的le始终是在可行解范围内的</strong>。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	这个题，有一百万棵树， 树高度值也到10^9，所以要注意哦!	看先把树按照高度值进行排序？</span><br><span class="hljs-comment">	然后再以高度值来做折半尝试，从而尽快找出合适的锯子高度</span><br><span class="hljs-comment">	</span><br><span class="hljs-comment">	需要注意，本题数据接近int的极限，建议用LL来表示各种数据。本代码用时接近750ms </span><br><span class="hljs-comment">*/</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX 1000001</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> LL long long  <span class="hljs-comment">// 本题的规模较大，不开longlong要见祖宗！ </span></span><br>LL N, M, maxh=<span class="hljs-number">0</span>;<br>LL d[MAX];<br><span class="hljs-comment">// 锯子如果位于高度h，能获得多少米的木材 </span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(LL h)</span></span>&#123;<br>	LL sum=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(LL i=N; i&gt;<span class="hljs-number">0</span>; i--)&#123;<br>		<span class="hljs-keyword">if</span> (d[i] &gt; h)<br>			sum += d[i] - h;<br>		<span class="hljs-keyword">else</span><br>			<span class="hljs-keyword">break</span>;<br>	&#125; <br>	<span class="hljs-keyword">return</span> sum &gt;= M;   <span class="hljs-comment">// 题上说至少要M米的木材，能让sum&gt;=M就是可行的解h </span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-comment">//相信自己是最棒的！请在这里写新代码...</span><br>	LL i;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lld%lld&quot;</span>, &amp;N, &amp;M);<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt;=N; i++) &#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lld&quot;</span>, &amp;d[i]);<br>		<span class="hljs-keyword">if</span> (d[i] &gt; maxh)     <span class="hljs-comment">// 找出d[i]的最大值maxh，作为折半的上界，为程序提速 </span><br>			maxh = d[i];<br>	&#125;<br>	<span class="hljs-comment">// 如果不排序，在check()函数中的实际复杂度就会增大。排不排，都是O(nlgn )</span><br>	<span class="hljs-built_in">sort</span>(d+<span class="hljs-number">1</span>, d+<span class="hljs-number">1</span>+N);  <br>	<br>	<span class="hljs-type">int</span> jd=<span class="hljs-number">1</span>;      <span class="hljs-comment">// 锯子每次抬高或降低，都至少1米 </span><br>	LL le=<span class="hljs-number">0</span>-jd, ri= maxh+jd, mid;  <br>	<span class="hljs-keyword">while</span> (le + jd &lt; ri )&#123;<br>		mid = le + (ri-le&gt;&gt;<span class="hljs-number">1</span>);<br>		<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(mid) )  <span class="hljs-comment">// 如果mid是可行解，那需要进一步增大（本题是求最大解） </span><br>			le = mid;<br>		<span class="hljs-keyword">else</span> <br>			ri = mid;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld&quot;</span>, le);      <span class="hljs-comment">// le是可行解，ri不是。打印le </span><br>	 <br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="2-7-P2678-跳石头——二分答案，求最大解"><a href="#2-7-P2678-跳石头——二分答案，求最大解" class="headerlink" title="2.7 P2678 跳石头——二分答案，求最大解"></a>2.7 P2678 跳石头——二分答案，求最大解</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2678">P2678 [NOIP2015 提高组] 跳石头</a></p>
-<p>本题也是二分答案求最大解，和2.5、2.6节高度相似。需要注意的是不要被题面文字绕进去了。“使得选手们在比赛过程中的<strong>最短</strong>跳跃距离<strong>尽可能长</strong>。由于预算限制，组委会<strong>至多</strong>从起点和终点之间移走 $M$ 块岩石（不能移走起点和终点的岩石）。” 这里的“最短距离”实际上对二分答案的模板并没有影响，“最短距离”影响的主要是check函数中对移走石头数量的统计过程。<strong>真正影响二分答案代码模板的是“尽可能长”（表示这是在求最大解），以及“至多”（表示移动石头数量不能超过M快，即应该&lt;=M，这是在check()函数中判断mid值是否为可行解的重要依据）</strong>。</p>
-<p>关于这个跳跃距离的有效取值范围，一则不能原地跳，所以至少要为1；二则最多也就是从起点一步跳到终点，也就是说，跳跃距离为L。所以有效取值范围为[1, L]。应该在这个范围内去考虑二分答案。</p>
+<h2 id="p2678-跳石头二分答案求最大解">2.7 P2678
+跳石头——二分答案，求最大解</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2678">P2678
+[NOIP2015 提高组] 跳石头</a></p>
+<p>本题也是二分答案求最大解，和2.5、2.6节高度相似。需要注意的是不要被题面文字绕进去了。“使得选手们在比赛过程中的<strong>最短</strong>跳跃距离<strong>尽可能长</strong>。由于预算限制，组委会<strong>至多</strong>从起点和终点之间移走
+<span class="math inline">\(M\)</span>
+块岩石（不能移走起点和终点的岩石）。”
+这里的“最短距离”实际上对二分答案的模板并没有影响，“最短距离”影响的主要是check函数中对移走石头数量的统计过程。<strong>真正影响二分答案代码模板的是“尽可能长”（表示这是在求最大解），以及“至多”（表示移动石头数量不能超过M快，即应该&lt;=M，这是在check()函数中判断mid值是否为可行解的重要依据）</strong>。</p>
+<p>关于这个跳跃距离的有效取值范围，一则不能原地跳，所以至少要为1；二则最多也就是从起点一步跳到终点，也就是说，跳跃距离为L。所以有效取值范围为[1,
+L]。应该在这个范围内去考虑二分答案。</p>
 <p>坑点：终点位置的石头也应该参与判断和统计，但因为其无法删除（根据题意），所以如果此时要删石头，应该删pos[pre]位置的石头，计数器cnt仍然要++。请分析代码末尾块注释中的样例。</p>
 <p>分析到位后，剩下的就是套模板了。AC代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">5e5</span>+<span class="hljs-number">5</span>;<br><span class="hljs-type">int</span> n, m, L, pos[maxn];<br><br><span class="hljs-comment">// check函数去除掉一些石头，使得剩下的所有石头之间的间距都 &gt;= dis，统计去掉的石头个数是否&lt;=M </span><br><span class="hljs-comment">// i从左往右，若pos[i] - pos[pre] &lt; dis，即若靠得太近，</span><br><span class="hljs-comment">// 则把第i个石头去掉（否则间距变得更小，dis不再是最小间距） </span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> dis)</span></span>&#123;<br>	<span class="hljs-type">int</span> pre=<span class="hljs-number">0</span>, cnt=<span class="hljs-number">0</span>;<br>	<span class="hljs-comment">// 起点是第0块石头，不参与判断和统计 </span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n+<span class="hljs-number">1</span>; i++)&#123;        <span class="hljs-comment">// 终点也参与判断和统计，要循环n+1次，[1, n+1]</span><br>		<span class="hljs-keyword">if</span> ( pos[i]-pos[pre] &lt; dis )&#123;  <span class="hljs-comment">// pre[0]=0</span><br>			cnt++;   <span class="hljs-comment">// 移除第i个石头。当i是终点石头时，无法移除，此时算移除其左侧石头 </span><br>                      <span class="hljs-comment">// 且pre值不变，只存放保留下来的上一块（左侧）石头的下标 </span><br>		&#125;<br>		<span class="hljs-keyword">else</span><br>			pre = i; <span class="hljs-comment">// 间距符合要求，保留当前第i块石头，刷新pre值为i，以便后续算间距 </span><br>	&#125;<br>	<span class="hljs-keyword">return</span> cnt&lt;=m;   <span class="hljs-comment">// 如果满足cnt&lt;=m，此时的dis值为可行解 </span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;L, &amp;n, &amp;m);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;pos[i]);<br>	pos[n+<span class="hljs-number">1</span>] = L;            <span class="hljs-comment">// 设置好起点和终点</span><br>	pos[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>	<br>	<span class="hljs-type">int</span> jd = <span class="hljs-number">1</span>, le = <span class="hljs-number">1</span> - jd, ri = L + jd;   <span class="hljs-comment">// 开区间 </span><br>	<span class="hljs-keyword">while</span> (le + jd &lt; ri)&#123;<br>		<span class="hljs-type">int</span> mid = le + (ri-le &gt;&gt;<span class="hljs-number">1</span>); <span class="hljs-comment">// 算术运算的优先级比移位操作的优先级高， </span><br>		<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(mid) )   <span class="hljs-comment">// 如果 mid是可行解，题意希望跳跃距离尽可能长，故砍掉左半段，le往中间靠 </span><br>			le = mid;       <span class="hljs-comment">// 让le一直为可行解 </span><br>		<span class="hljs-keyword">else</span><br>			ri = mid;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, le);       <span class="hljs-comment">// 既然le一直在可行解区域，当结束while时，此时的le就是最优解 </span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">输入： </span><br><span class="hljs-comment">8 3 1</span><br><span class="hljs-comment">2</span><br><span class="hljs-comment">4</span><br><span class="hljs-comment">7</span><br><span class="hljs-comment">正确输出： </span><br><span class="hljs-comment">2</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">分析：</span><br><span class="hljs-comment">0  2  4   7 8 </span><br><span class="hljs-comment">#  #  #   # #</span><br><span class="hljs-comment">   X      X    最短间距为3时需要移除2块石头 </span><br><span class="hljs-comment">          X    最短间距为2时需要移除1块石头 </span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
-<h2 id="2-8-P1314-聪明的质监员——最大化-最小化可行解"><a href="#2-8-P1314-聪明的质监员——最大化-最小化可行解" class="headerlink" title="2.8 P1314 聪明的质监员——最大化/最小化可行解"></a>2.8 P1314 聪明的质监员——最大化/最小化可行解</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1314">P1314 [NOIP2011 提高组] 聪明的质监员</a></p>
-<p>视频讲解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV128411M7GT/?vd_source=607514df4428a309d5130d87a0423d0c">A06 二分答案 最好的套路</a>(16:37位置)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240314145639360.png" style="zoom: 67%;" /></p>
+<h2 id="p1314-聪明的质监员最大化最小化可行解">2.8 P1314
+聪明的质监员——最大化/最小化可行解</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1314">P1314
+[NOIP2011 提高组] 聪明的质监员</a></p>
+<p>视频讲解：<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV128411M7GT/?vd_source=607514df4428a309d5130d87a0423d0c">A06
+二分答案 最好的套路</a>(16:37位置)</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/image-20240314145639360.png" style="zoom: 67%;" /></p>
 <p>这是一个绿标题，所需知识为二分答案、数学公式的理解以及前缀和。绿标题考二分，其check函数一般都不会很简单，往往是其他一些知识的叠加。此处需要对题目文字说明一下：</p>
-<p>1）给定m个区间$<a href="1 \leq i \leq m">l_i, r_i</a>$；</p>
-<p>2）$w_j$、$v_j$和$s$都已明说了是整数，所以$y_i$和$y$都是整数。$W$没有明说。实际上这个$W$也是整数哈！建议开long long！</p>
-<p>3）对于题目中的流程3里的公式中提到了”$[w_j \geq W]$”，当$w_j \geq W$时，该中括号部分的值为1，否则为0。以题目中的样例#1为例，5个矿石的重量w[]分别为[1,2,3,4,5]，v[]=[5,5,5,5,5],假设W=3。那么对于第1个区间[1,5]有：</p>
-<script type="math/tex; mode=display">
-\begin{align*}y_1&=\sum_{j=l_i}^{r_i}[w_j \geq W] \times\sum_{j=l_i}^{r_i}[w_j \geq W]v_j \\
-&=\sum_{j=1}^{5}[w_j \geq 3] \times\sum_{j=1}^{5}[w_j \geq 3]v_j \\
-&=\sum_{j=3}^{5}1 \times\sum_{j=3}^55 \\
-&=3×15 \\
-&=45
-\end{align*}</script><p>a) 对于第1、2个矿石，该式的值为0，不予考虑和计算。</p>
-<p>b) 对于重量$\geq3$的第3、4、5个矿石，$[w_j \geq 3]$的值为1，进行个数累加和v[]累加；</p>
-<p>题目中的$y_i$公式是区间内多个矿石针对W计算后的结果值，不是某一个矿石的计算结果。</p>
-<p>4）一批矿石的检验结果值$y$是每个区间算出来的$y_i$值的累加和。一方面，这里区间个数$m$较大，达到了2e5。而3）中的公式内的求和，也能达到2e5，所以这里的$y_i$和$y$有可能会爆int，必须要上long long。另一方面，对每个区间进行处理时又需要进行累加，所以应考虑使用“前缀和”这种手段来尽量简化3）中的公式计算复杂度，使其变成$O(1)$最好。而这当中又涉及到了条件筛选（即那个$[w_j \geq W]$），所以应在做前缀和数组时就把这个条件考虑进去，而不是单纯的累加。处理方式应该是“如果$w_j \geq W$条件成立，那么sn[i] = sn[i-1] + 1, sv[i] = sv[i-1]+ v[i]; 否则的话，则<strong>应不加这个矿石，即sn[i] = sn[i-1], sv[i] = sv[i-1];</strong>”</p>
-<p>5）根据题意，检验值$y$已然是跟随$W$的变化而变化（逆相关）。我们现在需要调整$W$，使得y值尽可能接近（无论高低）预先给定的$s$值，计算出$y$和$s$之间的最小差距值（取绝对值）。本题并不求$W$，而是要去求最接近$s$的$y$值。因为$y$和$W$是逆相关的关系，单调递减，所以可以考虑使用二分答案来暴力地找到。因为$W$是整数，所以二分答案模板中的jd=1，而y值必然随着W的增大而出现离散地变小，其中必然会存在某1个y点到s点的纵向距离最小，或者某2个y点到s点的纵向距离同时达到最小。</p>
-<p>所以，我们只需要在二分答案的过程中，即在check()函数中算出距离值，然后求出其最小的那一个距离值就可以了。这个操作算是check()函数的副产品。这里有一个重要的问题需要想清楚，即check()函数算出y值之后，check函数最后是return y&lt;=s; 或者return y&gt;=s; ?</p>
-<p>我们假设在s线及以下为有效点（check()函数中写为return y&lt;=s;）。根据这个假设，我们的二分答案法最终能找到矮于s这条线的最小点D点（我们要找符合y&lt;=s的最大y点，而y和W是逆相关，所以就是找符合y&lt;=s的最小的W点，即D点）。上图展示了两种情况，我们分别来看。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240315094550221.png" style="zoom:67%;" /></p>
-<p>A. 在左图中，D点为二分的最优解。在确认D是最优的之前，代码模板肯定会先计算check(C点)，算出一个距离值，然后判定C点无效（）。这里是先算check(C)或者先算check(D)呢？顺序是不确定的，但其实也并不重要。无论何种顺序，必然是在C和D都check过之后才确定出D是最优解。既然C和D都必然要被check，各自算个距离，找出最小距离值，即本题答案ans。</p>
-<p>B. 右图的处理过程和左图其实是一样的。在确定D为最优解之前，C和D都会被check，谁前谁后都不重要，关键是都会被调用。既然会被调用，那么就肯定能确定C到s的距离最短，是本题答案。</p>
+<p>1）给定m个区间<span class="math inline">\([l_i, r_i](1 \leq i \leq
+m)\)</span>；</p>
+<p>2）<span class="math inline">\(w_j\)</span>、<span
+class="math inline">\(v_j\)</span>和<span
+class="math inline">\(s\)</span>都已明说了是整数，所以<span
+class="math inline">\(y_i\)</span>和<span
+class="math inline">\(y\)</span>都是整数。<span
+class="math inline">\(W\)</span>没有明说。实际上这个<span
+class="math inline">\(W\)</span>也是整数哈！建议开long long！</p>
+<p>3）对于题目中的流程3里的公式中提到了"<span class="math inline">\([w_j
+\geq W]\)</span>"，当<span class="math inline">\(w_j \geq
+W\)</span>时，该中括号部分的值为1，否则为0。以题目中的样例#1为例，5个矿石的重量w[]分别为[1,2,3,4,5]，v[]=[5,5,5,5,5],假设W=3。那么对于第1个区间[1,5]有：
+<span class="math display">\[
+\begin{align*}y_1&amp;=\sum_{j=l_i}^{r_i}[w_j \geq W]
+\times\sum_{j=l_i}^{r_i}[w_j \geq W]v_j \\
+&amp;=\sum_{j=1}^{5}[w_j \geq 3] \times\sum_{j=1}^{5}[w_j \geq 3]v_j \\
+&amp;=\sum_{j=3}^{5}1 \times\sum_{j=3}^55 \\
+&amp;=3×15 \\
+&amp;=45
+\end{align*}
+\]</span></p>
+<ol type="a">
+<li><p>对于第1、2个矿石，该式的值为0，不予考虑和计算。</p></li>
+<li><p>对于重量<span
+class="math inline">\(\geq3\)</span>的第3、4、5个矿石，<span
+class="math inline">\([w_j \geq
+3]\)</span>的值为1，进行个数累加和v[]累加；</p></li>
+</ol>
+<p>题目中的<span
+class="math inline">\(y_i\)</span>公式是区间内多个矿石针对W计算后的结果值，不是某一个矿石的计算结果。</p>
+<p>4）一批矿石的检验结果值<span
+class="math inline">\(y\)</span>是每个区间算出来的<span
+class="math inline">\(y_i\)</span>值的累加和。一方面，这里区间个数<span
+class="math inline">\(m\)</span>较大，达到了2e5。而3）中的公式内的求和，也能达到2e5，所以这里的<span
+class="math inline">\(y_i\)</span>和<span
+class="math inline">\(y\)</span>有可能会爆int，必须要上long
+long。另一方面，对每个区间进行处理时又需要进行累加，所以应考虑使用“前缀和”这种手段来尽量简化3）中的公式计算复杂度，使其变成<span
+class="math inline">\(O(1)\)</span>最好。而这当中又涉及到了条件筛选（即那个<span
+class="math inline">\([w_j \geq
+W]\)</span>），所以应在做前缀和数组时就把这个条件考虑进去，而不是单纯的累加。处理方式应该是“如果<span
+class="math inline">\(w_j \geq W\)</span>条件成立，那么sn[i] = sn[i-1] +
+1, sv[i] = sv[i-1]+ v[i]; 否则的话，则<strong>应不加这个矿石，即sn[i] =
+sn[i-1], sv[i] = sv[i-1];</strong>”</p>
+<p>5）根据题意，检验值<span
+class="math inline">\(y\)</span>已然是跟随<span
+class="math inline">\(W\)</span>的变化而变化（逆相关）。我们现在需要调整<span
+class="math inline">\(W\)</span>，使得y值尽可能接近（无论高低）预先给定的<span
+class="math inline">\(s\)</span>值，计算出<span
+class="math inline">\(y\)</span>和<span
+class="math inline">\(s\)</span>之间的最小差距值（取绝对值）。本题并不求<span
+class="math inline">\(W\)</span>，而是要去求最接近<span
+class="math inline">\(s\)</span>的<span
+class="math inline">\(y\)</span>值。因为<span
+class="math inline">\(y\)</span>和<span
+class="math inline">\(W\)</span>是逆相关的关系，单调递减，所以可以考虑使用二分答案来暴力地找到。因为<span
+class="math inline">\(W\)</span>是整数，所以二分答案模板中的jd=1，而y值必然随着W的增大而出现离散地变小，其中必然会存在某1个y点到s点的纵向距离最小，或者某2个y点到s点的纵向距离同时达到最小。</p>
+<p>所以，我们只需要在二分答案的过程中，即在check()函数中算出距离值，然后求出其最小的那一个距离值就可以了。这个操作算是check()函数的副产品。这里有一个重要的问题需要想清楚，即check()函数算出y值之后，check函数最后是return
+y&lt;=s; 或者return y&gt;=s; ?</p>
+<p>我们假设在s线及以下为有效点（check()函数中写为return
+y&lt;=s;）。根据这个假设，我们的二分答案法最终能找到矮于s这条线的最小点D点（我们要找符合y&lt;=s的最大y点，而y和W是逆相关，所以就是找符合y&lt;=s的最小的W点，即D点）。上图展示了两种情况，我们分别来看。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/image-20240315094550221.png" style="zoom:67%;" /></p>
+<p>A.
+在左图中，D点为二分的最优解。在确认D是最优的之前，代码模板肯定会先计算check(C点)，算出一个距离值，然后判定C点无效（）。这里是先算check(C)或者先算check(D)呢？顺序是不确定的，但其实也并不重要。无论何种顺序，必然是在C和D都check过之后才确定出D是最优解。既然C和D都必然要被check，各自算个距离，找出最小距离值，即本题答案ans。</p>
+<p>B.
+右图的处理过程和左图其实是一样的。在确定D为最优解之前，C和D都会被check，谁前谁后都不重要，关键是都会被调用。既然会被调用，那么就肯定能确定C到s的距离最短，是本题答案。</p>
 <p>如果check函数写成return y&gt;=s;是否可行呢？我们来看看。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240315095110494.png" style="zoom:67%;" /></p>
-<p>A. 在左图中，C点为二分的最优解。在确认C是最优的之前，代码模板肯定会先计算check(D点)，算出一个距离值，然后判定D点无效（）。顺序仍然并不重要。无论何种顺序，必然是在C和D都check过之后才确定出C是最优解。既然C和D都必然要被check，各自算个距离，找出最小距离值，即本题答案ans。</p>
-<p>B. 右图的处理过程和左图是一样的。在确定C为最优解之前，C和D都会被check，谁前谁后都不重要，关键是都会被调用。既然会被调用，那么就肯定能确定C到s的距离最短，是本题答案。</p>
-<p>综合y&lt;=s和y&gt;=s的两种情况的AB分析，我们得出结论，check函数最后那句代码，写成return y&lt;=s;或者return y&gt;=s;都是可以的。<del>好像分析总结了个寂寞……</del></p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/image-20240315095110494.png" style="zoom:67%;" /></p>
+<p>A.
+在左图中，C点为二分的最优解。在确认C是最优的之前，代码模板肯定会先计算check(D点)，算出一个距离值，然后判定D点无效（）。顺序仍然并不重要。无论何种顺序，必然是在C和D都check过之后才确定出C是最优解。既然C和D都必然要被check，各自算个距离，找出最小距离值，即本题答案ans。</p>
+<p>B.
+右图的处理过程和左图是一样的。在确定C为最优解之前，C和D都会被check，谁前谁后都不重要，关键是都会被调用。既然会被调用，那么就肯定能确定C到s的距离最短，是本题答案。</p>
+<p>综合y&lt;=s和y&gt;=s的两种情况的AB分析，我们得出结论，check函数最后那句代码，写成return
+y&lt;=s;或者return
+y&gt;=s;都是可以的。<del>好像分析总结了个寂寞……</del></p>
 <p>完整的AC代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	d41里对这个题讲的比较清楚透彻，比洛谷题解详细。可以看看</span><br><span class="hljs-comment">*/</span> <br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> LL;<br>  <br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span>+<span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> n, m, w[maxn], v[maxn], L[maxn], R[maxn], jd=<span class="hljs-number">1</span>;<br>LL s, sn[maxn], sv[maxn], ans = <span class="hljs-number">1e18</span>;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> W)</span></span>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;=n; i++) sn[i] = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;=n; i++) sv[i] = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)<br>		<span class="hljs-keyword">if</span> (w[i] &gt;= W )<br>			sn[i] = sn[i<span class="hljs-number">-1</span>] + <span class="hljs-number">1</span>, sv[i] = sv[i<span class="hljs-number">-1</span>]+ v[i];<br>		<span class="hljs-keyword">else</span><br>			sn[i] = sn[i<span class="hljs-number">-1</span>], sv[i] = sv[i<span class="hljs-number">-1</span>];<br>	<br>	LL y=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=m; i++)<br>		y += (sn[ R[i] ] - sn[ L[i]<span class="hljs-number">-1</span> ])  *  ( sv[ R[i] ] - sv[ L[i]<span class="hljs-number">-1</span> ] ); <br>	<br>	ans = <span class="hljs-built_in">min</span>(ans, <span class="hljs-built_in">llabs</span>(y-s));    <span class="hljs-comment">//  ans是一个LL哦 </span><br>	<br>	<span class="hljs-comment">// 题上要求靠s越近越好，此处假设&lt;=s为true，其实&gt;=s或者&lt;=s为true都没问题，</span><br>	<span class="hljs-comment">// 因为本题关键不是求le或者ri，而是求ans。不管&lt;=s或&gt;=s，都需要经过check()的不断</span><br>	<span class="hljs-comment">// 调用才能不断缩小区间，直到退出while。在这个过程中ans已经得到正确的最小值。 </span><br>	<span class="hljs-keyword">return</span> y&lt;=s;  <br>&#125;<br><br><span class="hljs-function">LL <span class="hljs-title">find</span><span class="hljs-params">()</span></span>&#123;       <span class="hljs-comment">// 本题不开long long要见祖宗～～～ ans是一个LL哦！～ </span><br>	<span class="hljs-type">int</span> le = <span class="hljs-number">0</span>-jd, ri = <span class="hljs-number">1e6</span>+jd;<br>	<span class="hljs-keyword">while</span> (le + jd &lt; ri)&#123;<br>		<span class="hljs-type">int</span> mid = le + (ri-le)/<span class="hljs-number">2</span>;<br>		<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(mid) )  <span class="hljs-comment">//  W和y逆相关。本题假设y&lt;=s为true，在这种情况下， </span><br>			ri = mid;      <span class="hljs-comment">//  就需要求最大的合法y，即最小的合法W。合法时砍掉右半段，所以ri要往左靠 </span><br>		<span class="hljs-keyword">else</span><br>			le = mid; <br>	&#125;<br>	<span class="hljs-keyword">return</span> ans;            <span class="hljs-comment">// 既然二分的最优解拿来无用，干脆直接返回最小距离值得了。 </span><br>&#125;<br> <br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">//相信自己是最棒的！请在这里写新代码...</span><br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%lld&quot;</span>, &amp;n, &amp;m, &amp;s);<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;w[i], &amp;v[i]);<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=m; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;L[i], &amp;R[i]);<br>	<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld&quot;</span>, <span class="hljs-built_in">find</span>());   <span class="hljs-comment">// 这个差值可以是一个long long </span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>复杂度分析：find函数是$O(logW)$的，check函数是$O(3n+m)$的。n和m都是2e5级别，$W$是1e6级别，所以整个程序的复杂度是$O(4n<em>logW)=4</em>2e5<em>log(1e6)=8e5</em>20=160*e5=1.6e7$，能过。</p>
+<p>复杂度分析：find函数是<span
+class="math inline">\(O(logW)\)</span>的，check函数是<span
+class="math inline">\(O(3n+m)\)</span>的。n和m都是2e5级别，<span
+class="math inline">\(W\)</span>是1e6级别，所以整个程序的复杂度是<span
+class="math inline">\(O(4n*logW)=4*2e5*log(1e6)=8e5*20=160*e5=1.6e7\)</span>，能过。</p>
 <p>后语：这个题是一个绿标题，回头来看这个题的代码，其实最难的部分是对公式的理解，以及check函数的实现。“二分答案”的代码框架在本题中并没有什么变化，find函数就是个裸板子。不要怕绿标题！</p>
-<h2 id="2-9-P1083-借教室——最大化可行解"><a href="#2-9-P1083-借教室——最大化可行解" class="headerlink" title="2.9 P1083 借教室——最大化可行解"></a>2.9 P1083 借教室——最大化可行解</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1083">P1083 [NOIP2012 提高组] 借教室</a></p>
-<p>视频讲解链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV128411M7GT/?vd_source=607514df4428a309d5130d87a0423d0c">A06 二分答案 最好的套路</a>(25:10位置)</p>
+<h2 id="p1083-借教室最大化可行解">2.9 P1083 借教室——最大化可行解</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1083">P1083
+[NOIP2012 提高组] 借教室</a></p>
+<p>视频讲解链接：<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV128411M7GT/?vd_source=607514df4428a309d5130d87a0423d0c">A06
+二分答案 最好的套路</a>(25:10位置)</p>
 <p>这是个黄标题，但难度实际上已经接近绿标题了。题目文字多，难理解题意。下面先搞清楚样例输出是如何得来的。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240315110134567.png" style="zoom:67%;" /></p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/image-20240315110134567.png" style="zoom:67%;" /></p>
 <p>输入样例：</p>
-<p>共4天  共3个订单</p>
-<p>1～4天的可供教室个数[2个教室   5个教室   4个教室  3个教室]</p>
+<p>共4天 共3个订单</p>
+<p>1～4天的可供教室个数[2个教室 5个教室 4个教室 3个教室]</p>
 <p>第1个订单要2个教室，从第1天到第3天</p>
 <p>第2个订单要3个教室，从第2天到第4天</p>
 <p>第3个订单要4个教室，从第2天到第4天</p>
@@ -289,135 +400,204 @@
 <p>-1 （无法全部满足）</p>
 <p>2 （需要修改第2个订单）</p>
 <p>这个输出是怎么得来的呢？此时我们最好是静下心来，耐心地模拟一下数据。</p>
-<div class="table-container">
 <table>
 <thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">第1天</th>
-<th style="text-align:center">第2天</th>
-<th style="text-align:center">第3天</th>
-<th style="text-align:center">第4天</th>
-<th style="text-align:center">第5天</th>
-<th style="text-align:center">复杂度</th>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">第1天</th>
+<th style="text-align: center;">第2天</th>
+<th style="text-align: center;">第3天</th>
+<th style="text-align: center;">第4天</th>
+<th style="text-align: center;">第5天</th>
+<th style="text-align: center;">复杂度</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">可供教室个数</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<tr class="odd">
+<td style="text-align: center;">可供教室个数</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
-<tr>
-<td style="text-align:center">第0单</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center"></td>
+<tr class="even">
+<td style="text-align: center;">第0单</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
 </tr>
-<tr>
-<td style="text-align:center">第1单</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">$O(n)$</td>
+<tr class="odd">
+<td style="text-align: center;">第1单</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(O(n)\)</span></td>
 </tr>
-<tr>
-<td style="text-align:center">第2单</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center"><font color=red size=5>5</font></td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">$O(n)$</td>
+<tr class="even">
+<td style="text-align: center;">第2单</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><font color=red size=5>5</font></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(O(n)\)</span></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>在第2单时，第3天无法提供5个教室，所以输出-1和2。样例讲解完毕。</p>
 <p>下面开始分析解法：</p>
-<p>这个题，直觉思维肯定是去暴力模拟，实现上述这个矩阵的填写过程。矩阵的行数就是总单数$m$，列数为总天数$n$。在决定暴力之前，我们应先看数据范围，发现$m$和$n$都是1e6的级别，每个区间的范围$s_j$和$t_j$也是$1\leq s_j \leq t_j \leq n$的。如果从上往下，从左往右填写这个矩阵每个元素的值，时间复杂度为1e12，早就TLE了。（空间复杂度不需要1e12这个级别，只需要长度为总天数$n$的一个一维数组即可。）根据题目提供的数据范围，直接暴力只能得30分。有没有更好的暴力做法呢？</p>
+<p>这个题，直觉思维肯定是去暴力模拟，实现上述这个矩阵的填写过程。矩阵的行数就是总单数<span
+class="math inline">\(m\)</span>，列数为总天数<span
+class="math inline">\(n\)</span>。在决定暴力之前，我们应先看数据范围，发现<span
+class="math inline">\(m\)</span>和<span
+class="math inline">\(n\)</span>都是1e6的级别，每个区间的范围<span
+class="math inline">\(s_j\)</span>和<span
+class="math inline">\(t_j\)</span>也是<span class="math inline">\(1\leq
+s_j \leq t_j \leq
+n\)</span>的。如果从上往下，从左往右填写这个矩阵每个元素的值，时间复杂度为1e12，早就TLE了。（空间复杂度不需要1e12这个级别，只需要长度为总天数<span
+class="math inline">\(n\)</span>的一个一维数组即可。）根据题目提供的数据范围，直接暴力只能得30分。有没有更好的暴力做法呢？</p>
 <p>仔细分析题目中的数据输入，我们可以发现，每次来一个新订单，我们需要在一个区间内去累加一个固定的数，区间的个数和区间的范围都很大，这很像差分啊！能否用一维差分来模拟呢？试试看！</p>
-<div class="table-container">
 <table>
 <thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">第1天</th>
-<th style="text-align:center">第2天</th>
-<th style="text-align:center">第3天</th>
-<th style="text-align:center">第4天</th>
-<th style="text-align:center">第5天</th>
-<th style="text-align:center">复杂度</th>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">第1天</th>
+<th style="text-align: center;">第2天</th>
+<th style="text-align: center;">第3天</th>
+<th style="text-align: center;">第4天</th>
+<th style="text-align: center;">第5天</th>
+<th style="text-align: center;">复杂度</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">可供教室个数</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<tr class="odd">
+<td style="text-align: center;">可供教室个数</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
-<tr>
-<td style="text-align:center">第0单</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center"></td>
+<tr class="even">
+<td style="text-align: center;">第0单</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
 </tr>
-<tr>
-<td style="text-align:center">第1单</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">-2</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">$O(1)$</td>
+<tr class="odd">
+<td style="text-align: center;">第1单</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">-2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(O(1)\)</span></td>
 </tr>
-<tr>
-<td style="text-align:center">第2单</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center"><font color=red size=5>0</font></td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">-3</td>
-<td style="text-align:center">$O(1)$</td>
+<tr class="even">
+<td style="text-align: center;">第2单</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><font color=red size=5>0</font></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">-3</td>
+<td style="text-align: center;"><span
+class="math inline">\(O(1)\)</span></td>
 </tr>
 </tbody>
 </table>
-</div>
-<p>通过这样的方式，我们可以把一个原本为$O(m*n)=1e12$的操作，降为$O(m)=1e6$的操作。看着好像很棒！但这样做存在一个问题，即数据不能直观地反映出“无法满足所有订单”。例如，在第2单加入后，我们如何得知第3天无法满足呢？唯一的做法就是根据当前的差分数组，还原出其对于的基本数组。但是这个过程，是一个$O(n)=1e6$的过程。如果针对每个订单加入后都去做这样的还原，再来判断是否满足，这样的差分是不彻底的，并没有达到降低时间复杂度的实效，时间复杂度仍然是1e12。我们不能每加一个新单就去做还原和比较，那该怎么办呢？</p>
-<p>我们可以注意到，根据题意，如果在前$t$单加入后无法满足要求的话，那么第$t$个后面的所有订单加入后必然也是无法满足要求的（因为原始数据全都是非负数，累加只会越来越大）；反之，如果在前$t$单加入后能够满足要求，那么第$t$个前面的订单必然是满足要求的。也就是说，订单的加入，和“是否满足”是存在一个单调性的。这种单调性，不是“变大”或者“变小”，而是一种“0/1”单调性，从“满足”变到“不满足”的单调性。这种单调性，使得我们仍然可以用“二分答案”来快速找到临界值。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240319110044813.png" style="zoom:67%;" /></p>
+<p>通过这样的方式，我们可以把一个原本为<span
+class="math inline">\(O(m*n)=1e12\)</span>的操作，降为<span
+class="math inline">\(O(m)=1e6\)</span>的操作。看着好像很棒！但这样做存在一个问题，即数据不能直观地反映出“无法满足所有订单”。例如，在第2单加入后，我们如何得知第3天无法满足呢？唯一的做法就是根据当前的差分数组，还原出其对于的基本数组。但是这个过程，是一个<span
+class="math inline">\(O(n)=1e6\)</span>的过程。如果针对每个订单加入后都去做这样的还原，再来判断是否满足，这样的差分是不彻底的，并没有达到降低时间复杂度的实效，时间复杂度仍然是1e12。我们不能每加一个新单就去做还原和比较，那该怎么办呢？</p>
+<p>我们可以注意到，根据题意，如果在前<span
+class="math inline">\(t\)</span>单加入后无法满足要求的话，那么第<span
+class="math inline">\(t\)</span>个后面的所有订单加入后必然也是无法满足要求的（因为原始数据全都是非负数，累加只会越来越大）；反之，如果在前<span
+class="math inline">\(t\)</span>单加入后能够满足要求，那么第<span
+class="math inline">\(t\)</span>个前面的订单必然是满足要求的。也就是说，订单的加入，和“是否满足”是存在一个单调性的。这种单调性，不是“变大”或者“变小”，而是一种“0/1”单调性，从“满足”变到“不满足”的单调性。这种单调性，使得我们仍然可以用“二分答案”来快速找到临界值。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/image-20240319110044813.png" style="zoom:67%;" /></p>
 <p>如上图所示，x表示前x个订单，取值为1、2、3、……、m，y表示“是否满足”，取值为1（true）和0（false）。在本题中，因为x必须是整数，所以这个y和x对应的函数是离散的。我们的二分答案模板返回的是符合条件的x，所以可以先<strong>求出y=true时最大的x值</strong>，那么x+1就是所求答案了。</p>
 <p>分析至此，基本上已经可以写出AC代码了，如下所示：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">	“差分数组+前缀和+二分答案”的题，</span><br><span class="hljs-comment">	如果一个订单一个订单地去累加，O(m*n)，必定爆TLE</span><br><span class="hljs-comment">	对前x个订单，采用check()来统计其是否满足供给需求。在其中，用差分数组叠加的方式来简化数据统计，check的效率从O(m*n)降为O(n+m)。再配上二分暴力尝试的O(logm)，所以算法总效率为O(logm * (n+m) ) </span><br><span class="hljs-comment"> 	需要写check()，送入前x个订单，做出差分数组，还原成前缀和数组，同时判断是否满足。</span><br><span class="hljs-comment">*/</span> <br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e6</span>+<span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> n, m;<br><span class="hljs-type">int</span> r[maxn];         <span class="hljs-comment">// r[2] = 5 表示第2天能提供5间教室以出租 </span><br><span class="hljs-type">int</span> d[maxn];         <span class="hljs-comment">// d[3]=5 表示第3个订单要用5间教室，d[]都是正数 </span><br><span class="hljs-type">int</span> s[maxn], t[maxn];<span class="hljs-comment">// s[2]=3, t[2]=5表示第2个订单所需教室要用第3天用到第5天 </span><br><span class="hljs-type">long</span> <span class="hljs-type">long</span> num[maxn]; <span class="hljs-comment">// num[3]=4 表示到第3天时，需要增用4间教室； </span><br>					 <span class="hljs-comment">// num[6]=-2表示到第6天时，需要收回2间教室；</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>	<span class="hljs-built_in">memset</span>(num, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> num);<br>	<span class="hljs-comment">// 差分！对前x个订单，在num[]中标记好差分数据，+di，-di </span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=x; i++)&#123;<br>		num[ s[i] ] += d[i];<br>		num[ t[i]+<span class="hljs-number">1</span> ] -= d[i];<br>	&#125;<br>	<br>	<span class="hljs-comment">// 对差分数组num[]原地还原出前缀和数组，算出前x个订单后，n天每天的教室需求总量 </span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)&#123;<br>		num[i] += num[i<span class="hljs-number">-1</span>];<br>		<span class="hljs-keyword">if</span> (num[i] &gt; r[i] ) <br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;   <span class="hljs-comment">// 需求大于供给，爆掉 </span><br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;   <span class="hljs-comment">// x越小，则num[]最后越小，那越容易true </span><br>&#125;<br> <br><span class="hljs-comment">// 用二分查找的方式，返回满足check条件的最大下标值le </span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-type">int</span> le=<span class="hljs-number">0</span>, ri = m+<span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">while</span> (le + <span class="hljs-number">1</span> &lt; ri)&#123;<br>		<span class="hljs-type">int</span> mid= le + (ri - le)/<span class="hljs-number">2</span>;<br>		<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(mid) ) <span class="hljs-comment">// 如果满足，就尽量最大化 </span><br>			le = mid;     <span class="hljs-comment">// 求最大化，砍掉左半段 </span><br>		<span class="hljs-keyword">else</span><br>			ri = mid;<br>	&#125;<br>	<span class="hljs-keyword">return</span> le; <br>&#125;<br> <br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">//相信自己是最棒的！请在这里写新代码...</span><br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;r[i]);  <span class="hljs-comment">// 一共n天 </span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=m; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;d[i], &amp;s[i], &amp;t[i]); <span class="hljs-comment">// 一共m个订单 </span><br>	<span class="hljs-type">int</span> pos = <span class="hljs-built_in">find</span>();<br>	<span class="hljs-comment">// 如果到第m个订单都不会爆，那就是全都符合啦，输出0 </span><br>	<span class="hljs-keyword">if</span> (pos == m)<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0&quot;</span>);<br>	<span class="hljs-keyword">else</span><br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;-1\n%d&quot;</span>, pos+<span class="hljs-number">1</span>);  <span class="hljs-comment">// find()返回的是满足不爆的最后那个订单编号，那下一个，+1就是要爆掉的订单编号了 </span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>后记：</p>
 <p>回头来看这个题，它的“二分答案”的策略是比较隐蔽的。之所以采取“二分”，必须要分析意识到“每次加入一个订单后，马上就对差分数组进行还原”的效率会很差，进而才会去分析这个题的“前x个订单”和“是否满足”之间的单调性。</p>
-<p>如果你深刻体会到了这一点，并且也已经学过了“差分 二维差分”帖子，那么可以再挑战一下“<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/180/learning/">三体攻击</a>”这个题（三维差分+二分答案）。</p>
-<h2 id="2-10-P1902-刺杀大使——最小化可行解"><a href="#2-10-P1902-刺杀大使——最小化可行解" class="headerlink" title="2.10 P1902 刺杀大使——最小化可行解"></a>2.10 P1902 刺杀大使——最小化可行解</h2><p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1902">P1902 刺杀大使</a></p>
-<p>视频讲解链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV128411M7GT/?vd_source=607514df4428a309d5130d87a0423d0c">A06 二分答案 最好的套路</a>(35:45位置)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240315154748379.png" alt="image-20240315154748379"  /></p>
+<p>如果你深刻体会到了这一点，并且也已经学过了“差分
+二维差分”帖子，那么可以再挑战一下“<a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/180/learning/">三体攻击</a>”这个题（三维差分+二分答案）。</p>
+<h2 id="p1902-刺杀大使最小化可行解">2.10 P1902
+刺杀大使——最小化可行解</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1902">P1902
+刺杀大使</a></p>
+<p>视频讲解链接：<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV128411M7GT/?vd_source=607514df4428a309d5130d87a0423d0c">A06
+二分答案 最好的套路</a>(35:45位置)</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/image-20240315154748379.png" alt="image-20240315154748379"  /></p>
 <p>这个题又是个绿标题，所用知识为二分答案+广搜，总体来说不算太难。题目文字很多，简化题意，以上图的样例来说，有一个5行3列的整数矩阵，第1排和第5排值都是0。每个点都能走到上下左右的其他各点，现在找一条不交叉的路线，从第一行的<strong>任意点</strong>出发，走到第5行的<strong>任意点</strong>结束，要求<strong>其经过的所有点的最大值要尽可能小</strong>，输出这个最小值。在样例中这条路径是“0-2-1-4-2-0”，最大值4，是所有路线中最小的了。</p>
 <p>这种题想要找一条路线。我们的第一反应是“深搜”或者“广搜”。“广搜”一般主要用于在地图上找节点数<strong>最少</strong>的路径，不适用本题。“深搜”可以一边前进一边更新“经过的所有点的最大值”，但当对最大值点做回退操作时，需要把这条路径上的次大值作为最大值。也就是说，我们需要一直维护一个有序且能很方便地增删的堆，可能会是一个费时的操作（行1000，列1000，路径最长可达1e6个节点）。这是一个大坑，如果跳进去了，很有可能爬不出来。还有没有其他思路呢？</p>
-<p>我们注意到每个伤害值都不大（$\leq1000$），可以把这张地图比喻为每个怪的战斗值，而我自己肯定有一个战斗力值X。我们从第一行任意点出发，一路过关斩将，最终走到第n行。遇到菜鸡直接砍翻前进，遇到比自己更牛逼的boss就绕开它。“打得赢就打，打不赢就躲”。按照这样的思想，我们能走到第n行吗？很明显，这完全取决于我们的X有多大。我们可以假设一个X值，去试试看能不能走通。如果能，找到最小的这个X值，即为本题答案。</p>
+<p>我们注意到每个伤害值都不大（<span
+class="math inline">\(\leq1000\)</span>），可以把这张地图比喻为每个怪的战斗值，而我自己肯定有一个战斗力值X。我们从第一行任意点出发，一路过关斩将，最终走到第n行。遇到菜鸡直接砍翻前进，遇到比自己更牛逼的boss就绕开它。“打得赢就打，打不赢就躲”。按照这样的思想，我们能走到第n行吗？很明显，这完全取决于我们的X有多大。我们可以假设一个X值，去试试看能不能走通。如果能，找到最小的这个X值，即为本题答案。</p>
 <p>也就是说，我们需要假设X的值，然后去尝试：走得通就缩小X的值，走不通就增大X的值。这种暴力尝试，是基于一个单调性基础之上的。什么单调性呢？一条路，如果X的战力能走到底，那么X+1的战力值肯定更能走通；如果X战力值走不通，X-1肯定更不行。我们需要找到合法（能走通）的最小的X来。画出图来，就是下图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cspcoding/pic@main//img/image-20240319110545629.png" style="zoom:67%;" /></p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/image-20240319110545629.png" style="zoom:67%;" /></p>
 <p>这张图，看上去是不是有点似曾相似啊？不错，我们在2.9节中也有类似的图，也是在一种0-1类型的单调性关系中找临界点。所以实际上2.10节和2.9节的这两个题，其实都是同一类型的题。</p>
-<p>每次当我们设定了一个X值之后，网格中所有&gt;X 的节点就视为障碍不可通过，然后这个题就可以用“迷宫”的思路去做了，用广搜算法即可（广搜非常擅长于解决“能到/不能到”的问题）。每次广搜的复杂度为$O(1e6)$，二分答案的复杂度为$log_2{1000}=10$，所以整个程序的复杂度是$1e7$，能1秒内过。</p>
+<p>每次当我们设定了一个X值之后，网格中所有&gt;X
+的节点就视为障碍不可通过，然后这个题就可以用“迷宫”的思路去做了，用广搜算法即可（广搜非常擅长于解决“能到/不能到”的问题）。每次广搜的复杂度为<span
+class="math inline">\(O(1e6)\)</span>，二分答案的复杂度为<span
+class="math inline">\(log_2{1000}=10\)</span>，所以整个程序的复杂度是<span
+class="math inline">\(1e7\)</span>，能1秒内过。</p>
 <p>AC代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    二分答案的题，走迷宫的升级版，O(n*m*logP) ，P为矩阵元素的最大值 </span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1005</span>;<br><span class="hljs-type">int</span> dr[] = &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;;<br><span class="hljs-type">int</span> dc[] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;;<br><span class="hljs-type">int</span> n, m, p[maxn][maxn];<br><span class="hljs-type">bool</span> vis[maxn][maxn];<br><br><span class="hljs-comment">// 类似于二分答案里面的check() </span><br><span class="hljs-comment">// 表示从(r,c)点出发，途径的点值不能超过P，能不能走到第n行的任意列呢？</span><br><span class="hljs-comment">// 如果能，返回true，否则返回false </span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> r, <span class="hljs-type">int</span> c, <span class="hljs-type">int</span> P)</span></span>&#123;<br>	<span class="hljs-keyword">if</span> (r == n) <br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>	<br>	vis[r][c] = <span class="hljs-literal">true</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">4</span>; i++)&#123;<br>		<span class="hljs-type">int</span> nr = r + dr[i];<br>		<span class="hljs-type">int</span> nc = c + dc[i];<br>		<span class="hljs-keyword">if</span> (nr &gt;=<span class="hljs-number">1</span> &amp;&amp; nr &lt;=n &amp;&amp; nc &gt;=<span class="hljs-number">1</span> &amp;&amp; nc &lt;=m \<br>		&amp;&amp; !vis[nr][nc] &amp;&amp; p[nr][nc]&lt;= P )&#123;<br>			<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(nr, nc, P) )<br>				<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-comment">// 返回符合条件的最小值</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-type">int</span> jd=<span class="hljs-number">1</span>, le= <span class="hljs-number">0</span>-jd, ri= <span class="hljs-number">1000</span>+jd;<br>	<span class="hljs-keyword">while</span> (le + jd &lt; ri)&#123;<br>		<span class="hljs-type">int</span> mid= le + (ri-le&gt;&gt;<span class="hljs-number">1</span>);<br>		<span class="hljs-comment">// 这句memset不能忘，也不能放在check中，只能放在这里哟！～ </span><br>		<span class="hljs-built_in">memset</span>(vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> vis);<br>		<span class="hljs-keyword">if</span> ( <span class="hljs-built_in">check</span>(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, mid) ) <span class="hljs-comment">// 如果mid值合法，则取最小值， </span><br>			ri = mid;           <span class="hljs-comment">// 砍掉右半部分 </span><br>		<span class="hljs-keyword">else</span><br>			le = mid;<br>	&#125;<br>	<span class="hljs-keyword">return</span> ri;                  <span class="hljs-comment">// ri是可行解中的最优解 </span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">//相信自己是最棒的！请在这里写新代码...</span><br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> r=<span class="hljs-number">1</span>; r&lt;=n; r++) <br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> c=<span class="hljs-number">1</span>; c&lt;=m; c++)&#123;<br>			<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;p[r][c]);<br>		&#125; <br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, <span class="hljs-built_in">find</span>());<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪宝和七七的爸爸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">http://example.com/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">宝爸编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/20/%E5%B7%AE%E5%88%86%20%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86/" title="差分 二维差分"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">差分 二维差分</div></div></a></div><div class="next-post pull-right"><a href="/2024/01/30/%E4%BD%8D%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%8E%E3%80%81%E6%88%96%E3%80%81%E5%BC%82%E6%88%96%EF%BC%89%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" title="位操作（与、或、异或）方法详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">位操作（与、或、异或）方法详解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/04/25/LCS%E9%97%AE%E9%A2%98/" title="最长公共子序列（LCS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长公共子序列（LCS）问题</div></div></a></div><div><a href="/2024/07/31/dp%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E8%AE%AD%E7%BB%83/" title="dp中的状态转移训练"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-31</div><div class="title">dp中的状态转移训练</div></div></a></div><div><a href="/2024/04/25/LIS%E9%97%AE%E9%A2%98/" title="最长不下降子序列（LIS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长不下降子序列（LIS）问题</div></div></a></div><div><a href="/2020/03/13/hello/" title="我的第一篇博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-13</div><div class="title">我的第一篇博客</div></div></a></div><div><a href="/2024/07/02/%E4%B8%89%E7%A7%8D%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E7%9A%84%E5%A4%84%E7%90%86/" title="三种分组背包的处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">三种分组背包的处理</div></div></a></div><div><a href="/2025/01/10/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D-%E4%B8%AD-%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" title="二叉树的前-中-后序遍历"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-10</div><div class="title">二叉树的前-中-后序遍历</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">雪宝和七七的爸爸</div><div class="author-info__description">本博客致力于信息学奥赛知识学习。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E9%A2%98%E5%9E%8B%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">一.  题型分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E6%A1%88%E4%BE%8B%E7%BB%83%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">二. 案例练习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-P2249-%E3%80%90%E6%B7%B1%E5%9F%BA13-%E4%BE%8B1%E3%80%91%E6%9F%A5%E6%89%BE"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 P2249 【深基13.例1】查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-1241%EF%BC%9A%E4%BA%8C%E5%88%86%E6%B3%95%E6%B1%82%E5%87%BD%E6%95%B0%E7%9A%84%E9%9B%B6%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">2.2  1241：二分法求函数的零点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-P1024-NOIP2001-%E6%8F%90%E9%AB%98%E7%BB%84-%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 P1024 [NOIP2001 提高组] 一元三次方程求解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-P1163-%E9%93%B6%E8%A1%8C%E8%B4%B7%E6%AC%BE"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 P1163 银行贷款</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-P2440-%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5%E2%80%94%E2%80%94%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%EF%BC%8C%E6%B1%82%E6%9C%80%E5%A4%A7%E8%A7%A3"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 P2440 木材加工——二分答案，求最大解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-P1873-%E7%A0%8D%E6%A0%91-%E2%80%94%E2%80%94%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%EF%BC%8C%E6%B1%82%E6%9C%80%E5%A4%A7%E8%A7%A3"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 P1873  砍树 ——二分答案，求最大解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-P2678-%E8%B7%B3%E7%9F%B3%E5%A4%B4%E2%80%94%E2%80%94%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%EF%BC%8C%E6%B1%82%E6%9C%80%E5%A4%A7%E8%A7%A3"><span class="toc-number">2.7.</span> <span class="toc-text">2.7 P2678 跳石头——二分答案，求最大解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-P1314-%E8%81%AA%E6%98%8E%E7%9A%84%E8%B4%A8%E7%9B%91%E5%91%98%E2%80%94%E2%80%94%E6%9C%80%E5%A4%A7%E5%8C%96-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%8F%AF%E8%A1%8C%E8%A7%A3"><span class="toc-number">2.8.</span> <span class="toc-text">2.8 P1314 聪明的质监员——最大化&#x2F;最小化可行解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-P1083-%E5%80%9F%E6%95%99%E5%AE%A4%E2%80%94%E2%80%94%E6%9C%80%E5%A4%A7%E5%8C%96%E5%8F%AF%E8%A1%8C%E8%A7%A3"><span class="toc-number">2.9.</span> <span class="toc-text">2.9 P1083 借教室——最大化可行解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-P1902-%E5%88%BA%E6%9D%80%E5%A4%A7%E4%BD%BF%E2%80%94%E2%80%94%E6%9C%80%E5%B0%8F%E5%8C%96%E5%8F%AF%E8%A1%8C%E8%A7%A3"><span class="toc-number">2.10.</span> <span class="toc-text">2.10 P1902 刺杀大使——最小化可行解</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/16/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%881%EF%BC%89%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/" title="栈的应用（1）括号匹配">栈的应用（1）括号匹配</a><time datetime="2025-01-16T03:11:55.591Z" title="发表于 2025-01-16 11:11:55">2025-01-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/10/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D-%E4%B8%AD-%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" title="二叉树的前-中-后序遍历">二叉树的前-中-后序遍历</a><time datetime="2025-01-09T16:00:00.000Z" title="发表于 2025-01-10 00:00:00">2025-01-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/04/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/" title="栈的应用">栈的应用</a><time datetime="2025-01-04T06:01:31.659Z" title="发表于 2025-01-04 14:01:31">2025-01-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/01/%EF%BC%88%E4%B8%89%EF%BC%89%E5%AE%BD%E5%BA%A6%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8Em%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（三）宽度小于等于m的区间的“最大的和值”问题">（三）宽度小于等于m的区间的“最大的和值”问题</a><time datetime="2025-01-01T09:38:09.649Z" title="发表于 2025-01-01 17:38:09">2025-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/01/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%E4%B8%BAm%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（二）固定宽度为m的区间的“最大的和值”问题">（二）固定宽度为m的区间的“最大的和值”问题</a><time datetime="2025-01-01T09:38:09.640Z" title="发表于 2025-01-01 17:38:09">2025-01-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 雪宝和七七的爸爸</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪宝和七七的爸爸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">http://example.com/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">宝爸编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/20/%E5%B7%AE%E5%88%86%20%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86/" title="差分 二维差分"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">差分 二维差分</div></div></a></div><div class="next-post pull-right"><a href="/2024/01/30/%E4%BD%8D%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%8E%E3%80%81%E6%88%96%E3%80%81%E5%BC%82%E6%88%96%EF%BC%89%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/" title="位操作（与、或、异或）方法详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">位操作（与、或、异或）方法详解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/02/GESP%E5%85%AB%E7%BA%A7%EF%BC%88202312-202412%EF%BC%89%E6%9C%AA%E5%AE%8C/" title="GESP八级（202312-202412）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-02</div><div class="title">GESP八级（202312-202412）</div></div></a></div><div><a href="/2024/04/25/LCS%E9%97%AE%E9%A2%98/" title="最长公共子序列（LCS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长公共子序列（LCS）问题</div></div></a></div><div><a href="/2024/07/31/dp%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E8%AE%AD%E7%BB%83/" title="dp中的状态转移训练"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-31</div><div class="title">dp中的状态转移训练</div></div></a></div><div><a href="/2024/04/25/LIS%E9%97%AE%E9%A2%98/" title="最长不下降子序列（LIS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长不下降子序列（LIS）问题</div></div></a></div><div><a href="/2020/03/13/hello/" title="我的第一篇博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-13</div><div class="title">我的第一篇博客</div></div></a></div><div><a href="/2024/07/02/%E4%B8%89%E7%A7%8D%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E7%9A%84%E5%A4%84%E7%90%86/" title="三种分组背包的处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">三种分组背包的处理</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">雪宝和七七的爸爸</div><div class="author-info__description">本博客致力于信息学奥赛知识学习。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://cspcoding.github.io/"><i class="fab fa-github"></i><span>回到主页</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">玩游戏害人害己哦！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80.-%E9%A2%98%E5%9E%8B%E5%88%86%E7%B1%BB"><span class="toc-text">一. 题型分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C.-%E6%A1%88%E4%BE%8B%E7%BB%83%E4%B9%A0"><span class="toc-text">二. 案例练习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#p2249-%E6%B7%B1%E5%9F%BA13.%E4%BE%8B1%E6%9F%A5%E6%89%BE"><span class="toc-text">2.1 P2249 【深基13.例1】查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95%E6%B1%82%E5%87%BD%E6%95%B0%E7%9A%84%E9%9B%B6%E7%82%B9"><span class="toc-text">2.2 1241：二分法求函数的零点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p1024-noip2001-%E6%8F%90%E9%AB%98%E7%BB%84-%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3"><span class="toc-text">2.3 P1024 [NOIP2001
+提高组] 一元三次方程求解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p1163-%E9%93%B6%E8%A1%8C%E8%B4%B7%E6%AC%BE"><span class="toc-text">2.4 P1163 银行贷款</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p2440-%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%E6%B1%82%E6%9C%80%E5%A4%A7%E8%A7%A3"><span class="toc-text">2.5 P2440
+木材加工——二分答案，求最大解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p1873-%E7%A0%8D%E6%A0%91-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%E6%B1%82%E6%9C%80%E5%A4%A7%E8%A7%A3"><span class="toc-text">2.6 P1873 砍树
+——二分答案，求最大解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p2678-%E8%B7%B3%E7%9F%B3%E5%A4%B4%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%E6%B1%82%E6%9C%80%E5%A4%A7%E8%A7%A3"><span class="toc-text">2.7 P2678
+跳石头——二分答案，求最大解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p1314-%E8%81%AA%E6%98%8E%E7%9A%84%E8%B4%A8%E7%9B%91%E5%91%98%E6%9C%80%E5%A4%A7%E5%8C%96%E6%9C%80%E5%B0%8F%E5%8C%96%E5%8F%AF%E8%A1%8C%E8%A7%A3"><span class="toc-text">2.8 P1314
+聪明的质监员——最大化&#x2F;最小化可行解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p1083-%E5%80%9F%E6%95%99%E5%AE%A4%E6%9C%80%E5%A4%A7%E5%8C%96%E5%8F%AF%E8%A1%8C%E8%A7%A3"><span class="toc-text">2.9 P1083 借教室——最大化可行解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p1902-%E5%88%BA%E6%9D%80%E5%A4%A7%E4%BD%BF%E6%9C%80%E5%B0%8F%E5%8C%96%E5%8F%AF%E8%A1%8C%E8%A7%A3"><span class="toc-text">2.10 P1902
+刺杀大使——最小化可行解</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/GESP%E5%85%AB%E7%BA%A7%EF%BC%88202312-202412%EF%BC%89%E6%9C%AA%E5%AE%8C/" title="GESP八级（202312-202412）">GESP八级（202312-202412）</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/%E5%A4%9A%E9%87%8D%E7%BB%84%E5%90%88%E6%95%B0%EF%BC%88%E6%9C%AA%E5%AE%8C%EF%BC%89/" title="多重组合数">多重组合数</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/%E7%9B%92%E5%AD%90%E6%94%BE%E7%90%83%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%AA%E5%AE%8C%EF%BC%89/" title="盒子放球的方案数问题">盒子放球的方案数问题</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/27/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%E4%B8%BAm%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（二）固定宽度为m的区间的“最大的和值”问题">（二）固定宽度为m的区间的“最大的和值”问题</a><time datetime="2025-02-27T06:21:42.811Z" title="发表于 2025-02-27 14:21:42">2025-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/27/%EF%BC%88%E4%B8%89%EF%BC%89%E5%AE%BD%E5%BA%A6%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8Em%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（三）宽度小于等于m的区间的“最大的和值”问题">（三）宽度小于等于m的区间的“最大的和值”问题</a><time datetime="2025-02-27T06:21:42.809Z" title="发表于 2025-02-27 14:21:42">2025-02-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 雪宝和七七的爸爸</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script src="/js/custom.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

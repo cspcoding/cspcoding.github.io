@@ -1,0 +1,590 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>栈的应用（1）括号匹配 | 宝爸编程</title><meta name="author" content="雪宝和七七的爸爸"><meta name="copyright" content="雪宝和七七的爸爸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、单种括号的简单匹配检验 1.1 P1739 1.1.1 原题链接 　　P1739 表达式括号匹配 1.1.2 分析 　　本题只需要分析左右小括号是否匹配，主要是看左括号的个数是否等于右括号的个数，且在从左往右扫描统计的过程中，随时要保证左括号的个数大于等于右括号的个数。本题并没有做其他更为复杂的小括号匹配操作（例如本题不考虑形如a(b-)c这种错误情况）。可以设计一个计数器cnt来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈的应用（1）括号匹配">
+<meta property="og:url" content="http://example.com/2025/02/27/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%881%EF%BC%89%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/index.html">
+<meta property="og:site_name" content="宝爸编程">
+<meta property="og:description" content="一、单种括号的简单匹配检验 1.1 P1739 1.1.1 原题链接 　　P1739 表达式括号匹配 1.1.2 分析 　　本题只需要分析左右小括号是否匹配，主要是看左括号的个数是否等于右括号的个数，且在从左往右扫描统计的过程中，随时要保证左括号的个数大于等于右括号的个数。本题并没有做其他更为复杂的小括号匹配操作（例如本题不考虑形如a(b-)c这种错误情况）。可以设计一个计数器cnt来">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2025-02-27T06:21:42.761Z">
+<meta property="article:modified_time" content="2025-02-27T06:21:42.761Z">
+<meta property="article:author" content="雪宝和七七的爸爸">
+<meta property="article:tag" content="信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/02/27/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%881%EF%BC%89%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '栈的应用（1）括号匹配',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-02-27 14:21:42'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/static/css/custom.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="宝爸编程"><span class="site-name">宝爸编程</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">栈的应用（1）括号匹配</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-27T06:21:42.761Z" title="发表于 2025-02-27 14:21:42">2025-02-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-27T06:21:42.761Z" title="更新于 2025-02-27 14:21:42">2025-02-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STL/">STL</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STL/%E6%A0%88/">栈</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STL/%E6%A0%88/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/">栈的应用</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="栈的应用（1）括号匹配"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一单种括号的简单匹配检验">一、单种括号的简单匹配检验</h1>
+<h2 id="p1739">1.1 P1739</h2>
+<h3 id="原题链接">1.1.1 原题链接</h3>
+<p>　　<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1739">P1739
+表达式括号匹配</a></p>
+<h3 id="分析">1.1.2 分析</h3>
+<p>　　本题只需要分析左右小括号是否匹配，主要是看左括号的个数是否等于右括号的个数，且在从左往右扫描统计的过程中，随时要保证左括号的个数大于等于右括号的个数。本题并没有做其他更为复杂的小括号匹配操作（例如本题不考虑形如<code>a(b-)c</code>这种错误情况）。可以设计一个计数器<code>cnt</code>来统计左括号的个数，遇到左括号就<code>cnt++</code>，遇到右括号就<code>cnt--</code>且查看是否出现<code>cnt&lt;0</code>，一旦出现则视为不匹配而立即结束，若扫描结束后<code>cnt</code>不为０也视为不匹配。该题很简单，入门级。</p>
+<h3 id="ac代码">1.1.3 AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">char</span> str[<span class="hljs-number">300</span>]; <br><span class="hljs-type">int</span> len, cnt;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-comment">//相信自己是最棒的！请在这里写新代码...</span><br>	cin &gt;&gt;str;<br>	len = <span class="hljs-built_in">strlen</span>(str);<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;len &amp;&amp; str[i]!=<span class="hljs-string">&#x27;@&#x27;</span>; i++)&#123;<br>		<span class="hljs-keyword">if</span> (str[i] == <span class="hljs-string">&#x27;(&#x27;</span>)<br>			cnt++;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str[i] == <span class="hljs-string">&#x27;)&#x27;</span>)	&#123;<br>			cnt--;<br>			<span class="hljs-keyword">if</span> (cnt&lt;<span class="hljs-number">0</span>)&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NO&quot;</span>);<br>				<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">if</span> (cnt != <span class="hljs-number">0</span>)<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NO&quot;</span>);<br>	<span class="hljs-keyword">else</span><br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;YES&quot;</span>);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="p3056-usaco12nov-clumsy-cows-s">1.2 P3056 [USACO12NOV] Clumsy
+Cows S</h2>
+<h3 id="原题链接-1">1.2.1 原题链接</h3>
+<p>　　<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3056">P3056
+[USACO12NOV] Clumsy Cows S</a></p>
+<p>　　大致题意：给出一个偶数长度的括号序列（字符串形式），问最少修改多少个括号可以使其平衡，并且左右括号要正确匹配。</p>
+<h3 id="分析-1">1.2.2 分析　</h3>
+<p>　　因为要求左右括号必须正确匹配，所以并不是计算个数那么简单了。每个括号的位置不同，答案也不一样，无法用什么数学方法来搞定，也肯定不能排序（会打乱括号的顺序，从而使得答案发生变化），所以只能去模拟。</p>
+<p>　　在模拟的时候，第一反应就是使用一个真实的栈（不论手写或者用STL的stack）去模拟左括号的进和出（“用两个栈分别存放左右括号”的另类做法是不可行的，会发现无法使用“出栈”操作）。如果输入的串是一个正确匹配的字符串，那么这种做法是可行的。但是根据题意，输入的字符串可能并不是一个正确匹配的字符串，模拟过程中可能会存在<font color="red">“需要出栈（串遇到右括号，需要把当前栈顶的左括号出栈）却没有数据可出栈（当前栈已为空）”的错误情况（例如串内容为“<span
+class="math inline">\(()))\)</span>”）</font>。当遇到这种情况，我们需要把当前的“)”视为"("并把"("进栈，这种修改需要记录次数，修改后进栈的"("应可以和后续的括号产生匹配。</p>
+<p>　　用真实的栈来模拟，主要通过是否存在上述的红色文字来判断和统计需要修改的次数。其实仔细思考可以发现，要想统计出现红色字体的次数，不一定非要用真实的栈才能做到，我们可以用更为简单的方式，同样也能达到目的，那就是不用栈，在扫描串的同时只需要设计一个计数器<code>leftsum</code>去统计<strong>尚未配对的"("的个数</strong>即可。<strong><font color="orange">当从左往右扫描时，若遇到串的"("就<code>leftsum++;</code>　；若遇到串的")"就尝试去做<code>leftsum--</code>，若减之前发现<code>leftsum==0</code>，说明之前所有的字符都已经匹配成功，没有多余的"("可和当前的")"来匹配，产生错误，此时应把处理策略改为<code>leftsum=1</code>（左侧的所有符号均已配对成功，需要把新入的")"改为"("，以备和后续可能出现的")"匹配），同时<code>ans++;</code></font></strong>。</p>
+<p>　　如果输入的串是一个正确匹配的括号串，那么这个计数器的值就会不断地在０和一些正数中变化，不会为负数。需要注意一点的是，这个策略是否能处理所有的出错情况呢？这个时候正确的做法是需要在草稿纸上尝试去精心枚举所有出错的具有代表性的样例，看看当前的策略是否能够全部处理好这些样例。因为配对的括号序列会让计数器的值恢复原值，对我们枚举错误样例并无贡献，反而会成为干扰项。所以建议同学们在草稿纸上写错误样例的时候，就不要去写能产生配对的括号序列了，例如单个的"()"或者"((()))"等。下面是所有无法匹配的括号序列（长度必为偶数，想想为什么？）：</p>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 21%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 8%" />
+<col style="width: 41%" />
+<col style="width: 3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>序号</th>
+<th style="text-align: center;">原串内容</th>
+<th style="text-align: center;">')'修改次数</th>
+<th style="text-align: center;">原串的)个数</th>
+<th style="text-align: center;">原串的(个数</th>
+<th style="text-align: center;">leftsum值结果</th>
+<th style="text-align: center;">修改后的结果</th>
+<th style="text-align: center;">答案</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(1)</td>
+<td style="text-align: center;">))))</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">４</td>
+<td style="text-align: center;">０</td>
+<td style="text-align: center;">leftsum=0</td>
+<td
+style="text-align: center;"><font color="red">(</font>)<font color="red">(</font>)</td>
+<td style="text-align: center;">ans=2</td>
+</tr>
+<tr class="even">
+<td>(2)</td>
+<td style="text-align: center;">((((((</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">０</td>
+<td style="text-align: center;">６</td>
+<td style="text-align: center;">leftsum=6</td>
+<td style="text-align: center;">(((<font color="orange">)))</font></td>
+<td style="text-align: center;">ans=3</td>
+</tr>
+<tr class="odd">
+<td>(3)</td>
+<td style="text-align: center;">)))(((((<span
+class="math inline">\(\quad奇数个右括号\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">３</td>
+<td style="text-align: center;">５</td>
+<td style="text-align: center;">leftsum=6</td>
+<td
+style="text-align: center;"><font color="red">(</font>)<font color="red">(</font>((<font color="orange">)))</font></td>
+<td style="text-align: center;">ans=5</td>
+</tr>
+<tr class="even">
+<td>(4)</td>
+<td style="text-align: center;">))))((((((<span class="math inline">\(\
+\ \  偶数个右括号\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">４</td>
+<td style="text-align: center;">６</td>
+<td style="text-align: center;">leftsum=6</td>
+<td
+style="text-align: center;"><font color="red">(</font>)<font color="red">(</font>)
+(((<font color="orange">))) </font></td>
+<td style="text-align: center;">ans=5</td>
+</tr>
+</tbody>
+</table>
+<p>可以发现，上面的后三种情况中<code>leftsum != 0</code>，这是因为左括号太多，没有足够的右括号与之匹配。可以按照情况２）来处理即可，即<font color="orange"><strong>在扫描结束后，把多余的“(”改成“)”即可，即有<code>ans= ans + lefusum/2</code></strong></font>。上面所有的橙色文字即为策略。</p>
+<h3 id="ac代码-1">1.2.3 AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> ans,i;<br><span class="hljs-type">int</span> leftsum; <span class="hljs-comment">// 表示尚未匹配成功的左括号的个数 </span><br>string s;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	cin&gt;&gt;s;<br>	<span class="hljs-type">int</span> lens=s.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//这样快 </span><br>	<span class="hljs-keyword">for</span>(;i&lt;lens;++i)&#123;<br>		<span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27;(&#x27;</span>)leftsum++;<span class="hljs-comment">//模拟栈 </span><br>		<span class="hljs-keyword">else</span>&#123;<br>			<span class="hljs-keyword">if</span>(leftsum)<br>			<span class="hljs-comment">//左右括号匹配成功，抵消一个左括号 </span><br>				--leftsum;<br>			<span class="hljs-keyword">else</span> <br>			<span class="hljs-comment">// 已无左括号与之匹配，需要修改当前的&quot;)&quot;为&quot;(&quot;，</span><br>			<span class="hljs-comment">// 以备后续能有机会配对上，别忘了各种+1</span><br>				++ans, leftsum=<span class="hljs-number">1</span>;<br>		&#125;<br>	&#125;<br>	ans+=leftsum&gt;&gt;<span class="hljs-number">1</span>;<span class="hljs-comment">//剩下的都是左括号的情况 ，要有一半变成右括号 </span><br>	cout&lt;&lt;ans; <br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="二多种括号的简单匹配检验">二、多种括号的简单匹配检验</h1>
+<h2 id="p10472-括号画家">2.1 P10472 括号画家</h2>
+<h3 id="原题链接-2">2.1.1 原题链接</h3>
+<p>　　<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P10472">P10472
+括号画家</a></p>
+<h3 id="分析-2">2.1.2 分析</h3>
+<p>　　题目要求录入一个混乱的只带有多种括号的字符串，要求检查并计算出其中最长的“合法”（即其内的括号是正确匹配的）子串的长度值。</p>
+<p>　　这种题怎么做呢？排序和贪心肯定是用不上的，顺序一乱就没法做了；右括号（不管是哪一种）肯定是就近匹配离它最近的左侧的左括号（种类要吻合），每个右括号都只有唯一的左括号与之匹配，并无多种匹配策略，所以贪心和深搜也用不上。<span
+class="math inline">\(dp\)</span>比较复杂，可能适合本题。模拟似乎也可以试试。思考一下之后觉得还是模拟起来可能比<span
+class="math inline">\(dp\)</span>简单点，故先尝试模拟。</p>
+<h4 id="方法一分析模拟-时间复杂度on空间复杂度on">2.1.2.1
+方法一分析：模拟　（时间复杂度<span
+class="math inline">\(O(n)\)</span>，空间复杂度<span
+class="math inline">\(O(n)\)</span>）</h4>
+<p>　　在从左往右扫描每个字符的过程中，如果遇到的是左括号，不管是哪一种，都先只记录下来。如果遇到的是右括号，则开始尝试去和事先记录的左括号内容匹配：若匹配失败，需要丢弃之前的所有计算成果，重新开始剩余子串的匹配；若匹配成功一对左右括号，则同步记录当前连续匹配成功的子串长度并刷新最大匹配长度。因为在右括号尝试去匹配左括号的时候，肯定会就近匹配，这就给我们用栈去模拟过程带来了机会，因为栈是先进后出的结构，最近的数据在栈顶位置。故而，我们可以设定一个栈<code>st</code>，专门用来保存需记录的左括号（为何没必要存右括号，想一下呢？）。在从左往右扫描的过程中，匹配策略如下：</p>
+<p>　　1）若遇到左括号，一律入栈；</p>
+<p>　　2）若遇到右括号，并且与当前栈顶符号正好是一对，则把这两个括号都标记为“匹配成功”，弹出栈顶的左括号（其已匹配，无需再存）；若与当前栈顶符号并不是一对，则说明当前字符已经匹配失败，之前存于栈中的所有左括号已无需再匹配（已经失败了，无用了），均应出栈，把栈清空，以备右侧的串内容重新开始。</p>
+<p>　　我们已经解决了匹配的方法，但如何求出最长的连续匹配长度呢？一个最简单（不排除存在其他做法，但该做法最简单易懂）的做法就是设置一个标记数组，记录每个位置上的字符是否匹配成功。至于最长的连续匹配长度？那就是该数组中连续的最长的值为<code>true</code>的区间长度而已。这个很容易搞定。</p>
+<p>　　上面讲述了模拟的方法，下面来看看<span
+class="math inline">\(dp\)</span>的方法。</p>
+<h4 id="方法二分析dp-时间复杂度on空间复杂度on">2.1.2.2
+方法二分析：dp　（时间复杂度<span
+class="math inline">\(O(n)\)</span>，空间复杂度<span
+class="math inline">\(O(n)\)</span>）</h4>
+<p>　　要想用<span
+class="math inline">\(dp\)</span>的方法，就必须要满足动态规划的两个要求（详情请见<a href="/2024/04/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/#jump1"><font color="red">这里</font></a>）：<strong>局部最优化原理</strong>和<strong>无后效性</strong>。从本题来看，每个右括号都会尝试只从最靠近它的未匹配的左括号去做匹配，这是唯一考虑的匹配对象，一旦不匹配则视为失败。当前<code>dp[i]</code>的决策细节、数组值不受后续数据的影响，且后续的决策与当前决策的细节无关（只和当前的<code>dp[i]</code>值有关）。所以理论上来说可以用<code>dp</code>来做。</p>
+<p>１）状态数组定义</p>
+<p>　　<code>dp[i]</code>表示以<code>s[i]</code>结尾的最长的括号匹配的连续子串的长度值</p>
+<p>２）所求目标</p>
+<p>　　<span
+class="math inline">\(max(dp[1..n])\)</span>（假设数据从１号位开始存储）</p>
+<p>３）状态转移方程</p>
+<p>　　转移方程比较复杂，不容易凭空想出。此时需要同学们拿出纸笔，在草稿纸上写出多个具备代表性的数据，研究对应的<code>dp[]</code>值的规律，总结出来转移方程。例图如下：</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/img/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%881%EF%BC%89%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D2.png" alt="image-20250106150349094" style="zoom:67%;" /></p>
+<p>在上图中尝试获取<code>dp[i]</code>的值，可以发现：</p>
+<p>１）如果<code>s[i]</code>是左括号（不管是哪一类的左括号），则必不可能与其左侧的任何符号匹配，所以有<code>dp[i]=0</code>；</p>
+<p>２）如果<code>s[i]</code>是右括号，则开始尝试匹配，具体的过程如下：</p>
+<p>　　ａ）首先，要找到应该与<code>s[i]</code>进行匹配考察的是哪个字符。从上图的４个例子可以看出，在<code>s[i]</code>左侧可能存在已匹配成功的子串（绿色）或为空。往左跨过绿色的字符子串后的第１个字符就是和<code>s[i]</code>进行匹配考察的字符。该跨多少个字符呢？正好就是绿色子串的长度，也是<code>dp[i-1]</code>的值。例如在图（ｄ）中，与<code>s[i]</code>对应的需进行匹配考察的字符是<span
+class="math inline">\(\textcolor[RGB]{255,0,0}{s[\ i-1\ -\ dp[i-1]\ ]}=
+s[i-1-4] =
+s[i-5]\)</span>；与<code>s[i-1]</code>对应的需进行匹配考察的字符是<span
+class="math inline">\(s[(i-1) -1 - dp[(i-1)-1]]=s[i-2-0] =
+s[i-2]\)</span>。</p>
+<p>　　ｂ）其次，在找到匹配考察的对象字符之后，开始匹配考察。</p>
+<p>　　　　＃）若不匹配，则<code>dp[i]=0</code></p>
+<p>　　　　＃）若匹配，以图（ｄ）为例来说，则有“匹配的最大长度＝红色字符个数＋绿串长度＋蓝串长度”，一般化后有<span
+class="math inline">\(dp[i] = 2\ +\ dp[i-1]\ +\ dp[\ i-2\ -dp[i-1]\
+]\)</span>。这就是本题的状态转移方程。</p>
+<p>４）循环边界和顺序</p>
+<p>　　ｉ从左往右，从２到ｎ</p>
+<p>５）特例和初始化值</p>
+<p>　　<code>dp[0]= 0;  dp[1]=0;</code>
+要想匹配成功，至少要２个字符，所以空串和单字符串都不存在成对的括号。</p>
+<h3 id="ac代码-2">2.1.3 AC代码</h3>
+<h3 id="方法１模拟">2.1.3.1 方法１：模拟</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//// 方法1，模拟 </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1e4</span>+<span class="hljs-number">10</span>;<br><span class="hljs-type">bool</span> flag[maxn];<br><span class="hljs-type">char</span> str[maxn];<br>stack&lt;<span class="hljs-type">int</span>&gt; st;<br><span class="hljs-type">int</span> ans, maxans;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-comment">// 从这里开始...</span><br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, str);<br>	<span class="hljs-type">int</span> len=<span class="hljs-built_in">strlen</span>(str);<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;len; i++) &#123;<br>		<span class="hljs-keyword">if</span> (str[i]==<span class="hljs-string">&#x27;(&#x27;</span> || str[i]==<span class="hljs-string">&#x27;&#123;&#x27;</span> || str[i]==<span class="hljs-string">&#x27;[&#x27;</span> ) st.<span class="hljs-built_in">push</span>(i);<br>		<span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-keyword">if</span> (st.<span class="hljs-built_in">size</span>() &amp;&amp; (str[st.<span class="hljs-built_in">top</span>()]==<span class="hljs-string">&#x27;(&#x27;</span> &amp;&amp; str[i]==<span class="hljs-string">&#x27;)&#x27;</span> || \<br>			                  str[st.<span class="hljs-built_in">top</span>()]==<span class="hljs-string">&#x27;[&#x27;</span> &amp;&amp; str[i]==<span class="hljs-string">&#x27;]&#x27;</span> || \<br>			                  str[st.<span class="hljs-built_in">top</span>()]==<span class="hljs-string">&#x27;&#123;&#x27;</span> &amp;&amp; str[i]==<span class="hljs-string">&#x27;&#125;&#x27;</span>) ) &#123;<br>				flag[i]=flag[st.<span class="hljs-built_in">top</span>()]=<span class="hljs-literal">true</span>;<br>				st.<span class="hljs-built_in">pop</span>();<br>			&#125; <br>			<span class="hljs-keyword">else</span> &#123;<br>				<span class="hljs-keyword">while</span> (st.<span class="hljs-built_in">size</span>())<br>					st.<span class="hljs-built_in">pop</span>();<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;len; i++) &#123;<br>		<span class="hljs-keyword">if</span> (flag[i]) &#123;<br>			ans++;<br>			maxans=<span class="hljs-built_in">max</span>(maxans, ans);<br>		&#125; <span class="hljs-keyword">else</span> ans=<span class="hljs-number">0</span>;<br>	&#125;<br>	cout &lt;&lt; maxans;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">[(&#123;&#125;&#123;&#125;)]](()]</span><br><span class="hljs-comment">8</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">[][]&#123;&#123;[[]]</span><br><span class="hljs-comment">4</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">[]&#123;[[]()]</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+<h3 id="方法二dp">2.1.3.2 方法二：dp</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//// 方法2，dp </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">char</span> s[<span class="hljs-number">10010</span>];<br><span class="hljs-type">int</span> ans,dp[<span class="hljs-number">10010</span>];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>,s+<span class="hljs-number">1</span>);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=<span class="hljs-built_in">strlen</span>(s+<span class="hljs-number">1</span>); i++)<br>		<span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27;(&#x27;</span>||s[i]==<span class="hljs-string">&#x27;[&#x27;</span>||s[i]==<span class="hljs-string">&#x27;&#123;&#x27;</span>)<br>			<span class="hljs-keyword">continue</span>; <span class="hljs-comment">// dp[i]=0; //左括号，做不做都是0 </span><br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( s[i]==<span class="hljs-string">&#x27;)&#x27;</span>&amp;&amp;s[i<span class="hljs-number">-1</span>-dp[i<span class="hljs-number">-1</span>]]==<span class="hljs-string">&#x27;(&#x27;</span> || \<br>		         s[i]==<span class="hljs-string">&#x27;]&#x27;</span>&amp;&amp;s[i<span class="hljs-number">-1</span>-dp[i<span class="hljs-number">-1</span>]]==<span class="hljs-string">&#x27;[&#x27;</span> || \<br>				 s[i]==<span class="hljs-string">&#x27;&#125;&#x27;</span>&amp;&amp;s[i<span class="hljs-number">-1</span>-dp[i<span class="hljs-number">-1</span>]]==<span class="hljs-string">&#x27;&#123;&#x27;</span> )&#123;<br>				 	<br>			dp[i] = dp[i<span class="hljs-number">-1</span>] + <span class="hljs-number">2</span> + dp[i<span class="hljs-number">-2</span>-dp[i<span class="hljs-number">-1</span>]];<br>			ans=<span class="hljs-built_in">max</span>(ans,dp[i]);<br>		&#125;<br>	cout&lt;&lt;ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="三单种括号的复杂匹配检验">三、单种括号的复杂匹配检验</h1>
+<h2 id="p3015-usaco11feb-best-parenthesis-s">3.1 P3015 [USACO11FEB] Best
+Parenthesis S</h2>
+<h3 id="原题链接-3">3.1.1 原题链接</h3>
+<p>　　<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3015">P3015
+[USACO11FEB] Best Parenthesis S</a></p>
+<h3 id="分析-3">3.1.2 分析</h3>
+<p>　　和P10472一样，着重在模拟和ｄｐ这两个方向上进行研究。下面先看模拟的方法。</p>
+<h4 id="方法1模拟">3.1.2.1 方法1：模拟</h4>
+<p>　　我们在草稿纸上尝试写一些数据，看看能不能从中找出一些规律，以便于简化计算过程。</p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 58%" />
+<col style="width: 16%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">序号</th>
+<th style="text-align: center;">串样例</th>
+<th style="text-align: center;">计算过程</th>
+<th style="text-align: center;">结算结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">(1)</td>
+<td style="text-align: center;"><span class="math inline">\((\ (\
+\textcolor[RGB]{255,180,0})\ (\ \textcolor[RGB]{255,180,0})\
+)\)</span></td>
+<td style="text-align: center;">(1+1)*2</td>
+<td style="text-align: center;">2+2=4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(2)</td>
+<td style="text-align: center;"><span class="math inline">\((\ (\
+\textcolor[RGB]{255,180,0})\ )\)</span></td>
+<td style="text-align: center;">1*2</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(3)</td>
+<td style="text-align: center;"><span class="math inline">\((\
+\textcolor[RGB]{255,180,0})\ \ (\ (\ \textcolor[RGB]{255,180,0})\
+)\)</span></td>
+<td style="text-align: center;">1+1*2</td>
+<td style="text-align: center;">1+2=3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(4)</td>
+<td style="text-align: center;"><span class="math inline">\((\ (\
+\textcolor[RGB]{255,180,0})\ )\ \ (\ \textcolor[RGB]{255,180,0})\ \ (\
+(\ \textcolor[RGB]{255,180,0})\ (\ \textcolor[RGB]{255,180,0})\
+)\)</span></td>
+<td style="text-align: center;">1*2+1+(1+1)*2</td>
+<td style="text-align: center;">2+1+2+2=7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(5)</td>
+<td style="text-align: center;"><span class="math inline">\((\
+\textcolor[RGB]{255,180,0})\ \ (\ (\ (\ (\ \textcolor[RGB]{255,180,0})\
+(\ \textcolor[RGB]{255,180,0})\ (\ \textcolor[RGB]{255,180,0})\ )\ )\
+)\)</span></td>
+<td style="text-align: center;">1+(1+1+1)*2*2*2</td>
+<td style="text-align: center;">1+(1+1+1)*8=1+8+8+8=25</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(6)</td>
+<td style="text-align: center;"><span class="math inline">\((\
+\textcolor[RGB]{255,180,0})\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>　　可以看出，“计算过程”中的每个“1”都和“串样例”中的黄色右括号相对应。而“计算过程”中的每个“*2”，都和“串样例”中的白色右括号相对应。并且，在计算过程中还需要注意层次的概念，同层的数据之间是“<strong>相加</strong>”的关系，初始时层次值<code>level=0</code>。每次遇到白色左括号就进入更深层次，有<code>level++</code>；每次遇到右括号的时候需要区别对待：1）若<code>s[i]</code>为黄色右括号（即<code>s[i]==')' &amp;&amp; s[i-1]=='('</code>），则有<code>level--, ans=ans + pow(2, level)</code>。因为本题需要取模运算，所以<strong>每次累加了<code>ans</code>之后别忘了及时取模，同时<code>pow(2,level)</code>也需要改写，加入取模运算，否则会爆<code>long long</code></strong>。2）若<code>s[i]</code>为白色右括号，则只有<code>level--</code>即可。</p>
+<p>　　本题的破题关键在于：１）<strong>要在草稿纸上耐心写样例，写计算过程，不能心急，不要跳步骤或过度省略</strong>，使得不方便总结出规律；２）<strong>要把计算过程进行拆解，就会发现答案其实是多个“２的若干次方”的累加和值</strong>。进一步可以发现其指数和所在层次有关。这样题就变得很简单了。</p>
+<h4 id="方法２ｄｐ">3.1.2.2 方法２：ｄｐ</h4>
+<p>　　若从ｄｐ的角度来看，本题实际上是满足“局部最优化原理”和“无后效性”这两个条件的。设<code>dp[i]</code>表示串<code>s[1..n]</code>的得分。若<code>s[i]=='('</code>，此时并不会产生新的分数，所以只需要<code>dp[i]=dp[i-1]</code>即可。若<code>s[i]==')'</code>，这个时候必然会产生分数的变化：若为"()"的情况(<code>s[i-1]=='('</code>)，则有<code>dp[i]=dp[i-1]+1</code>；若为"))"的情况（<code>s[i-1]==')'</code>），则意味着需要把当前层的得分翻倍（此时的得分并不准，因为尚未扫描结束，此时的串并不是完整匹配的一个串），然后继续往右扫描，直到最后一个')'被扫描后（此时的串是完整匹配的），翻倍的次数就准确了。</p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 18%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 18%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">表１</th>
+<th style="text-align: center;">１</th>
+<th style="text-align: center;">２</th>
+<th style="text-align: center;">３</th>
+<th style="text-align: center;">４</th>
+<th style="text-align: center;">５</th>
+<th style="text-align: center;">６</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">s[1:n]</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">dp[1:n]</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><font color="red">1</font></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><font color="red">3</font></td>
+<td
+style="text-align: center;"><font color="red">1</font>+(<font color="red">3</font>-<font color="red">1</font>)*2=5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 18%" />
+<col style="width: 2%" />
+<col style="width: 18%" />
+<col style="width: 43%" />
+<col style="width: 2%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">表２</th>
+<th style="text-align: center;">１</th>
+<th style="text-align: center;">２</th>
+<th style="text-align: center;">３</th>
+<th style="text-align: center;">４</th>
+<th style="text-align: center;">５</th>
+<th style="text-align: center;">６</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">s[1:n]</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">dp[1:n]</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><font color="red">1</font></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><font color="red">2</font></td>
+<td
+style="text-align: center;"><font color="red">1</font>+(<font color="red">2</font>-<font color="red">1</font>)*2=3
+<span class="math inline">\(\qquad\)</span>🐱‍🐉</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 18%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 18%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">表３</th>
+<th style="text-align: center;">１</th>
+<th style="text-align: center;">２</th>
+<th style="text-align: center;">３</th>
+<th style="text-align: center;">４</th>
+<th style="text-align: center;">５</th>
+<th style="text-align: center;">６</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">s[1:n]</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">dp[1:n]</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><font color="red">1</font></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><font color="red">3</font></td>
+<td
+style="text-align: center;"><font color="red">1</font>+(<font color="red">3</font>-<font color="red">1</font>)*2=5</td>
+</tr>
+</tbody>
+</table>
+<p>🐱‍🐉：这个３并不是s[1:8]的得分，因为s[1:7]并不是一个正确的串，只有s[1:2]和s[1:8]才是正确匹配的字符串，对应的<code>dp[2]</code>和<code>dp[8]</code>的值才是正确的。</p>
+<p>　　以表３为例，可以看出有一个问题需要解决，那就是：当计算<code>dp[8]</code>时，我如何去找红色１的下标位置，从而获得这个数据？我们知道<code>s[8]</code>和<code>s[3]</code>是配对的，而<code>dp[3]</code>正是我们要找的红１。我们可以借助一个栈结构来保存所有左括号在<code>s[]</code>中的下标值（遇到左括号就进栈，遇到右括号就出栈），从而帮助我们找到与每个右括号匹配的左括号的下标。这样就能轻松获得与８对应的３，从而获得<code>dp[3]</code>的值１了～～搞定！即有<code>dp[i]= dp[ st[top] ] + ( dp[i-1] - dp[ st[top] ] ) * 2 ;</code>。注意需要及时取模。</p>
+<h3 id="ac代码-3">3.1.3 AC代码</h3>
+<h4 id="方法１模拟-1">3.1.3.1 方法１：模拟</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//// 方法1：模拟 </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">1e5</span>+<span class="hljs-number">10</span>;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> MOD=<span class="hljs-number">12345678910LL</span>;<br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> a[maxn],level,ans;<br><span class="hljs-comment">// 要取余，否则会爆long long，所以只能单写幂函数 </span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">my2pow</span><span class="hljs-params">(<span class="hljs-type">int</span> level)</span></span>&#123;<br>	<span class="hljs-type">int</span> ans=<span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">while</span> (level--) ans=ans*<span class="hljs-number">2</span>%MOD;<br>	<span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-type">int</span> n;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)&#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a[i]);<br>		<span class="hljs-keyword">if</span>(a[i]==<span class="hljs-number">0</span>) <br>			level++;<br>		<span class="hljs-keyword">else</span> &#123;<br>			level--;<br>			<span class="hljs-keyword">if</span>(a[i<span class="hljs-number">-1</span>]==<span class="hljs-number">0</span>) <br>				ans=(<span class="hljs-type">long</span> <span class="hljs-type">long</span>)(ans+<span class="hljs-built_in">my2pow</span>(level))%MOD;<br>		&#125;<br>	&#125;<br>	cout&lt;&lt;ans%MOD;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="方法2dp">3.1.3.2 方法2：dp</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//// 方法2：dp </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">100005</span>;<br><span class="hljs-type">int</span> a[N],n,st[N],top;<br>ll ans[N],mod=<span class="hljs-number">12345678910</span>;<span class="hljs-comment">//记得取模long long </span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>		<span class="hljs-keyword">if</span>(a[i])&#123;<span class="hljs-comment">//右括号 </span><br>			<span class="hljs-keyword">if</span>( st[top]== i<span class="hljs-number">-1</span> )  <span class="hljs-comment">// &quot;()&quot;的情况 </span><br>				ans[i] = (ans[i<span class="hljs-number">-1</span>] + <span class="hljs-number">1</span>) % mod;<span class="hljs-comment">//分情况讨论 </span><br>			<span class="hljs-keyword">else</span>                 <span class="hljs-comment">// &quot;))&quot;的情况 </span><br>				ans[i] = ( ans[st[top]] + (ans[i<span class="hljs-number">-1</span>] -ans[st[top]] +mod) *<span class="hljs-number">2</span> %mod) %mod;<span class="hljs-comment">//前缀和思想求值 </span><br>			top--;<span class="hljs-comment">//记得把匹配的括号踢出栈 </span><br>		&#125;<br>		<span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">//左括号 </span><br>			ans[i] = ans[i<span class="hljs-number">-1</span>];<br>			st[++top]=i;<br>		&#125;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld&quot;</span>,ans[n]);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪宝和七七的爸爸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/02/27/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%881%EF%BC%89%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">http://example.com/2025/02/27/%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%881%EF%BC%89%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">宝爸编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/02/27/%EF%BC%88%E4%B8%89%EF%BC%89%E5%AE%BD%E5%BA%A6%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8Em%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（三）宽度小于等于m的区间的“最大的和值”问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">（三）宽度小于等于m的区间的“最大的和值”问题</div></div></a></div><div class="next-post pull-right"><a href="/2025/02/20/%E5%8D%95%E8%B0%83%E6%A0%88%E5%85%A5%E9%97%A8&amp;%E6%89%BE%E9%99%84%E8%BF%91%E6%9B%B4%E5%A4%A7%EF%BC%8F%E5%B0%8F%E5%80%BC/" title="单调栈入门&amp;找附近更大／小值"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">单调栈入门&amp;找附近更大／小值</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/02/GESP%E5%85%AB%E7%BA%A7%EF%BC%88202312-202412%EF%BC%89%E6%9C%AA%E5%AE%8C/" title="GESP八级（202312-202412）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-02</div><div class="title">GESP八级（202312-202412）</div></div></a></div><div><a href="/2024/04/25/LCS%E9%97%AE%E9%A2%98/" title="最长公共子序列（LCS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长公共子序列（LCS）问题</div></div></a></div><div><a href="/2024/07/31/dp%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E8%AE%AD%E7%BB%83/" title="dp中的状态转移训练"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-31</div><div class="title">dp中的状态转移训练</div></div></a></div><div><a href="/2024/04/25/LIS%E9%97%AE%E9%A2%98/" title="最长不下降子序列（LIS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长不下降子序列（LIS）问题</div></div></a></div><div><a href="/2020/03/13/hello/" title="我的第一篇博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-13</div><div class="title">我的第一篇博客</div></div></a></div><div><a href="/2024/03/06/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%92%8C%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" title="二分查找和二分答案"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-06</div><div class="title">二分查找和二分答案</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">雪宝和七七的爸爸</div><div class="author-info__description">本博客致力于信息学奥赛知识学习。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://cspcoding.github.io/"><i class="fab fa-github"></i><span>回到主页</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">玩游戏害人害己哦！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E5%8D%95%E7%A7%8D%E6%8B%AC%E5%8F%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%8C%B9%E9%85%8D%E6%A3%80%E9%AA%8C"><span class="toc-text">一、单种括号的简单匹配检验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#p1739"><span class="toc-text">1.1 P1739</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5"><span class="toc-text">1.1.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-text">1.1.2 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ac%E4%BB%A3%E7%A0%81"><span class="toc-text">1.1.3 AC代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p3056-usaco12nov-clumsy-cows-s"><span class="toc-text">1.2 P3056 [USACO12NOV] Clumsy
+Cows S</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5-1"><span class="toc-text">1.2.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-1"><span class="toc-text">1.2.2 分析　</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ac%E4%BB%A3%E7%A0%81-1"><span class="toc-text">1.2.3 AC代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%A4%9A%E7%A7%8D%E6%8B%AC%E5%8F%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%8C%B9%E9%85%8D%E6%A3%80%E9%AA%8C"><span class="toc-text">二、多种括号的简单匹配检验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#p10472-%E6%8B%AC%E5%8F%B7%E7%94%BB%E5%AE%B6"><span class="toc-text">2.1 P10472 括号画家</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5-2"><span class="toc-text">2.1.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-2"><span class="toc-text">2.1.2 分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%88%86%E6%9E%90%E6%A8%A1%E6%8B%9F-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6on%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6on"><span class="toc-text">2.1.2.1
+方法一分析：模拟　（时间复杂度\(O(n)\)，空间复杂度\(O(n)\)）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%88%86%E6%9E%90dp-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6on%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6on"><span class="toc-text">2.1.2.2
+方法二分析：dp　（时间复杂度\(O(n)\)，空间复杂度\(O(n)\)）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ac%E4%BB%A3%E7%A0%81-2"><span class="toc-text">2.1.3 AC代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%EF%BC%91%E6%A8%A1%E6%8B%9F"><span class="toc-text">2.1.3.1 方法１：模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8Cdp"><span class="toc-text">2.1.3.2 方法二：dp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E5%8D%95%E7%A7%8D%E6%8B%AC%E5%8F%B7%E7%9A%84%E5%A4%8D%E6%9D%82%E5%8C%B9%E9%85%8D%E6%A3%80%E9%AA%8C"><span class="toc-text">三、单种括号的复杂匹配检验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#p3015-usaco11feb-best-parenthesis-s"><span class="toc-text">3.1 P3015 [USACO11FEB] Best
+Parenthesis S</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E9%A2%98%E9%93%BE%E6%8E%A5-3"><span class="toc-text">3.1.1 原题链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90-3"><span class="toc-text">3.1.2 分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%951%E6%A8%A1%E6%8B%9F"><span class="toc-text">3.1.2.1 方法1：模拟</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%EF%BC%92%EF%BD%84%EF%BD%90"><span class="toc-text">3.1.2.2 方法２：ｄｐ</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ac%E4%BB%A3%E7%A0%81-3"><span class="toc-text">3.1.3 AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%EF%BC%91%E6%A8%A1%E6%8B%9F-1"><span class="toc-text">3.1.3.1 方法１：模拟</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%952dp"><span class="toc-text">3.1.3.2 方法2：dp</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/GESP%E5%85%AB%E7%BA%A7%EF%BC%88202312-202412%EF%BC%89%E6%9C%AA%E5%AE%8C/" title="GESP八级（202312-202412）">GESP八级（202312-202412）</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/%E5%A4%9A%E9%87%8D%E7%BB%84%E5%90%88%E6%95%B0%EF%BC%88%E6%9C%AA%E5%AE%8C%EF%BC%89/" title="多重组合数">多重组合数</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/%E7%9B%92%E5%AD%90%E6%94%BE%E7%90%83%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%AA%E5%AE%8C%EF%BC%89/" title="盒子放球的方案数问题">盒子放球的方案数问题</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/27/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%E4%B8%BAm%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（二）固定宽度为m的区间的“最大的和值”问题">（二）固定宽度为m的区间的“最大的和值”问题</a><time datetime="2025-02-27T06:21:42.811Z" title="发表于 2025-02-27 14:21:42">2025-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/27/%EF%BC%88%E4%B8%89%EF%BC%89%E5%AE%BD%E5%BA%A6%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8Em%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（三）宽度小于等于m的区间的“最大的和值”问题">（三）宽度小于等于m的区间的“最大的和值”问题</a><time datetime="2025-02-27T06:21:42.809Z" title="发表于 2025-02-27 14:21:42">2025-02-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 雪宝和七七的爸爸</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script src="/js/custom.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

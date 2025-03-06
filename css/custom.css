@@ -1,0 +1,22 @@
+/* 行内代码样式 */
+#article-container code:not(pre code) {
+  color: inherit !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+#article-container .code {
+  background-color: #3a3a3a !important; /* 代码区 */
+}
+/* 2. 强制内部文字/空格背景透明 */
+#article-container .code pre,
+#article-container .code code,
+#article-container .code .hljs,
+#article-container .code span {
+  background-color: transparent !important;
+}
+
+/* 调整代码块缩进为 4 空格 */
+#article-container .code pre {
+  tab-size: 4 !important;
+  -moz-tab-size: 4 !important; /* Firefox 兼容 */
+  -o-tab-size: 4 !important;   /* Opera 兼容 */
+}
