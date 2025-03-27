@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>冯诺依曼结构和五大基础部件 | 宝爸编程</title><meta name="author" content="雪宝和七七的爸爸"><meta name="copyright" content="雪宝和七七的爸爸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="１９４６年，第一台可编程的电子计算机ENIAC在美国正式发布，宣告人类进入计算机时代，但它并不是采用冯诺依曼结构的，修改功能需重新布线，效率低下。  　　此后不久（仍在１９４６年），美籍匈牙利数学家冯.诺依曼才正式公开提出了计算机“存储程序控制”的计算机设计理念：将计算机指令进行编码后存储在计算机的存储器中，需要的时候可以顺序地执行程序代码，从而控制计算机运行，这就是冯.诺依曼计算机体系的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="冯诺依曼结构和五大基础部件">
+<meta property="og:url" content="http://example.com/2025/03/24/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B6/index.html">
+<meta property="og:site_name" content="宝爸编程">
+<meta property="og:description" content="１９４６年，第一台可编程的电子计算机ENIAC在美国正式发布，宣告人类进入计算机时代，但它并不是采用冯诺依曼结构的，修改功能需重新布线，效率低下。  　　此后不久（仍在１９４６年），美籍匈牙利数学家冯.诺依曼才正式公开提出了计算机“存储程序控制”的计算机设计理念：将计算机指令进行编码后存储在计算机的存储器中，需要的时候可以顺序地执行程序代码，从而控制计算机运行，这就是冯.诺依曼计算机体系的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2025-03-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-27T06:07:30.489Z">
+<meta property="article:author" content="雪宝和七七的爸爸">
+<meta property="article:tag" content="信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/03/24/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '冯诺依曼结构和五大基础部件',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-03-27 14:07:30'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/static/css/custom.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="宝爸编程"><span class="site-name">宝爸编程</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">冯诺依曼结构和五大基础部件</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-23T16:00:00.000Z" title="发表于 2025-03-24 00:00:00">2025-03-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-27T06:07:30.489Z" title="更新于 2025-03-27 14:07:30">2025-03-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="冯诺依曼结构和五大基础部件"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>　　<font color="orange">１９４６</font>年，第一台可编程的电子计算机<strong>ENIAC</strong>在美国正式发布，宣告人类进入计算机时代，但它并不是采用冯诺依曼结构的，修改功能需重新布线，效率低下。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B62.png" alt="image-20250311084513123" style="zoom:80%;" /></p>
+<p>　　此后不久（仍在１９４６年），美籍匈牙利数学家<strong>冯.诺依曼</strong>才正式公开提出了计算机“存储程序控制”的计算机设计理念：<strong>将计算机指令进行编码后存储在计算机的存储器中，需要的时候可以顺序地执行程序代码，从而控制计算机运行</strong>，这就是冯.诺依曼计算机体系的开端。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B63.png" alt="image-20250311084621991" style="zoom:67%;" /></p>
+<h1 id="一.-冯.诺依曼体系结构的灵魂">一. 冯.诺依曼体系结构的灵魂</h1>
+<p>　　冯.诺依曼结构中，将程序和数据一样看待，<strong>将程序编码为数据，然后与数据一同存放在存储器中</strong>，这样计算机就可以调用存储器中的程序来处理数据了。意味着，无论什么程序，最终都是会转换为数据的形式存储在存储器中，要执行相应的程序只需要从存储器中依次取出指令、执行。<strong>这种设计思想导致了硬件和软件的分离，即硬件设计和程序设计可以分开执行！！！这就催生了程序员这个职业的诞生！！！</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">早期的计算机是由各种门电路组成的，这些门电路通过组装出一个固定的电路板，来执行一个特定的程序，一旦需要修改程序功能，就要重新组装电路板，所以早期的计算机程序是硬件化的！要知道，早期的计算机设计中，把程序作为这台计算机的控制器的一部分，这样的计算机计算效率低，灵活性较差。<br></code></pre></td></tr></table></figure>
+<p>　　概括的来讲，冯.诺依曼结构<font color="orange">将程序编码存储在存储器中，实现了可编程的计算机功能，实现了硬件设计和程序设计的分离</font>，大大促进了计算机的发展。</p>
+<p>　　例如：如果你要做一个简单的加减法功能，那么以往你需要设计好加减法的程序指令序列，把这些指令序列做成电路板，焊接在控制器里，使得这台计算机成为加减法计算机。但它却做不了乘除法或其他功能。若要做，则需要更换电路板，非常麻烦。而冯诺依曼指出，现在只需要做出不同的程序，存储到存储器里就可以了，计算机还是那台计算机，没变化，通过读取存储器里不同的指令来执行不同的运算功能，从而实现计算机在不同功能之间的自由更替。</p>
+<p>　　计算机的基本工作原理就是：<strong>"存储程序控制"的原理</strong>！</p>
+<h1 id="二.-冯.诺依曼结构的核心设计思想">二.
+冯.诺依曼结构的核心设计思想</h1>
+<p>　　核心设计思想主要体现在如下三个方面：</p>
+<p>　　１）程序和数据都是以二进制形式的，二进制编码也是计算机能够所识别和执行的编码。</p>
+<p>　　２）程序和数据在运行前都需要调入主（内）存储器中。</p>
+<p>　　３）<font color="orange">确定了计算机的五个基本组成部分：运算器、控制器、存储器、输入设备、输出设备</font>。（注意，硬盘不是必须部分）</p>
+<h1 id="三.-计算机的五大基本组成部分">三. 计算机的五大基本组成部分</h1>
+<h2 id="运算器">3.1 <font color="red">运</font>算器</h2>
+<p>　　注意，不是你桌上的那个“计算器”！！</p>
+<p>　　运算器的主要部件就是算术逻辑单元（Arithmetic Logic
+Unit，<font color="orange">ALU</font>），运算器的处理对象是数据，<strong>主要对数据进行算术运算，或者逻辑运算，有点像人的大脑中专门负责思考、推演和运算的那个部位</strong>。数据的长度以及数据的表示方法，对运算器的影响很大。大多数通用计算机是以16、32、64位数据作为运算器一次处理数据的长度。关于“位”的概念，后续再来介绍。同学们目前只需要知道，64位的运算器是现在的主流，其处理能力肯定比32位、16位的更强大就行了。</p>
+<h2 id="控制器">3.2 控制器</h2>
+<p>　　控制器又称为控制单元（Control
+Unit），是计算机的指挥中心，有点像人的大脑中的神经中枢。人需要用神经中枢来控制自己的思考行为、运动行为等。对于计算机，只有得到了控制器的命令后，运算器和其他部件才会相互协作，共同完成一些稍微复杂的功能，例如计算数据、运行程序、控制输入输出等。控制器会对运算器、输入设备、输出设备及存储器等其他主要部件进行控制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">控制器的工作流程为：从内存中取指令、翻译指令、分析指令，然后根据指令的内存向计算机的其他有关部件发送控制命令，控制相关部件执行指令所包含的操作。<br></code></pre></td></tr></table></figure>
+<p>　　<strong><font color="orange">控制器</font>和<font color="orange">运算器</font>共同组成<font color="red">中央处理器（Central
+Processing
+Unit）</font>，CPU是一块超大规模集成电路，是计算机运算核心和控制核心，CPU的主要功能是解释计算机指令以及处理数据。</strong></p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B61.png" alt="冯诺依曼结构和五大基础部件1" style="zoom: 50%;" /></p>
+<p>　　</p>
+<p>　　以CPU的设计与制造为代表的芯片制造业，属于“工业王冠上的宝珠”。其涉及光刻机、纳米级工艺、材料科学等前沿技术，是现代信息工业的核心。<strong>目前世界上主流的基于ｘ８６架构（主要针对计算机端）的CPU设计和制造厂商是美国的<font color="orange">Intel</font>和<font color="orange">AMD</font>这两家公司，基于ａｒｍ架构（主要针对手机端）的芯片设计厂商是美国的<font color="pink">高通（Android手机，高端）、苹果公司（iOS手机，高端）、中国台湾的联发科（中低端）</font>。另外，<font color="red">韩国三星集团和中国的华为</font>也具有部分设计和制造能力。</strong>中国台湾省的<font color="yellow">台积电</font>公司是全球最大的芯片制造公司，它没有设计能力，只负责制造，为美、中（2020年9月前）、韩等国家的芯片设计企业制造芯片。</p>
+<p>　　制造CPU需要非常高的科技工业水平，其中一个重要环节就是光刻机。高端光刻机基本上被荷兰的ASML公司一家垄断，为了打压中国的高科技产业，美国唆使和威胁荷兰的ASML公司不卖高端光刻机给中国，并勒令台湾的台积电公司不给中国制造芯片，（请同学们记住这些坏人！）严重影响中国以华为为首的一些高科技公司的发展。目前华为已经自主制造出了麒麟９０００系列的CPU，实现了从无到有的重大突破，追上了国外的中上水平，正在朝顶尖水平追赶（截止２０２４年）。自力更生，才是王道！</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E8%A1%97%E5%A4%B4%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B64.png" alt="image-20250311093619346" style="zoom: 50%;" /></p>
+<p>　　另外，目前随着人工智能的发展，有两个新兴的计算类的部件很火，简单介绍如下：</p>
+<p>１）GPU：图形处理单元（Graphic Process
+Unit），位于显卡上的计算部件，并非计算机的五大基础部件，早期用于图形渲染，后来发现它非常适合于AI计算，所以现在大量用于人工智能的大模型的运算，目前全世界最大最厉害的设计和制造厂商是美国的英伟达（Nvidia）公司。中国的中芯国际在奋起直追。</p>
+<h2 id="存储器">3.3 存储器</h2>
+<p>　　存储器的主要功能是存储各种数据或程序，并且能够在计算机运行过程完成各种数据的存储。程序和数据都要转换为二进制代码才可以存储和操作。关于二进制，后面单独发帖来介绍。</p>
+<p>　　存储器可以分为<strong>内部存储器（即内存，或称主存）</strong>和<strong>外部存储器（即外存，或称辅存）</strong>，俩者在计算机系统中各有用处，下面大概介绍一下俩种存储器的特点：</p>
+<h3 id="内存">3.3.1 内存</h3>
+<p>　　<strong>所有的程序都必须要在内存中才能运行</strong>。<strong>内存中的内容，在断电后会全部消失，并不能长期存储</strong>。内存的大小是制约一台计算机综合运行速度快慢的重要因素之一，也是最容易实现和性价比高的提速方式。（买一根内存条来插到电脑主板上就可以了）内存越大，代表了这台计算机同时能处理的程序越多（例如可以一边听着音乐，一边写ｗｏｒｄ文档，一边还播放着卡通片，一边还下载着大文件。当然，CPU的处理能力也是电脑快慢的另一个重要制约因素）。</p>
+<p>　　如果把内存比喻成你的书桌的话，那当你在书桌前处理事情时，桌子越大，能摆放的临时必需品就越多，用起来自然会更方便，不需要频繁腾挪地方。</p>
+<h4 id="内存与地址">3.3.1.1 内存与地址</h4>
+<p>　　不管是内存或者外存，程序和数据都是以二进制代码的形式存储在其中的。在内存中，信息以字节（Byte，B）为单位（1Byte=8bit）进行存储，每个字节都有唯一的一个内存地址。<strong>字节（Byte）是存储的最小单位</strong>
+，但<strong>位（bit）是计算机中最小的数据单位</strong>。这就好比每个人的住址是以房子为单位来记录的，每个房子都有一个地址，例如“XXX市XX区XX街道XX小区XX栋101号”。我们家里的厨房、客厅这些房间是没有地址的，地址只编排到整套房子，不编排到房内的某个房间。内存地址代表的是一个字节（Byte）的位置，而非单个位（bit）的位置。例如0x00FF3B20（32位，16进制）这个内存地址，根据它，计算机能定位到内存中的某一个字节，对其进行读或者写，但肯定是整个字节的８个位bit都读出来或者写进去，无法做到“只读/写其中某一个bit”。</p>
+<figure>
+<img
+src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B66.png"
+alt="image-20250322111301752" />
+<figcaption aria-hidden="true">image-20250322111301752</figcaption>
+</figure>
+<h4 id="内存与多级高速缓存">3.3.1.2 内存与多级高速缓存</h4>
+<p>　　CPU的运行速度极快，但内存的读写速度相对来说要慢不少。为了解决CPU和内存速度不匹配的问题，应该尽可能减少CPU直接读写内存的次数，一种有效的方法是在CPU和内存之间设置一种高速缓冲存储器Cache。
+Cache是一个高速的小容量存储器（单独的部件），其中存放的是CPU近期执行过的指令和数据，其存取速度可以和CPU的速度匹配。这种缓冲存储的机制，还可以设计成多级结构。</p>
+<p>　　这就好比现在有个图书馆，有很多人来借书还书，有些书是热门书，经常被借还。如果每次借还都要去后台庞大的书库中去查找和存取，可能会非常耽误时间。于是管理员就想到了一个简单方法，在前台摆一个不大的书架，把一些刚还回来的热门书籍放在其中。每次同学来借书时，管理员先在这个书架上找，如果没有需要的书籍，这个时候才去后台书库里去找。这样就减少了去后台书库的次数，提高了效率。这就是缓冲存储的基本原理。</p>
+<p>　　缓冲存储这个原理之所以正确，是因为“热门图书‘往往会持续一段时间，不可能”这十分钟这些书很热门而下一个十分钟它们忽然就不热门了“。计算机在执行程序时，同样是类似的道理。</p>
+<p>　　１）从运行速度和单位成本上来看，CPU　&gt;　一级缓存　&gt;　二级缓存　&gt;　内存　&gt;　外存；</p>
+<p>　　２）从容量上来说：　　　　　　　CPU　&lt;　一级缓存　&lt;　二级缓存　&lt;　内存　&lt;　外存；</p>
+<h4 id="存储器分类">3.3.1.3 存储器分类</h4>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B67.png" alt="image-20250322160505837" style="zoom:80%;" /></p>
+<p>　　上面的内容，只是归纳了RAM和ROM这两个大类，对于外存的技术并没有归纳在其中。需要注意的是：<font color="orange">ROM既不是内存，也不属于外存；高速缓存虽然位于CPU中，但是从技术原理分类上来说，它是隶属于主存的</font>。</p>
+<h3 id="外存">3.3.2 外存</h3>
+<p>　　内存在断电后，其内部的所有数据都会全部消失；在下一次开机后重新加载相关数据和程序到内存。那如果要长期保存数据和程序，该怎么办呢？这个时候就需要用到外存了。</p>
+<p>　　内存像你的书桌，只在每次你学习或工作时临时摆放你当前所需的书本等，而外存就好象你的书柜或者书架，能够长期存储你的所有书籍。每次你学习时，从书柜或者书架上取下相关的书，放在书桌上摊开，进行学习。</p>
+<p>　　外存的容量大，断电后也不消失，适合长期存储用户的程序和数据。</p>
+<p>　　计算机外存的发展就像一场“存储革命”，看看它是如何变强的：</p>
+<ul>
+<li><p><strong>古代存储</strong> （1940-1960年代）：</p>
+<ul>
+<li><p>穿孔卡片 ：用打孔表示数据，像古老的密码信</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B68.png" alt="image-20250324095007186" style="zoom: 67%;" /></p></li>
+<li><p>磁鼓和磁带 ：早期计算机用它们存数据，但速度慢得像蜗牛爬。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B69.png" alt="image-20250324095302408" style="zoom:67%;" /></p></li>
+</ul></li>
+<li><p><strong>近代突破</strong> （1970-2000年代）：</p>
+<ul>
+<li><p>软盘 （Floppy
+Disk）：像一张黑色小圆片，容量仅1.44MB（存不下一首高清歌曲），内部是磁性物质。</p>
+<figure>
+<img
+src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B610.png"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure></li>
+<li><p>光盘和机械硬盘
+：CD、DVD等光盘容量大，但属于一次性写入的产品，不支持反复写入，所以常用于保存海量历史数据，存于仓库。而机械硬盘利用磁性物质，支持反复多次写入，但内部构造精密，不宜颠簸，常用于台式计算机的主要外存。</p></li>
+</ul></li>
+<li><p><strong>现代黑科技</strong> （2010年至今）：</p>
+<ul>
+<li><p>优盘（USB闪存（Flash
+Memory）盘，也称U盘）：早期容量只有几百兆，现在已经可以做到几个T。速度介于机械硬盘和光盘之间，主要外插在计算机的USB接口上，常用于便携性少量数据的临时存储。</p></li>
+<li><p>SD卡：也采用了闪存技术（Flash
+Memory）技术，体积小，容量小，速度一般，常用于便携性设备中，例如手机或者单反相机等。</p></li>
+<li><p>SSD固态硬盘
+：速度是机械硬盘的几十倍，开机只需几秒钟，可以内插在主板上，也可以通过USB或者Type-C接口外插于电脑上，常用于大量数据的便携性临时存储。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B611.png" alt="image-20250324101545913" style="zoom:67%;" /></p></li>
+<li><p>云存储
+：Internet高速网络时代的产物，用户把数据通过高速的Internet网络存于大型企业专门开设的数据中心里保存，再也不怕电脑坏了丢失数据。（阿里云、腾讯云（国内网站），github（国外网站））</p></li>
+</ul></li>
+<li><p><strong>未来技术趋势</strong> （不要求掌握）：</p></li>
+</ul>
+<p>　　传统硬盘（HDD）和固态硬盘（SSD）仍会主导市场，但以下技术可能颠覆行业：</p>
+<ul>
+<li><p>FRAM（铁电存储器）：兼具高速读写、低功耗和高寿命的特点，未来可能在物联网设备和可穿戴设备中广泛应用。</p></li>
+<li><p>量子存储
+：利用量子态存储数据，理论上可实现超大容量和绝对安全的存储，但技术成熟度仍需时间
+。</p></li>
+<li><p>DNA存储
+：通过生物分子存储数据，1克DNA可存储数亿GB数据，适合长期冷存储
+。</p></li>
+</ul>
+<h2 id="输入设备">3.4 输入设备</h2>
+<p>　　输入设备的基本作用，就是让计算机获得外界传来的各种形式的信息，或者人类的指令。输入设备的技术迭代，涉及到了物理、化学、生物、材料科学等方面的最新技术。</p>
+<h3 id="发展历史">3.4.1 发展历史</h3>
+<ol type="1">
+<li><p><strong>早期阶段（1940-1960年代）</strong></p>
+<p>　　　　输入设备以<strong>机械式工具</strong>
+为主，如打孔卡和纸带，通过物理穿孔记录数据。例如，早期计算机使用打孔卡输入指令，数据通过光电传感器读取。这种方式效率低、易出错，需人工手动操作。</p></li>
+<li><p><strong>键盘与鼠标的普及（1970-1990年代）</strong></p>
+<p>　　　　随着个人计算机（如IBM PC）的兴起，<strong>键盘</strong>
+成为主流文本输入工具，<strong>鼠标</strong>
+（由道格拉斯·恩格尔巴特发明）则革新了图形界面交互方式。（1984年苹果Macintosh首次标配鼠标，推动图形化操作系统的普及）</p></li>
+<li><p><strong>多元化交互时代（2000年至今）</strong></p>
+<p>　　　　输入设备向<strong>智能化、多样化</strong>
+发展，触摸屏（如智能手机）、语音助手、摄像头（手势识别）和生物识别（指纹、面部识别）逐渐普及。</p></li>
+</ol>
+<h3 id="输入设备分类">3.4.2 输入设备分类</h3>
+<p>　　　　根据功能和形态，输入设备可分为以下类别：</p>
+<ol type="1">
+<li><p><strong>传统输入设备</strong></p>
+<ul>
+<li><p><font color="orange"><strong>键盘
+、鼠标</strong></font>（有线／wifi／蓝牙）
+、<font color="orange"><strong>扫描仪</strong></font>
+（将纸质文档转换为数字图像）。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B613.png" alt="image-20250324110450801" style="zoom:67%;" /></p></li>
+</ul></li>
+<li><p><strong>智能交互设备</strong></p>
+<ul>
+<li><p><font color="orange"><strong>触摸屏</strong></font>
+：支持多点触控，广泛应用于手机、平板和公共终端。<strong>（既是输入设备，也是输出设备）</strong></p></li>
+<li><p>语音输入设备
+：如<font color="orange"><strong>麦克风</strong></font>
+，结合语音识别技术实现自然语言交互。</p></li>
+<li><p>生物识别设备
+：<font color="orange"><strong>指纹传感器</strong></font>
+、面部识别<font color="orange"><strong>摄像头</strong></font>
+，用于身份验证（已是最近十多年的笔记本电脑的标配设备）。</p></li>
+</ul></li>
+<li><p><strong>专业领域设备</strong></p>
+<ul>
+<li><p><font color="orange"><strong>游戏手柄</strong></font>
+：专为游戏设计，支持多按键和体感操作。</p></li>
+<li><p><font color="orange"><strong>数据手套</strong></font>
+：用于虚拟现实（VR）中的手势输入，你买的跳舞毯也有低配版的类似设备。</p></li>
+<li><p><font color="orange"><strong>三维扫描仪</strong></font>：用于快速的３Ｄ建模。</p></li>
+<li><p><font color="orange"><strong>扫码仪</strong></font>：用于二维码或者其他码条信息的快速输入。</p>
+<figure>
+<img
+src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B614.png"
+alt="image-20250324111139669" />
+<figcaption aria-hidden="true">image-20250324111139669</figcaption>
+</figure></li>
+</ul></li>
+</ol>
+<h3 id="未来趋势不局限期待你来开创新的趋势">3.4.3
+未来趋势（不局限，期待你来开创新的趋势）</h3>
+<ol type="1">
+<li><strong>自然化交互</strong>
+<ul>
+<li><p>语音与手势控制
+：优化语音识别和手势追踪精度，减少对物理设备的依赖。——一声令下，大手一挥，事成！</p></li>
+<li><p>脑机接口（BCI）：尝试直接通过生物的脑电波让计算机得到输入的指令信息——心想，则事成！</p></li>
+</ul></li>
+<li><strong>低功耗与微型化</strong>
+<ul>
+<li><p>嵌入式传感器
+：在物联网设备中，输入设备趋向低功耗设计（如蓝牙5.0键盘）——机器人的触觉、痛觉等“神经”系统</p></li>
+<li><p>柔性电子技术
+：可折叠键盘、屏幕内嵌传感器的柔性设备。（华为目前已经生产出折叠屏，但质量还需迭代）</p></li>
+</ul></li>
+<li><strong>安全增强</strong>
+<ul>
+<li><p>生物识别升级
+：静脉识别、虹膜扫描等更高安全性技术的应用。</p></li>
+<li><p>防伪技术
+：防止生物特征被伪造（如3D结构光面部识别）——小心“双胞胎”。</p></li>
+</ul></li>
+</ol>
+<h2 id="输出设备">3.5 输出设备</h2>
+<h3 id="发展历史-1">3.5.1 发展历史</h3>
+<ol type="1">
+<li><p><strong>早期阶段（1940-1960年代）</strong></p>
+<p>　　计算机输出设备以<strong>机械式输出</strong>
+为主，典型设备包括<strong>穿孔卡片打印机</strong>
+和<strong>电传打字机</strong>
+。输出内容以纸质形式呈现，如打孔卡或打印报表。局限性是速度慢、噪音大，仅适用于专业场景。</p></li>
+<li><p><strong>显示技术的突破（1970-1990年代）</strong></p>
+<ul>
+<li><p>CRT显示器 的普及推动了图形化输出的发展，成为计算机标配。</p></li>
+<li><p>打印机技术革新
+：从针式打印机到喷墨打印机、激光打印机，输出质量大幅提升。</p></li>
+<li><p>专用输出设备
+：如绘图仪（用于工程图纸）和语音合成器（早期AI实验）开始出现。</p></li>
+</ul></li>
+<li><p><strong>多元化与智能化（2000年至今）</strong></p>
+<ul>
+<li><p>显示设备
+：液晶显示器（LCD）、OLED屏幕取代CRT，支持触控和高分辨率。</p></li>
+<li><p>新型输出形式
+：3D打印机、全息投影、智能音箱等扩展了输出维度。</p></li>
+<li><p>集成化趋势
+：输出设备与输入设备融合，如触控屏同时支持输入和输出。</p></li>
+</ul></li>
+</ol>
+<h3 id="分类">3.5.2 分类</h3>
+<p>　　根据功能和技术特点，输出设备可分为以下类别：</p>
+<ol type="1">
+<li><p><strong>传统输出设备</strong></p>
+<ul>
+<li><p><font color="orange"><strong>打印机</strong></font>
+：包括<strong>针式、喷墨、激光</strong>打印机，用于纸质文档输出。</p></li>
+<li><p><font color="orange"><strong>显示器</strong></font>
+：CRT显示器、液晶显示器等，显示文本、图像和视频。</p></li>
+<li><p><font color="orange"><strong>绘图仪</strong></font>
+：用于工程制图或艺术设计，输出高精度图纸。</p>
+<figure>
+<img
+src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B615.png"
+alt="image-20250324114638739" />
+<figcaption aria-hidden="true">image-20250324114638739</figcaption>
+</figure></li>
+</ul></li>
+<li><p><strong>智能与多媒体输出设备</strong></p>
+<ul>
+<li><p><font color="orange"><strong>音箱</strong></font>
+：把电信号转变成声波，让人的耳朵听得见。</p></li>
+<li><p><font color="orange"><strong>投影仪</strong></font>
+：支持大屏显示，广泛应用于教育和会议场景。</p></li>
+<li><p><font color="orange"><strong>3D打印机</strong></font>
+：将数字3D模型转化为实体物体，应用于制造业和医疗领域。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B616.png" style="zoom:67%;" /></p></li>
+</ul></li>
+<li><p><strong>专用输出设备</strong></p>
+<ul>
+<li><p><strong>磁记录设备</strong>
+：如磁带机，用于早期数据备份。</p></li>
+<li><p><strong>虚拟现实（VR）设备</strong>
+：如头戴式显示器，提供沉浸式视觉输出。</p></li>
+</ul></li>
+</ol>
+<h3 id="未来技术趋势">3.5.3 未来技术趋势</h3>
+<ol type="1">
+<li><ul>
+<li><p>MicroLED／OLED技术
+：提升显示细腻度和能效，柔性屏幕支持可折叠设备。</p></li>
+<li><p>全息投影 ：无需屏幕的立体影像输出技术逐步商业化。</p>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B617.png" style="zoom:80%;" /></p></li>
+</ul></li>
+</ol>
+<h2 id="五大部件之间的关系">3.6 五大部件之间的关系</h2>
+<p><img src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B620.png" alt="image-20250324162950976" style="zoom:50%;" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪宝和七七的爸爸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/03/24/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B6/">http://example.com/2025/03/24/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">宝爸编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/03/20/int8_t-bitset-%E5%8E%9F%E5%8F%8D%E8%A1%A5%E7%A0%81%E5%92%8C%E7%A7%BB%E4%BD%8D%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/" title="int8_t-bitset-原反补码和移位操作详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">int8_t-bitset-原反补码和移位操作详解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/02/GESP%E5%85%AB%E7%BA%A7%EF%BC%88202312-202412%EF%BC%89%E6%9C%AA%E5%AE%8C/" title="GESP八级（202312-202412）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-02</div><div class="title">GESP八级（202312-202412）</div></div></a></div><div><a href="/2024/04/25/LCS%E9%97%AE%E9%A2%98/" title="最长公共子序列（LCS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长公共子序列（LCS）问题</div></div></a></div><div><a href="/2024/04/25/LIS%E9%97%AE%E9%A2%98/" title="最长不下降子序列（LIS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长不下降子序列（LIS）问题</div></div></a></div><div><a href="/2024/07/31/dp%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E8%AE%AD%E7%BB%83/" title="dp中的状态转移训练"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-31</div><div class="title">dp中的状态转移训练</div></div></a></div><div><a href="/2020/03/13/hello/" title="我的第一篇博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-13</div><div class="title">我的第一篇博客</div></div></a></div><div><a href="/2025/03/20/int8_t-bitset-%E5%8E%9F%E5%8F%8D%E8%A1%A5%E7%A0%81%E5%92%8C%E7%A7%BB%E4%BD%8D%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/" title="int8_t-bitset-原反补码和移位操作详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-20</div><div class="title">int8_t-bitset-原反补码和移位操作详解</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">雪宝和七七的爸爸</div><div class="author-info__description">本博客致力于信息学奥赛知识学习。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://cspcoding.github.io/"><i class="fab fa-github"></i><span>回到主页</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">玩游戏害人害己哦！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80.-%E5%86%AF.%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E7%9A%84%E7%81%B5%E9%AD%82"><span class="toc-text">一. 冯.诺依曼体系结构的灵魂</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C.-%E5%86%AF.%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E7%9A%84%E6%A0%B8%E5%BF%83%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3"><span class="toc-text">二.
+冯.诺依曼结构的核心设计思想</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89.-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E4%BA%94%E5%A4%A7%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-text">三. 计算机的五大基本组成部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E5%99%A8"><span class="toc-text">3.1 运算器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-text">3.2 控制器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-text">3.3 存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98"><span class="toc-text">3.3.1 内存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%B8%8E%E5%9C%B0%E5%9D%80"><span class="toc-text">3.3.1.1 内存与地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%B8%8E%E5%A4%9A%E7%BA%A7%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98"><span class="toc-text">3.3.1.2 内存与多级高速缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E5%88%86%E7%B1%BB"><span class="toc-text">3.3.1.3 存储器分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E5%AD%98"><span class="toc-text">3.3.2 外存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87"><span class="toc-text">3.4 输入设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-text">3.4.1 发展历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87%E5%88%86%E7%B1%BB"><span class="toc-text">3.4.2 输入设备分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E6%9D%A5%E8%B6%8B%E5%8A%BF%E4%B8%8D%E5%B1%80%E9%99%90%E6%9C%9F%E5%BE%85%E4%BD%A0%E6%9D%A5%E5%BC%80%E5%88%9B%E6%96%B0%E7%9A%84%E8%B6%8B%E5%8A%BF"><span class="toc-text">3.4.3
+未来趋势（不局限，期待你来开创新的趋势）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87"><span class="toc-text">3.5 输出设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2-1"><span class="toc-text">3.5.1 发展历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-text">3.5.2 分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E6%9D%A5%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF"><span class="toc-text">3.5.3 未来技术趋势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%A4%A7%E9%83%A8%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">3.6 五大部件之间的关系</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/24/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B6/" title="冯诺依曼结构和五大基础部件">冯诺依曼结构和五大基础部件</a><time datetime="2025-03-23T16:00:00.000Z" title="发表于 2025-03-24 00:00:00">2025-03-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/20/int8_t-bitset-%E5%8E%9F%E5%8F%8D%E8%A1%A5%E7%A0%81%E5%92%8C%E7%A7%BB%E4%BD%8D%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/" title="int8_t-bitset-原反补码和移位操作详解">int8_t-bitset-原反补码和移位操作详解</a><time datetime="2025-03-20T13:12:21.000Z" title="发表于 2025-03-20 21:12:21">2025-03-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/GESP%E5%85%AB%E7%BA%A7%EF%BC%88202312-202412%EF%BC%89%E6%9C%AA%E5%AE%8C/" title="GESP八级（202312-202412）">GESP八级（202312-202412）</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/%E7%9B%92%E5%AD%90%E6%94%BE%E7%90%83%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%AA%E5%AE%8C%EF%BC%89/" title="盒子放球的方案数问题">盒子放球的方案数问题</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/27/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%E4%B8%BAm%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（二）固定宽度为m的区间的“最大的和值”问题">（二）固定宽度为m的区间的“最大的和值”问题</a><time datetime="2025-02-27T06:21:42.811Z" title="发表于 2025-02-27 14:21:42">2025-02-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 雪宝和七七的爸爸</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script src="/js/custom.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
