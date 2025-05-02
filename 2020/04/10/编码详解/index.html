@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编码详解 | 宝爸编程</title><meta name="author" content="雪宝和七七的爸爸"><meta name="copyright" content="雪宝和七七的爸爸"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、现代编码模型 　　在现代编码模型里要知道一个字符如何映射成计算机里比特，需要经过如下几个步骤： 　　１．知道一个系统需要支持哪些字符，这些字符的集合被称为字符表（Character repertoire）。 　　２．给字符表里的抽象字符编上一个数字，也就是字符集合到一个整数集合的映射。这种映射称为编码字符集（CCS：Coded Character Set）。Unicode编码就是属">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编码详解">
+<meta property="og:url" content="http://example.com/2020/04/10/%E7%BC%96%E7%A0%81%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="宝爸编程">
+<meta property="og:description" content="一、现代编码模型 　　在现代编码模型里要知道一个字符如何映射成计算机里比特，需要经过如下几个步骤： 　　１．知道一个系统需要支持哪些字符，这些字符的集合被称为字符表（Character repertoire）。 　　２．给字符表里的抽象字符编上一个数字，也就是字符集合到一个整数集合的映射。这种映射称为编码字符集（CCS：Coded Character Set）。Unicode编码就是属">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2020-04-10T01:12:21.000Z">
+<meta property="article:modified_time" content="2025-04-12T05:08:23.436Z">
+<meta property="article:author" content="雪宝和七七的爸爸">
+<meta property="article:tag" content="信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/04/10/%E7%BC%96%E7%A0%81%E8%AF%A6%E8%A7%A3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":5,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '编码详解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2025-04-12 13:08:23'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/static/css/custom.css"><link rel="stylesheet" href="/fonts/font.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">29</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="宝爸编程"><span class="site-name">宝爸编程</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">编码详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-10T01:12:21.000Z" title="发表于 2020-04-10 09:12:21">2020-04-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-12T05:08:23.436Z" title="更新于 2025-04-12 13:08:23">2025-04-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">基本知识</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="编码详解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一现代编码模型">一、现代编码模型</h1>
+<p>　　在现代编码模型里要知道一个字符如何映射成计算机里比特，需要经过如下几个步骤：</p>
+<p>　　１．知道一个系统需要支持哪些字符，这些<strong>字符的集合被称为字符表</strong>（Character
+repertoire）。</p>
+<p>　　２．给字符表里的抽象字符编上一个数字，也就是<strong>字符集合到一个整数集合的映射</strong>。这种映射称为<strong>编码字符集</strong>（<strong>CCS</strong>：Coded
+Character
+Set）。<strong>Unicode编码</strong>就是属于这一层的概念，跟计算机里的什么进制啊，比特等没有任何关系，它是完全数学的抽象的。常见的字符集有ASCII字符集、GBK字符集(主要用于处理中文汉字)、Unicode字符集等。</p>
+<p>　　３．将 CCS
+里字符对应的<strong>整数转换成有限长度的比特值</strong>，便于以后计算机使用一定长度的二进制形式表示该整数。这个对应关系被称为<strong>字符编码表</strong>（<strong>CEF</strong>：Character
+Encoding Form）。UTF-8、 UTF-16等都属于这层。</p>
+<p>　　４．对于 CEF
+得到的比特值具体如何在计算机中进行存储，传输。因为存在<strong>大端／小端</strong>的问题，这就会跟具体的操作系统相关了。这种解决方案称为<strong>字符编码方案</strong>（<strong>CES</strong>：Character
+Encoding Scheme）。</p>
+<p>　　平常我们所说的编码都在第三步的时候完成了，都没有涉及到 CES。所以
+CES 并不在本文的讨论范围之内。</p>
+<h1 id="二编码发展史">二、编码发展史</h1>
+<h2 id="ascii编码">2.1 ASCII编码</h2>
+<p>　　我们知道在计算机中，所有的信息最终都表示为一个二进制的字符串，每一个二进制位有
+0 和 1 两种状态，通过不同的排列组合，使用 0 和 1
+就可以表示世界上所有的东西。而 1个字节对应 8 位二进制数，每位二进制数有
+0、1 两种状态，因此 1 字节可以组合出 256 种状态。如果这 256
+中状态每一个都对应一个符号，就能通过 1 字节的数据表示 256 个字符。</p>
+<p>　　<strong>１９６３</strong>年，美国人于是就制定了“<strong>美国信息交换标准码</strong>”（American
+Standard Code for Information Interchange，　<strong>ASCII</strong>，
+/ˈæski/　）编码，描述<strong>英语中的字符和这 8
+位二进制数的对应关系</strong>，简称为 <strong>ASCII
+码</strong>。早期的<strong>ASCII 码（也叫基础ASCII码）一共定义了 128
+个字符，包括英文字母字符<code>'A'</code>～<code>'Z'</code>，<code>'a'</code>～<code>'z'</code>，数字字符
+<code>'0'</code>～<code>'9'</code>，一些英文标点符号字符和控制符号（不可见）等。这
+128 个字符只使用了 8 位二进制数中的后面 7 位，左侧最高的那一位统一规定为
+0</strong>。码点范围在<span class="math inline">\(0 \sim
+127\)</span>。完整的ASCII码表的内容请看<a
+target="_blank" rel="noopener" href="https://www.asciim.cn/"><font color="#00CDCD"><strong>这里</strong></font></a>。</p>
+<figure>
+<img
+src="https://cspimg.oss-cn-chengdu.aliyuncs.com/%E7%BC%96%E7%A0%81%E8%AF%A6%E8%A7%A3-ASCII%E7%A0%81%E8%A1%A81.png"
+alt="image-20250411112342702" />
+<figcaption aria-hidden="true">image-20250411112342702</figcaption>
+</figure>
+<p>　　C++中的<code>char</code>类型的字符常量，在内存中占１个字节，存储的就是该字符常量对应的ASCII码整数值。简单的说，就是字符常量在内存中实际上存储的是个整数（肯定是非负的）。</p>
+<p>　　这个ASCII码表，同学们可以大概看看，不需要全背，但尽量知道其中一些常用的字符的ASCII码值。空字符（０），字符常量<code>'A'</code>（<code>65, 0B0100 0001, 0X41, \101</code>），字符常量<code>'a'</code>（<code>97, 0B0110 0001, 0x61, \141</code>），空格字符<code>' '</code>（<code>32, 0B0010 0000, 0x20, \40, =97-65, ='a'-'A'</code>），字符<code>'0'</code>（<code>48, 0B0011 0000, 0x30, \60</code>）。</p>
+<p>　　一些常用的写法技巧需要知道：</p>
+<ol type="1">
+<li><p>其他字母码值的推算，例如<code>'D'</code>的ASCII码值为<code>'A'+3</code>；</p></li>
+<li><p>假设某个码值为x的大写字母，若要转成对应的小写字母，代码应写为<code>x= x + ' ';</code>，或者说<code>x = x - 'A' + 'a';</code></p></li>
+<li><p>假设某个码值为x的小写字母，若要转成对应的大写字母，代码应写为<code>x= x - ' ';</code>，或者说<code>x = x - 'a' + 'A';</code></p>
+<p>用反斜杠来做转义字符的标志，常见的转义字符如下：</p>
+<p>ａ）功能转义字符：<code>'\n'</code>（回车键）、<code>'\t'</code>（制表符）</p>
+<p>ｂ）<strong>以<code>'\'</code>开头，后跟一个字符，这种写法就表示该字符常量</strong>。例如<code>'\\'</code>（反斜杠字符）、<code>'\C'</code>（字符C）、<code>'\''</code>（单引号字符）、</p>
+<p>ｃ）<strong>以<code>'\'</code>开头，后跟一个整数，表示用<font color="orange">八进制</font>来表示这个字符的ASCII码</strong>。例如<code>'\101'</code>（<code>'\'</code>标志着八进制数的开始，<span
+class="math inline">\(101_8=65_{10}\)</span>，所以<code>'\101'</code>表示字符常量<code>'A'</code>），<code>'\141'</code>（<code>'\'</code>标志着八进制数的开始，<span
+class="math inline">\(141_8=97_{10}\)</span>，所以<code>'\141'</code>表示字符常量<code>'a'</code>），<code>'\141'</code>（<code>'\'</code>标志着八进制数的开始，<span
+class="math inline">\(141_8=97_{10}\)</span>，所以<code>'\141'</code>表示字符常量<code>'a'</code>）。需要注意的是，<strong>必须要加上一对单引号，内含八进制数</strong>。如果没有单引号，是错误的。例如<code>char ch=\101;  //语法报错！</code>，但如果是<strong>给一个字符变量赋予其他进制数的ASCII码值，则不需要加单引号</strong>，例如<code>char c1=65, c2=0x41, c3=0b01000001;</code>。请看下面的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-type">char</span> c1=<span class="hljs-number">65</span>, c2=<span class="hljs-number">0x41</span>, c3=<span class="hljs-number">0b01000001</span>;<br><span class="hljs-comment">//	char c4=\101;  //报错， </span><br>    <span class="hljs-type">char</span> c4=<span class="hljs-string">&#x27;\101&#x27;</span>;  <br>	cout &lt;&lt; c1 &lt;&lt;c2 &lt;&lt;c3 &lt;&lt;<span class="hljs-string">&#x27;\101&#x27;</span> &lt;&lt;c4;  <span class="hljs-comment">// 输出AAAAA</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>　　基础ASCII码只定义了１２８个字符，这意味着如果其他非英语国家如果想使用计算机，将无法表示本国的文字。所以后来各个国家分别制定了自己国家的字符编码，例如中国的GB2312（１９８０年实施）、中国台湾地区的Big５、日本的Shift_JIS、韩国的EUC-KR编码等。</p>
+<p>　　但这会带来新的问题。例如在我国境内编写一个文件，用GB2312编码表示汉字“中”，内容是<code>0xD6D0</code>，需2个字节。但是如果把这个文件发给小鬼子，他们收到后，尝试用Shift_JIS编码来解读<code>0xD6D0</code>这个二进制串，结果不忍直视，完全乱码。所以不同编码的文件之间无法直接互通。</p></li>
+</ol>
+<h2 id="unicode统一字符集">2.2 Unicode统一字符集</h2>
+<h3 id="核心概念">2.2.1 核心概念</h3>
+<p>　　1987年启动的Unicode项目提出<strong>统一字符集</strong> 理念：</p>
+<ul>
+<li><p>为全球所有字符分配唯一的<font color="orange"><strong>码点</strong></font>（Code
+Point）。所谓的<strong>码点，其实就是一个整数值</strong>，和各种进制无关，和具体实现无关，码点的写法格式是“U+XXXX”，其中"XXXX"是一个十六进制表示的整数值。例如：</p>
+<ul>
+<li><code>'A'</code>的码点为<code>U+0041</code>，仍然是十进制的６５，和ASCII码里规定的字符<code>'A'</code>一致，保持了对其的兼容性。</li>
+<li>"中"的码点为<code>U+4E2D</code></li>
+</ul></li>
+<li><p>码点采用十六进制表示，范围从<strong>U+0000</strong>到<strong>U+10FFFF</strong></p></li>
+</ul>
+<h3 id="编码方案">2.2.2 编码方案</h3>
+<p>　　针对某一个码点（整数值），如何把它翻译／转换成一个二进制的０／１序列，这是需要解决的第二个问题。</p>
+<p>　　Unicode主要有UTF-8、UTF-16和UTF-32这几种编码方案。<strong>UTF</strong>的全称是：<code>Unicode Transformation Format</code>，表示“Unicode码转换格式”。其中8／16／32分别表示8位(1字节)／16位(2字节)／32位(4字节)，表示一个字符进行编码所需的<strong>最小</strong>字节单元，也称<strong>编码单元</strong>，简称<font color="orange"><strong>码元</strong></font>。这些编码方案根据码点来得到实际存储的码元信息。</p>
+<h1 id="三主流编码方案详解">三、主流编码方案详解</h1>
+<h2 id="utf-8编码方案">3.1 UTF-8编码方案</h2>
+<h3 id="如何编码">3.1.1 如何编码</h3>
+<p>　　UTF-8编码是一种<font color="orange"><strong>变长编码</strong></font>。也就是说，对于不同的码点，其对应的码元长度可能是不一样的。</p>
+<p>　　编码规则如下表所示：</p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 53%" />
+<col style="width: 16%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">序号</th>
+<th>字节结构（x表示可为0/1，８bit为１Byte）</th>
+<th>码点范围（有漏段）</th>
+<th style="text-align: center;">能表示的最大bit位数（x的个数）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">１</td>
+<td><font color="orange">0</font>xxxxxxx</td>
+<td>U+0000～007F</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">２</td>
+<td><font color="orange">110</font>xxxxx　<font color="orange">10</font>xxxxxx</td>
+<td>U+0080～07FF</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">３</td>
+<td><font color="orange">1110</font>xxxx　<font color="orange">10</font>xxxxxx　<font color="orange">10</font>xxxxxx</td>
+<td>U+0800～FFFF</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">４</td>
+<td><font color="orange">11110</font>xxx　<font color="orange">10</font>xxxxxx　<font color="orange">10</font>xxxxxx　<font color="orange">10</font>xxxxxx</td>
+<td>U+10000～10FFFF</td>
+<td style="text-align: center;">21</td>
+</tr>
+</tbody>
+</table>
+<p><strong>例１</strong>：已知文字“严”的码点值是
+<code>U+4E25</code>，求其UTF-8编码值（十六进制形式）：</p>
+<p>解答：</p>
+<p>　　１）根据"严"
+的码点整数值<code>4E25</code>，其二进制是：<code>100 1110 0010 0101</code>，一共有１５个bit（不含前导０）；</p>
+<p>　　２）根据上面的表格的“最大bit位数”所示，15个bit需要用３个字节来表示（<span
+class="math inline">\(11&lt;15&lt;16\)</span>），将其补全成<span
+class="math inline">\(16\)</span>位的二进制串，并按照“<span
+class="math inline">\(4-6-6\)</span>”的长度来分割，分割结果是：<code>0100 111000 100101</code>，可以看到，这个内容分为了３段；</p>
+<p>　　３）把这个分割结果串，补全每段左侧的固定头部，最终的UTF-8编码二进制串值是：<font color="orange">1110</font>0100　<font color="orange">10</font>111000　<font color="orange">10</font>100101，再把这２４个bit的二进制串转成１６进制，结果就是<code>0xE4 B8 A5</code>，这就是最终答案。</p>
+<p><strong>例２</strong>：已知字符<code>'A'</code>的码点值是
+<code>U+0041</code>，求其UTF-8编码值（十六进制形式）：</p>
+<p>解答：</p>
+<p>　　１）根据<code>'A'</code>
+的码点整数值<code>0041</code>，其二进制是：<code>100 0001</code>，一共有７个bit（不含前导０）；</p>
+<p>　　２）根据上面的表格的“最大bit位数”所示，７个bit需要用１个字节来表示（<span
+class="math inline">\(7\leq
+7&lt;11\)</span>），正好７位，不需补全，也不需要分割（只有一个字节），分割结果串是：<code>100 0001</code>，可以看到，这个内容只有１段；</p>
+<p>　　３）把这个分割结果串，补全每段左侧的固定头部“<font color="orange">0</font>”，最终的UTF-8编码二进制串值是：<font color="orange">0</font>100　0001，再把这８个bit的二进制串转成１６进制，结果是<code>0x41</code>，这就是最终答案。</p>
+<p>　　可以看到，最终的UTF-8编码和字符<code>'A'</code>的ASCII码是一样的，并无任何变化。也就是说，UTF-8编码对ASCII编码是完全兼容的，可以用UTF-8编码来解读和打开以前那些纯由ASCII编码生成的文件。</p>
+<p><strong>例３</strong>：已知字符“😂”的码点值是
+<code>U+1F602</code>，求其UTF-8编码值（十六进制形式）：</p>
+<p>解答：</p>
+<p>　　１）根据"严"
+的码点整数值<code>1F602</code>，其二进制是：<code>1 1111 0110 0000 0010</code>，一共有１７个bit（不含前导０）；</p>
+<p>　　２）根据上面的表格的“最大bit位数”所示，１７个bit需要用３个字节来表示（<span
+class="math inline">\(16&lt;17&lt;21\)</span>），将其补全成<span
+class="math inline">\(21\)</span>位的二进制串，并按照“<span
+class="math inline">\(3-6-6-6\)</span>”的长度来分割，分割结果是：<code>000 011111 011000 000010</code>，可以看到，这个内容分为了４段；</p>
+<p>　　３）把这个分割结果串，补全每段左侧的固定头部，最终的UTF-8编码二进制串值是：<font color="orange">11110</font>000　<font color="orange">10</font>011111　<font color="orange">10</font>011000　<font color="orange">10</font>000010，再把这３２个bit的二进制串转成１６进制，结果就是<code>0xF0 9F 98 82</code>，这就是最终答案。</p>
+<p><strong>例４</strong>：在电脑端接收到从网络中传输过来的某一个字符的UTF-8编码信息，一共有３个字节，内容依次是<code>0xAD B8 E4</code>，这个字符的UTF-8编码值是什么？</p>
+<p>解答：</p>
+<p>　　这三个字节，第一个字节的高位是<code>'A'</code>，即<code>1010</code>，这并不是一个合法的UTF-8编码的高位。遇到这种问题，应该再看看最后一个字节<code>0xE4</code>的高４位<code>'E'</code>，即<code>1110</code>，这可能是一个合法的UTF-8编码开头。它有３个<code>1</code>，说明完整编码值一共有３个字节（和现实吻合）；之所以这个<code>0xE4</code>排在第三个，可能是因为电脑端用小端系统（低位字节存储在低地址，目前主流操作系统和设备都是小端系统）来接收了这个字节序列，所以该字符正确的UTF-8编码值应该是这个结果的反序，即<code>0xE4 B8 AD</code>。检验一下<code>B8 AD</code>这两个字节的高4位bit，都在<code>'8'</code>到<code>'B'</code>之间，即都在<code>0b1000~0b1011</code>之间，故<code>0xE4 B8 AD</code>是一个正确合法的UTF-8编码值。</p>
+<p>　　从例４可以看出，UTF-8编码能够被接收系统自动识别接收顺序，并不会引起任何歧义。</p>
+<h3 id="变长编码的判断方法">3.1.2 变长编码的判断方法</h3>
+<p>　　通过<strong>首字节的前导1数量</strong> 确定字符长度：</p>
+<ul>
+<li><p><code>0xxxxxxx</code> → 1字节</p></li>
+<li><p><code>110xxxxx</code> → 2字节</p></li>
+<li><p><code>1110xxxx</code> → 3字节</p></li>
+<li><p><code>11110xxx</code> → 4字节</p></li>
+</ul>
+<p>　　后续字节均以<code>10xxxxxx</code>开头，确保解码时能正确分割字节边界。</p>
+<h3 id="解码过程">3.1.3 解码过程</h3>
+<p>　　UTF-8编码中的前缀码起到了很好的区分和标识的作用，其编码的解析过程大致如下：</p>
+<ol type="1">
+<li>当解码程序读取到一个字节的首位为０，表示这是一个单字节编码的ASCII字符；</li>
+<li>当读取到一个字节的首位为１，表示这是一个非ASCII字符的多字节编码字符中的某个字节（可能是首字节，也可能是后续字节），接下来若继续读取到第二个１，则可以确定当前字节为首字节，再继续读取直到遇见终结标志（即0）为止。一共连续读取了几个1，就表示该字符为几个字节的编码；</li>
+<li>当读取到某一个字节的最左两位为１０，则该字节显然是非ASCII字符的后续字节(即非首字节)。</li>
+</ol>
+<p>　　在UTF-8编码方式中，绝大部分的中文用三个字节编码，部分中文用四个字节编码，</p>
+<h3 id="核心优势">3.1.4 核心优势</h3>
+<ol type="1">
+<li><strong>完全兼容ASCII码</strong>：单字节字符与ASCII完全一致，无需转换。</li>
+<li><strong>节省存储空间</strong>
+：常用字符（如拉丁字母、汉字）使用1-3字节，仅生僻字符需4字节。</li>
+<li><strong>无字节序问题</strong>
+：UTF-8编码的首字节有独特的前缀码，能被计算机自行判断出谁是首字节，故不存在小端序和大端序造成的歧义情况。</li>
+</ol>
+<p>　　<strong>UTF-8通过动态调整字节数，平衡了兼容性与效率，成为互联网和操作系统（如Linux）的主流编码方案</strong>。</p>
+<h2 id="utf-16编码方案">3.2 UTF-16编码方案</h2>
+<p>　　<strong>UTF-16也是一种<font color="orange">变长编码</font></strong>，对于一个Unicode字符<strong>被编码成1至2个码元</strong>，<strong>每个码元为2个字节(16位)</strong>。也就是说，用UTF-16编码后的１个字符，可能占２个字节或者４个字节。<font color="orange"><strong>UTF-16编码会有字节序的问题</strong></font>（因为<strong>需要确定一个码元内的２个字节，谁摆前谁摆后</strong>），所以根据大小端又分为<strong>大端UTF-16</strong>(UTF-16
+BE)和<strong>小端UTF-16</strong>(UTF-16 LE)。</p>
+<p>　　在<strong>基本多语言平面</strong>内的UTF-16编码<strong>使用1个码元</strong>，且<strong>其值与Unicode是相等</strong>的（不需要转换）。举例如下：</p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 6%" />
+<col style="width: 23%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Unicode</th>
+<th>字符</th>
+<th>UTF-16（码元）</th>
+<th>UTF-16 LE（字节）</th>
+<th>UTF-16 BE（字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>U+0041</code></td>
+<td>A</td>
+<td><code>0x0041</code></td>
+<td><code>0x41 0x00</code></td>
+<td><code>0x00 0x41</code></td>
+</tr>
+<tr class="even">
+<td><code>U+03A9</code></td>
+<td>Ω</td>
+<td><code>0x03A9</code></td>
+<td><code>0xA9 0x03</code></td>
+<td><code>0x03 0xA9</code></td>
+</tr>
+<tr class="odd">
+<td><code>U+6653</code></td>
+<td>晓</td>
+<td><code>0x6653</code></td>
+<td><code>0x53 0x66</code></td>
+<td><code>0x66 0x53</code></td>
+</tr>
+</tbody>
+</table>
+<p>　　码点范围在U+10000-U+10FFFF的编码的详细过程比较复杂，就不在这里详述了，超纲了。同学们只需要知道这个范围的字符，是需要２个码元，４个字节来表示的。假设一个码点为<code>U+2A6A5</code>的字符𪚥，它对应的两个码元分别是<code>0xD869</code>
+和<code>0xDEA5</code>（转换过程略），小端序编码结果是<code>0x69 0xD8 0xA5 0xDE</code>，大端序编码结果是<code>0xD8 0x69 0xDE 0xA5</code>。</p>
+<h2 id="utf-32编码方案">3.3 UTF-32编码方案</h2>
+<p>　　UTF-32是一种<font color="#00dd00"><strong>定长编码</strong></font>，<strong>使用１个３２bit的码元，其值与Unicode编码值相等</strong>。举例如下:</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 5%" />
+<col style="width: 18%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Unicode（码点）</th>
+<th>字符</th>
+<th>UTF-32（码元）</th>
+<th>UTF-32 LE（字节）</th>
+<th>UTF-32 BE（字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>U+0041</code></td>
+<td>A</td>
+<td><code>0x00000041</code></td>
+<td><code>0x41 0x00 0x00 0x00</code></td>
+<td><code>0x00 0x00 0x00 0x41</code></td>
+</tr>
+<tr class="even">
+<td><code>U+03A9</code></td>
+<td>Ω</td>
+<td><code>0x000003A9</code></td>
+<td><code>0xA9 0x03 0x00 0x00</code></td>
+<td><code>0x00 0x00 0x03 0xA9</code></td>
+</tr>
+<tr class="odd">
+<td><code>U+6653</code></td>
+<td>晓</td>
+<td><code>0x00006653</code></td>
+<td><code>0x53 0x66 0x00 0x00</code></td>
+<td><code>0x00 0x00 0x66 0x53</code></td>
+</tr>
+<tr class="even">
+<td><code>U+2A6A5</code></td>
+<td>𪚥</td>
+<td><code>0x0002A6A5</code></td>
+<td><code>0xA5 0xA6 0x02 0x00</code></td>
+<td><code>0x00 0x02 0xA6 0xA5</code></td>
+</tr>
+</tbody>
+</table>
+<p>　　<strong>UTF-32同样有大小端的问题，</strong>目前用得少。</p>
+<p><strong>优缺点</strong>：</p>
+<ul>
+<li>优点：是定长编码，提取、截断和翻译字符都容易进行。</li>
+<li>缺点：浪费存储空间；存在字节序的问题。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">雪宝和七七的爸爸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/04/10/%E7%BC%96%E7%A0%81%E8%AF%A6%E8%A7%A3/">http://example.com/2020/04/10/%E7%BC%96%E7%A0%81%E8%AF%A6%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">宝爸编程</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%A1%E6%81%AF%E5%AD%A6/">信息学</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/04/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11-%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89/" title="面向对象1-类的定义"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">面向对象1-类的定义</div></div></a></div><div class="next-post pull-right"><a href="/2020/04/04/%E6%8C%87%E9%92%88/" title="指针"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">指针</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/03/31/2%E6%8B%93%E5%B1%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84%E8%BF%9B%E9%98%B6/" title="拓展数据类型和顺序结构进阶"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-31</div><div class="title">拓展数据类型和顺序结构进阶</div></div></a></div><div><a href="/2024/04/25/LCS%E9%97%AE%E9%A2%98/" title="最长公共子序列（LCS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长公共子序列（LCS）问题</div></div></a></div><div><a href="/2020/03/31/1%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97/" title="１基本数据类型和算术运算"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-31</div><div class="title">１基本数据类型和算术运算</div></div></a></div><div><a href="/2024/04/25/LIS%E9%97%AE%E9%A2%98/" title="最长不下降子序列（LIS）问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-25</div><div class="title">最长不下降子序列（LIS）问题</div></div></a></div><div><a href="/2025/03/02/GESP%E5%85%AB%E7%BA%A7%EF%BC%88202312-202412%EF%BC%89%E6%9C%AA%E5%AE%8C/" title="GESP八级（202312-202412）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-02</div><div class="title">GESP八级（202312-202412）</div></div></a></div><div><a href="/2020/03/13/hello/" title="我的第一篇博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-13</div><div class="title">我的第一篇博客</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">雪宝和七七的爸爸</div><div class="author-info__description">本博客致力于信息学奥赛知识学习。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">29</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://cspcoding.github.io/"><i class="fab fa-github"></i><span>回到主页</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">玩游戏害人害己哦！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%8E%B0%E4%BB%A3%E7%BC%96%E7%A0%81%E6%A8%A1%E5%9E%8B"><span class="toc-text">一、现代编码模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E7%BC%96%E7%A0%81%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-text">二、编码发展史</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ascii%E7%BC%96%E7%A0%81"><span class="toc-text">2.1 ASCII编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unicode%E7%BB%9F%E4%B8%80%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-text">2.2 Unicode统一字符集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-text">2.2.1 核心概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88"><span class="toc-text">2.2.2 编码方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E4%B8%BB%E6%B5%81%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88%E8%AF%A6%E8%A7%A3"><span class="toc-text">三、主流编码方案详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#utf-8%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88"><span class="toc-text">3.1 UTF-8编码方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%BC%96%E7%A0%81"><span class="toc-text">3.1.1 如何编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E7%BC%96%E7%A0%81%E7%9A%84%E5%88%A4%E6%96%AD%E6%96%B9%E6%B3%95"><span class="toc-text">3.1.2 变长编码的判断方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%A0%81%E8%BF%87%E7%A8%8B"><span class="toc-text">3.1.3 解码过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF"><span class="toc-text">3.1.4 核心优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#utf-16%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88"><span class="toc-text">3.2 UTF-16编码方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#utf-32%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88"><span class="toc-text">3.3 UTF-32编码方案</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/24/%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E5%92%8C%E4%BA%94%E5%A4%A7%E5%9F%BA%E7%A1%80%E9%83%A8%E4%BB%B6/" title="冯诺依曼结构和五大基础部件">冯诺依曼结构和五大基础部件</a><time datetime="2025-03-23T16:00:00.000Z" title="发表于 2025-03-24 00:00:00">2025-03-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/20/int8_t-bitset-%E5%8E%9F%E5%8F%8D%E8%A1%A5%E7%A0%81%E5%92%8C%E7%A7%BB%E4%BD%8D%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/" title="int8_t-bitset-原反补码和移位操作详解">int8_t-bitset-原反补码和移位操作详解</a><time datetime="2025-03-20T13:12:21.000Z" title="发表于 2025-03-20 21:12:21">2025-03-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/GESP%E5%85%AB%E7%BA%A7%EF%BC%88202312-202412%EF%BC%89%E6%9C%AA%E5%AE%8C/" title="GESP八级（202312-202412）">GESP八级（202312-202412）</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/02/%E7%9B%92%E5%AD%90%E6%94%BE%E7%90%83%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%AA%E5%AE%8C%EF%BC%89/" title="盒子放球的方案数问题">盒子放球的方案数问题</a><time datetime="2025-03-01T16:00:00.000Z" title="发表于 2025-03-02 00:00:00">2025-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/27/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%E4%B8%BAm%E7%9A%84%E5%8C%BA%E9%97%B4%E7%9A%84%E2%80%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C%E5%80%BC%E2%80%9D%E9%97%AE%E9%A2%98/" title="（二）固定宽度为m的区间的“最大的和值”问题">（二）固定宽度为m的区间的“最大的和值”问题</a><time datetime="2025-02-27T06:21:42.811Z" title="发表于 2025-02-27 14:21:42">2025-02-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 雪宝和七七的爸爸</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script src="/js/custom.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
